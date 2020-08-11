@@ -27,9 +27,9 @@ class LocationController extends AdminController
     {
         $grid = new Grid(new Location());
 
-        $grid->column('id', __('Id'));
+        $grid->column('id', __('Id'))->sortable();
         $grid->column('name', __('Name'));
-        $grid->column('status', __('Status'));
+        $grid->column('status', __('Status'))->bool();
 //        $grid->column('deleted_at', __('Deleted at'));
 //        $grid->column('created_at', __('Created at'));
 //        $grid->column('updated_at', __('Updated at'));
