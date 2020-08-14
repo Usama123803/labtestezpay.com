@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
                             <h2 class="py-3">Registration</h2>
-                            <p>Tation argumentum et usu, dicit viderer evertitur te has. Eu dictas concludaturque usu, facete detracto patrioque an per, lucilius pertinacia eu vel.
+                            <p>We Provide Private And Affordable Lab Testing Enhanced Patient Experience, Flexible & Discounted Pricing for Cash & Uninsured.
 
                             </p>
                         </div>
@@ -65,19 +65,19 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input id="landline" name="landline" placeholder="Landline" class="form-control" type="text">
+                                <input id="landline" name="landline" placeholder="Alternate phone number" class="form-control" type="text">
                             </div>
 
-{{--                            <div class="form-group col-md-6">--}}
-{{--                                <select name="countryId" id="countryId" required="required" class="form-control">--}}
-{{--                                    <option value="" selected>Select Country</option>--}}
-{{--                                    @if(!empty($countries) && count($countries) > 0)--}}
-{{--                                        @foreach($countries as $country)--}}
-{{--                                            <option value="{{ $country->id }}">{{ $country->name }}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
+                            {{--   <div class="form-group col-md-6">
+                                   <select name="countryId" id="countryId" required="required" class="form-control">
+                                       <option value="" selected>Select Country</option>
+                                       @if(!empty($countries) && count($countries) > 0)
+                                           @foreach($countries as $country)
+                                               <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                           @endforeach
+                                       @endif
+                                   </select>
+                               </div> --}}
 
                         </div>
 
@@ -128,16 +128,77 @@
 
                         </div>
 
+
                         <div class="form-row">
                             <div class="form-group">
-                                <div class="form-group">
+                                <div class="form-group col-md-12">
+                                    <label>
+                                        I would like to receive my result via:
+                                    </label> </br>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="terms" id="terms" value="1" required>
-                                        <label class="form-check-label" for="terms">
-                                            <small>By clicking Submit, you agree to our Terms & Conditions, Visitor Agreement and Privacy Policy.</small>
-                                        </label>
+                                        <input class="form-check-input" type="checkbox" name="is_fax" id="is_fax" value="1">
+
+                                        <div class="form-group col-md-12">
+                                            <input id="fax" name="fax" maxlength="12" placeholder="Fax No" class="form-control" type="text">
+                                        </div>
                                     </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="is_email" id="via-email" value="1">
+
+                                        <div class="form-group col-md-12">
+                                            <input id="" name="email_cb" placeholder="Email" class="form-control" type="text">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <input id="" name="passcode" maxlength="12" placeholder="Pass Code" class="form-control" type="text">
+                                        </div>
+                                    </div>
+
                                 </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-group col-md-12">
+                                    <label>
+                                        Bill To :
+                                    </label> </br>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="bill_to" value="Insurance">
+                                        <span class="form-check-label"> Insurance </span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="bill_to" value="Uninsured Program">
+                                        <span class="form-check-label"> Uninsured Program</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input id="ins_name" name="ins_name" placeholder="Insurance Name & Policy" class="form-control" type="text">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input id="group_no" name="group_no" placeholder="Group No" class="form-control" type="text">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                {{-- <div class="form-group"> --}}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="terms" id="terms" value="1" required>
+                                    <label class="form-check-label" for="terms">
+                                        <small>By clicking Submit, you agree to our Terms & Conditions, Visitor Agreement and Privacy Policy.</small>
+                                    </label>
+                                </div>
+                                {{--  </div> --}}
 
                             </div>
                         </div>

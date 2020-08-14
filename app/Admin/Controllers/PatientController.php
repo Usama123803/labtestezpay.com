@@ -75,7 +75,29 @@ class PatientController extends AdminController
         $show->field('gender', __('Gender'));
         $show->field('dob', __('Dob'));
         $show->field('cell_phone', __('Cell phone'));
-        $show->field('landline', __('Landline'));
+
+        $show->field('is_fax', __('Is fax'))->as(function ($is_fax) {
+            if($is_fax === 1){
+                return "Yes";
+            }
+            return "No";
+        });
+
+        $show->field('fax', __('Fax'));
+        $show->field('is_email', __('Is Email'))->as(function ($is_email) {
+            if($is_email === 1){
+                return "Yes";
+            }
+            return "No";
+        });
+
+        $show->field('email_cb', __('Email'));
+        $show->field('passcode', __('Passcode'));
+        $show->field('group_no', __('Group Number'));
+        $show->field('ins_name', __('Insurance Name'));
+        $show->field('bill_to', __('Bill To'));
+
+        $show->field('landline', __('Alternate Phone Number'));
         $show->field('zipcode', __('Zipcode'));
 //        $show->field('country.name', __('Country'));
         $show->field('location.name', __('Location'));

@@ -37,6 +37,16 @@ class HomeController extends Controller
             $patient->gender            =   $request->gender;
             $patient->dob               =   Carbon::parse($request->dob)->format('Y-m-d');;
             $patient->cell_phone        =   $request->cell_phone;
+
+            $patient->is_fax            =   $request->is_fax;
+            $patient->fax               =   $request->fax;
+            $patient->is_email          =   $request->is_email;
+            $patient->email_cb          =   $request->email_cb;
+            $patient->passcode          =   $request->passcode;
+            $patient->group_no          =   $request->group_no;
+            $patient->ins_name          =   $request->ins_name;
+            $patient->bill_to           =   $request->bill_to;
+
             $patient->landline          =   $request->landline;
             $patient->zipcode           =   $request->zipcode;
 //            $patient->countryId         =   $request->countryId;
