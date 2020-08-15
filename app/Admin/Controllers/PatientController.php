@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+
+use App\Admin\Extensions\CheckRow;
 use App\Country;
 use App\Helper\AdminHelper;
 use App\Location;
@@ -40,20 +42,33 @@ class PatientController extends AdminController
         $grid->column('gender', __('Gender'));
         $grid->column('dob', __('Dob'));
         $grid->column('cell_phone', __('Cell phone'));
-        $grid->column('zipcode', __('Zipcode'));
+//        $grid->column('zipcode', __('Zipcode'));
 //        $grid->column('country.name', __('Country'));
         $grid->column('location.name', __('Location'));
         $grid->column('appointment', __('Appointment'));
-        $grid->column('city', __('City'));
+//        $grid->column('city', __('City'));
         $grid->column('state.name', __('State'));
         $grid->column('status', __('Status'))->bool();
-        AdminHelper::gridDateFormat($grid, 'created_at', 'Created at');
 
         $grid->disableCreateButton();
         $grid->actions(function ($actions) {
-            $actions->disableEdit();
+            $actions->append(new CheckRow($actions->getKey()));
+//            $actions->disableEdit();
             $actions->disableDelete();
+//            $actions->prepend('<a href=""><i class="fa fa-paper-plane"></i></a>');
         });
+
+//        $grid->tools(function ($tools) {
+//            $tools->append("<a href='your-create-URI' class='btn btn-default'>Create</a>");
+//        });
+
+        AdminHelper::gridDateFormat($grid, 'created_at', 'Created at');
+
+        $grid->column('Print')->display(function () {
+            $pdfRoute = route('generate.pdf', $this->id);
+            return "<a href='".$pdfRoute."' class='btn btn-sm btn-default'>PDF</a>";
+        });
+
 
         return $grid;
     }
@@ -125,7 +140,7 @@ class PatientController extends AdminController
 
         $show->panel()
             ->tools(function ($tools) {
-                $tools->disableEdit();
+//                $tools->disableEdit();
 //                $tools->disableList();
                 $tools->disableDelete();
             });
@@ -143,28 +158,46 @@ class PatientController extends AdminController
     {
         $form = new Form(new Patient());
 
-        $form->text('first_name', __('First name'));
-        $form->text('last_name', __('Last name'));
-        $form->text('email_address', __('Email address'));
-        $form->text('gender', __('Gender'));
-        $form->date('dob', __('Dob'))->default(date('Y-m-d'));
-        $form->text('cell_phone', __('Cell phone'));
-        $form->text('landline', __('Landline'));
-        $form->text('zipcode', __('Zipcode'));
+        $form->tab('Basic info', function ($form) {
+            $form->text('first_name', __('First name'))->readonly();
+            $form->text('last_name', __('Last name'))->readonly();
+            $form->text('email_address', __('Email address'))->readonly();
+            $form->text('gender', __('Gender'))->readonly();
+            $form->date('dob', __('Dob'))->default(date('Y-m-d'))->readonly();
+            $form->text('cell_phone', __('Cell phone'))->readonly();
+            $form->text('landline', __('Landline'))->readonly();
+            $form->text('zipcode', __('Zipcode'))->readonly();
 //        $form->select('countryId', __('Country'))->options(
 //            Country::where([["status", 1]])->pluck("name", "id")
 //        );
-        $form->select('locationId', __('Location'))->options(
-            Location::where([["status", 1]])->pluck("name", "id")
-        );
-        $form->datetime('appointment', __('Appointment'))->default(date('Y-m-d H:i:s'));
-        $form->text('city', __('City'));
-        $form->textarea('address', __('Address'));
-        $form->select('stateId', __('State'))->options(
-            State::where([["status", 1]])->pluck("name", "id")
-        );
-        $form->text('terms', __('Terms'));
-        $form->switch('status', __('Status'))->default(1);
+            $form->select('locationId', __('Location'))->options(
+                Location::where([["status", 1]])->pluck("name", "id")
+            )->readonly();
+            $form->datetime('appointment', __('Appointment'))->default(date('Y-m-d H:i:s'))->readonly();
+            $form->text('city', __('City'))->readonly();
+            $form->textarea('address', __('Address'))->readonly();
+            $form->select('stateId', __('State'))->options(
+                State::where([["status", 1]])->pluck("name", "id")
+            )->readonly();
+            $form->text('terms', __('Terms'))->readonly();
+            $form->switch('status', __('Status'))->readonly()->default(1);
+        })->tab('Remarks', function ($form) {
+
+            $form->select('pcr', __('PCR'))->options(
+                [1 => 'Negative', 2 => 'Positive']
+            );
+
+            $form->textarea('pcr_remark', __('PCR Remark'));
+
+            $form->select('blood', __('Blood'))->options(
+                [1 => 'Negative', 2 => 'Positive']
+            );
+
+            $form->textarea('blood_remark', __('Blood Remark'));
+
+        });
+
+
 
         $form->tools(function (Form\Tools $tools) {
             $tools->disableDelete();
@@ -178,7 +211,7 @@ class PatientController extends AdminController
             // disable `View` checkbox
             $footer->disableViewCheck();
             // disable `Continue editing` checkbox
-            $footer->disableEditingCheck();
+//            $footer->disableEditingCheck();
             // disable `Continue Creating` checkbox
             $footer->disableCreatingCheck();
         });

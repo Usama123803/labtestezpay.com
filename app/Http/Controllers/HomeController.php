@@ -6,6 +6,8 @@ use App\Country;
 use App\Location;
 use App\Patient;
 use App\State;
+//use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -65,6 +67,19 @@ class HomeController extends Controller
         }catch (\Exception $e){
             return redirect()->back()->with('error','Something went wrong while adding patient');
         }
+    }
+
+    public function printPdf($id)
+    {
+        dd($id);
+
+        $data = [
+            'title' => 'First PDF for Medium',
+            'heading' => 'Hello from 99Points.info',
+            'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
+            ];
+        $pdf = PDF::loadView('pdf.patient',$data);
+        return $pdf->download('patient.pdf');
     }
 
 }
