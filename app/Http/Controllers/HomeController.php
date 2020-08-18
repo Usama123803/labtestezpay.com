@@ -71,15 +71,30 @@ class HomeController extends Controller
 
     public function printPdf($id)
     {
-        dd($id);
+
+        $patient = Patient::find($id);
 
         $data = [
-            'title' => 'First PDF for Medium',
+            'title' => 'Patient COVID-19 Report',
             'heading' => 'Hello from 99Points.info',
             'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
             ];
-        $pdf = PDF::loadView('pdf.patient',$data);
+
+        //date in mm/dd/yyyy format; or it can be in other formats as well
+        $birthDate = Carbon::parse($patient->dob)->format('m/d/Y');
+        $birthDate = explode("/", $birthDate);
+        $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+            ? ((date("Y") - $birthDate[2]) - 1)
+            : (date("Y") - $birthDate[2]));
+
+        $data['age'] = $age;
+        $data['dob_month'] = $birthDate[0];
+        $data['dob_day'] = $birthDate[1];
+        $data['dob_year'] = $birthDate[2];
+
+        $pdf = PDF::loadView('pdf.patient',compact('data','patient'));
         return $pdf->download('patient.pdf');
+//        return view('pdf.patient',compact('data','patient'));
     }
 
 }

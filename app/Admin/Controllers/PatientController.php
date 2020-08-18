@@ -66,7 +66,7 @@ class PatientController extends AdminController
 
         $grid->column('Print')->display(function () {
             $pdfRoute = route('generate.pdf', $this->id);
-            return "<a href='".$pdfRoute."' class='btn btn-sm btn-default'>PDF</a>";
+            return "<a target='_blank' href='".$pdfRoute."' class='fa fa-file-pdf-o'></a>";
         });
 
 

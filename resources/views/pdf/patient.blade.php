@@ -1,85 +1,163 @@
-<div align="center" style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:Calibri;">
-    <table style="width:552.45pt;border-collapse:collapse;border:none;">
-        <tbody>
-        <tr>
-            <td style="width: 552.45pt;border: 1pt solid windowtext;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><strong><span style='font-size:13px;font-family:"Times New Roman";'>FACILITY/ EMPLOYER INFORMATION</span></strong></p>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 552.45pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 74.65pt;vertical-align: top;">
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>&nbsp;</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>Facility:_______________________________________________ Phone: ______________________&nbsp;&nbsp;Fax: ____________________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>Address: ____________________________________________________________&nbsp;&nbsp;City: ____________________ State:_________ Zip: _____________ Phone: _________________________&nbsp;&nbsp;Fax: __________________________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><span style="font-size:13px;">&nbsp;</span></p>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 552.45pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><strong><span style='font-size:13px;font-family:"Times New Roman";'>PATIENT INFORMATION</span></strong></p>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 552.45pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 450.6pt;vertical-align: top;">
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;">&nbsp;</p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>First Name: ____________________________________&nbsp;&nbsp;Last Name: ________________________________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>Phone: _________________</span><span style='font-size:16px;line-height:150%;font-family:"Times New Roman";'>&nbsp;</span><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>Address: ____________________________________________ City _______________________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>&nbsp;State: ______________________&nbsp;&nbsp;Zip: _______________ Age: ____________&nbsp; &nbsp;Date ** Birth:______/_____/_____</span><span style='font-size:16px;line-height:150%;font-family:"Times New Roman";'>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-family:"Times New Roman";'>Biological Sex:</span> &nbsp;<span style='font-family:"Wingdings 2";'>&pound;</span> <span style='font-family:"Times New Roman";'>Male</span>&nbsp; &nbsp;&nbsp;<span style='font-family:"Wingdings 2";'>&pound;</span> <span style='font-family:"Times New Roman";'>Female&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>(mm&nbsp; &nbsp;/&nbsp; &nbsp;dd&nbsp; &nbsp;/&nbsp; &nbsp;yyyy)</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><strong><span style='font-family:"Times New Roman";'>I would like to receive my results via:</span></strong></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Wingdings 2";'>&pound;</span><span style="font-size:13px;line-height:150%;">&nbsp;Fax: ____________________________&nbsp; &nbsp;</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Wingdings 2";'>&pound;</span><span style="font-size:13px;line-height:150%;">&nbsp;Email with Passcode Patient email address: __________________________________________________________________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style="font-size:13px;line-height:150%;">&nbsp; &nbsp; &nbsp;Verify Email address:_____________________________________________________________________________________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style="font-size:13px;line-height:150%;">&nbsp; &nbsp; &nbsp;Passcode: _____________________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><strong><span style='font-family:"Times New Roman";'>Bill To:</span></strong><span style='font-family:"Times New Roman";'>&nbsp; &nbsp; &nbsp;</span><span style='font-family:"Wingdings 2";'>&pound;</span><span style='font-family:"Times New Roman";'>&nbsp;Insurance&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style='font-family:  "Wingdings 2";'>&pound;</span><span style='font-family:  "Times New Roman";'>&nbsp;Uninsured Program</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>Insurance Name &amp; policy: ____________________________________________ Group No: ____________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:Calibri;"><span style='font-size:13px;line-height:150%;font-family:"Times New Roman";'>Driver&rsquo;s License Number/State ID: ________________________________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: __________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><span style='font-size:13px;font-family:"Times New Roman";'>By <strong>signing below, I certify</strong> the <strong>information</strong> I provided on and in connection with this form is true and correct ** the best of my knowledge. I also understand that any false statements or deliberate omissions on this form may subject me ** legal actions for fraudulent misrepresentation.</span><span style='font-size:13px;font-family:"Times New Roman";'>&nbsp; &nbsp;&nbsp;</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><span style='font-size:13px;font-family:"Times New Roman";'>&nbsp;</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><span style='font-size:13px;font-family:"Times New Roman";'>I consent Labtest *********** to share ** results with Inb Sina Community Clinics.</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><span style='font-size:13px;font-family:"Times New Roman";'>&nbsp;</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><span style='font-size:13px;font-family:"Times New Roman";'>Patient Signature:_________________________________________ Today&rsquo;s Date: _________________________________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><span style='font-size:13px;font-family:"Times New Roman";'>&nbsp;</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><strong><span style='font-family:"Times New Roman";'>PATIENT DECLARATION</span></strong></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><span style='font-size:13px;font-family:"Times New Roman";'>___________________________________________________________________________________________________________</span></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><strong><span style="font-size:13px;font-family:OpenSans-Bold;">The answers below shall be truthful and inclusive for all members of household (including children and live-in adults). Within the past 14 days:</span></strong></p>
-                <div style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:Calibri;">
-                    <ol style="margin-bottom:0in;list-style-type: undefined;">
-                        <li style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:Calibri;"><span style="font-size:10.0pt;;">Have you travelled outside of <strong>TEXAS OR IN CLOSE CONTACT WHO HAS TRAVELLED OUTSIDE TEXAS&nbsp; &nbsp; &nbsp;YES&nbsp;&nbsp;</strong></span><strong><span style='font-family:"MS Gothic";font-size:10.0pt;'>☐</span></strong><strong><span style="font-family:OpenSans-Regular;">&nbsp;&nbsp;NO&nbsp;</span></strong><strong><span style='font-family:"MS Gothic";font-size:13px;'>☐</span></strong><strong><span style="font-family:OpenSans-Regular;">&nbsp;&nbsp;&nbsp;</span></strong></li>
-                        <li style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:Calibri;"><span style="font-family:OpenSans-Regular;font-size:9.0pt;">Have you had close contact with someone diagnosed with <strong>COVID-19?&nbsp;&nbsp;YES&nbsp;</strong></span><strong><span style='font-family:"MS Gothic";font-size:9.0pt;'>☐</span></strong><strong><span style="font-family:OpenSans-Regular;">&nbsp;NO&nbsp;</span></strong><strong><span style='font-family:"MS Gothic";font-size:9.0pt;'>☐</span>&nbsp;</strong></li>
-                        <li style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:Calibri;"><span style="font-family:OpenSans-Regular;font-size:9.0pt;">Have you experienced any cold or flu-like ******** (such as fever, cough, sore throat, respiratory illness, difficulty breathing, loss of smell, Nausea or vomiting, Congestion or runny nose, diarrhea).&nbsp; &nbsp; &nbsp;<strong>YES <span style='font-family:"MS Gothic";'>☐</span></strong></span><strong>&nbsp;NO <span style='font-family:   "MS Gothic";'>☐</span></strong></li>
-                    </ol>
-                </div>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><strong><span style='font-size:16px;font-family:"Times New Roman";'>&nbsp;</span></strong></p>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:Calibri;"><strong><span style='font-size:16px;font-family:"Times New Roman";'>Phlebotomist Use Only:</span></strong></p>
-                <table style="border-collapse:collapse;border:none;">
-                    <tbody>
-                    <tr>
-                        <td style="width: 195pt;border: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
-                            <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:Calibri;"><span style='font-size:16px;font-family:"Times New Roman";'>********** Date:</span></p>
-                            <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:Calibri;"><span style='font-size:16px;font-family:"Times New Roman";'>&nbsp;</span></p>
-                        </td>
-                        <td style="width: 153.75pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;padding: 0in 5.4pt;vertical-align: top;">
-                            <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:Calibri;"><span style='font-size:16px;font-family:"Times New Roman";'>********** Time:</span></p>
-                            <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:Calibri;"><span style='font-size:16px;font-family:"Times New Roman";'>&nbsp;</span></p>
-                        </td>
-                        <td style="width: 190.75pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;padding: 0in 5.4pt;vertical-align: top;">
-                            <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:Calibri;"><span style='font-size:16px;font-family:"Times New Roman";'>Name:</span></p>
-                            <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:Calibri;"><span style='font-size:16px;font-family:"Times New Roman";'>&nbsp;</span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="width: 539.5pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;vertical-align: top;">
-                            <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:Calibri;"><span style='font-size:16px;font-family:"Times New Roman";'>Signature:</span></p>
-                            <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:Calibri;"><strong><span style='font-size:16px;font-family:"Times New Roman";'>&nbsp;</span></strong></p>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <p style="margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:.5in;line-height:normal;font-size:15px;font-family:Calibri;"><strong><span style='font-size:16px;font-family:"Times New Roman";'>&nbsp;&nbsp;</span></strong><span style='font-size:16px;font-family:"Times New Roman";'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></p>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{ $data['title'] }}</title>
+    <style>
+        .table-p-bottom{
+            margin-bottom: 2px;
+        }
+        .table-p-margin{
+            margin: 2px;
+        }
+        .table-p-top{
+            margin-top: 2px;
+        }
+        .table-ol-padding-left{
+            padding-left: 8px;
+        }
+        .label-value-200{
+            border-bottom: 1px solid black;
+            width: 200px;
+            display: inline-block;
+        }
+        .label-value-130{
+            border-bottom: 1px solid black;
+            width: 130px;
+            display: inline-block;
+        }
+        .dob-underline{
+            border-bottom: 1px solid black;
+            width: 40px;
+            display: inline-block;
+        }
+        .width-60{
+            width: 60px !important;
+        }
+    </style>
+</head>
+<body>
 
+<table style="font-family:Calibri; font-size: 12px;">
+    <tr>
+        <td>
+            <div style="text-align: center">
+                <img src="http://labtestest.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="100" />
+{{--                <img src="{{ asset('assets/images/labtest-logo.png') }}" alt="LabTest-Logo" width="100" />--}}
+                <h4 style="margin:0px;">COVID-19 Test Request Form</h4>
+                <small style="font-size: 12px;">Please complete one form for each patient that Covid-19 testing is requested for. Include form with specimen submission.</small>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table style="border-collapse:collapse;border:none;">
+                <tbody>
+                <tr>
+                    <td style="border: 1pt solid windowtext;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">
+                        <p style="margin-top: 5px;margin-bottom: 5px;font-size: 13px;">
+                            <strong>
+                                <span>FACILITY/ EMPLOYER INFORMATION</span>
+                            </strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;vertical-align: top;">
+                        <p style="">
+                            <span>Facility:_______________________________ Phone: ______________________&nbsp;&nbsp;Fax: ____________________</span></p>
+                        <p><span>Address: ______________________________&nbsp;&nbsp;City: ____________________ State:_________ Zip: _____________ </span></p>
+                        <p>Phone: _________________________&nbsp;&nbsp;Fax: __________________________</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">
+                        <p style="margin-top: 5px;margin-bottom: 5px;font-size: 13px;">
+                            <strong>
+                                <span style=''>PATIENT INFORMATION</span>
+                            </strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 450.6pt;vertical-align: top;">
+                        <p class="table-p-bottom"><span>First Name: <span class="label-value-200">{{ $patient->first_name }}</span>&nbsp;&nbsp;Last Name: <span class="label-value-200">{{ $patient->last_name }}</span></span></p>
+                        <p class="table-p-bottom"><span>Phone: <span class="label-value-130">{{ $patient->cell_phone }}</span></span><span>&nbsp;</span><span>Address: <span class="label-value-200">{{ $patient->address }}</span> City <span class="label-value-130">{{ $patient->city }}</span></span></p>
+                        <p class="table-p-bottom">
+                            <span>&nbsp;State: <span class="label-value-130">{{ $patient->state->name }}</span>&nbsp;&nbsp;Zip: <span class="label-value-130">{{ $patient->zipcode }}</span> Age: <span class="label-value-130 width-60">{{ $data['age'] }}</span>&nbsp; &nbsp;Date of Birth: <span class="dob-underline">{{ $data['dob_month'] }}</span>/<span class="dob-underline">{{ $data['dob_day'] }}</span>/<span class="dob-underline">{{ $data['dob_year'] }}</span></span>
+                        </p>
+                        <p>
+                            <span>Biological Sex:</span> &nbsp;
+                            <span>
+                                <input type="checkbox" name="male" style="vertical-align: sub;" {{ $patient->gender == 'male' ? 'checked' : '' }}>
+                                <span>Male</span>&nbsp;
+                            </span>  &nbsp;&nbsp;
+                            <span>
+                            <input type="checkbox" name="female" style="vertical-align: sub;" {{ $patient->gender == 'female' ? 'checked' : '' }}>
+                            <span >Female&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></span>
+                            <span>(mm&nbsp; &nbsp;/&nbsp; &nbsp;dd&nbsp; &nbsp;/&nbsp; &nbsp;yyyy)</span>
+                        </p>
+                        <p style="margin-top:0; margin-bottom: 3px;"><strong><span >I would like to receive my results via:</span></strong></p>
+                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span><span>&nbsp;Fax: ____________________________&nbsp; &nbsp;</span></p>
+                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span><span >&nbsp;Email with Passcode Patient email address: __________________________________________________________________</span></p>
+                        <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Verify Email address:_____________________________________________________________________________________</span></p>
+                        <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Passcode: _____________________</span></p>
+                        <p >
+                            <strong><span>Bill To:</span></strong><span>&nbsp; &nbsp; &nbsp;</span><span><input type="checkbox" name="billTo" style="vertical-align: sub;"></span><span >&nbsp;Insurance&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span><span>&nbsp;Uninsured Program</span></p>
+                        <p ><span >Insurance Name &amp; policy: ____________________________________________ Group No: ____________</span></p>
+                        <p ><span >Driver&rsquo;s License Number/State ID: ________________________________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: __________</span></p>
+                        <p><span>By <strong>signing below, I certify</strong> the <strong>information</strong> I provided on and in connection with this form is true and correct to the best of my knowledge. I also understand that any false statements or deliberate omissions on this form may subject me to legal actions for fraudulent misrepresentation.</span></p>
+
+                        <p><span>I consent Labtest Diagnostics to share my  results with Inb Sina Community Clinics.</span></p>
+                        <p><span>Patient Signature:_________________________________________ Today&rsquo;s Date: _________________________________</span></p>
+                        <p class="table-p-bottom" style="border-bottom:1px solid black;"><strong>PATIENT DECLARATION</strong></p>
+                        <p class="table-p-margin"><strong><span>The answers below shall be truthful and inclusive for all members of household (including children and live-in adults). Within the past 14 days:</span></strong></p>
+                        <ol class="table-p-top" style="padding:0px;list-style: none;">
+                            <li>
+                                1. Have you travelled outside of <strong>TEXAS OR IN CLOSE CONTACT WHO HAS TRAVELLED OUTSIDE TEXAS</strong>
+                                <span style="margin-left:8px">
+                                    <strong>YES</strong>
+                                </span>
+                                <input type="checkbox" name="billTo" style="vertical-align: sub;">
+                                <strong><span>NO</span></strong>
+                                <input type="checkbox" name="billTo" style="vertical-align: sub;">
+                            </li>
+                            <li>2. Have you had close contact with someone diagnosed with <strong>COVID-19?&nbsp;&nbsp;YES&nbsp;</strong></span><strong><span><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong><strong><span>&nbsp;NO&nbsp;</span></strong><strong><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span>&nbsp;</strong></li>
+                            <li>3. Have you experienced any cold or flu-like symptoms (such as fever, cough, sore throat, respiratory illness, difficulty breathing, loss of smell, Nausea or vomiting, Congestion or runny nose, diarrhea).&nbsp; &nbsp; &nbsp;<strong>YES <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></span><strong>&nbsp;NO <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></li>
+                        </ol>
+                        <p><strong><span>Phlebotomist Use Only:</span></strong></p>
+                        <table border="1" style="border-collapse:collapse;width: 100%">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Collection Date:</span></p>
+                                </td>
+                                <td>
+                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Collection Time:</span></p>
+                                </td>
+                                <td>
+                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Name:</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <p><span style='font-size:14px;'>Signature:</span></p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p></p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
