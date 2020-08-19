@@ -30,6 +30,21 @@
             width: 130px;
             display: inline-block;
         }
+        .label-value-400{
+            border-bottom: 1px solid black;
+            width: 400px;
+            display: inline-block;
+        }
+        .label-value-80{
+            border-bottom: 1px solid black;
+            width: 80px;
+            display: inline-block;
+        }
+        .label-value-250{
+            border-bottom: 1px solid black;
+            width: 250px;
+            display: inline-block;
+        }
         .dob-underline{
             border-bottom: 1px solid black;
             width: 40px;
@@ -102,18 +117,18 @@
                             <span>(mm&nbsp; &nbsp;/&nbsp; &nbsp;dd&nbsp; &nbsp;/&nbsp; &nbsp;yyyy)</span>
                         </p>
                         <p style="margin-top:0; margin-bottom: 3px;"><strong><span >I would like to receive my results via:</span></strong></p>
-                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span><span>&nbsp;Fax: ____________________________&nbsp; &nbsp;</span></p>
-                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span><span >&nbsp;Email with Passcode Patient email address: __________________________________________________________________</span></p>
+                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_fax == 1 ? 'checked' : '' }}></span><span>&nbsp;Fax: <span class="label-value-200">{{ $patient->fax }}</span>&nbsp; &nbsp;</span></p>
+                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_email == 1 ? 'checked' : '' }}></span><span >&nbsp;Email with Passcode Patient email address: <span class="label-value-400">{{ $patient->email_cb }}</span></span></p>
                         <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Verify Email address:_____________________________________________________________________________________</span></p>
-                        <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Passcode: _____________________</span></p>
+                        <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Passcode: <span class="label-value-130">{{ $patient->passcode }}</span></span></p>
                         <p >
-                            <strong><span>Bill To:</span></strong><span>&nbsp; &nbsp; &nbsp;</span><span><input type="checkbox" name="billTo" style="vertical-align: sub;"></span><span >&nbsp;Insurance&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span><span>&nbsp;Uninsured Program</span></p>
-                        <p ><span >Insurance Name &amp; policy: ____________________________________________ Group No: ____________</span></p>
+                            <strong><span>Bill To:</span></strong><span>&nbsp; &nbsp; &nbsp;</span><span><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Insurance' ? 'checked' : '' }}></span><span >&nbsp;Insurance&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Uninsured Program' ? 'checked' : '' }}></span><span>&nbsp;Uninsured Program</span></p>
+                        <p ><span >Insurance Name &amp; policy: <span class="label-value-250">{{ $patient->ins_name }}</span> Group No: <span class="label-value-80">{{ $patient->group_no }}</span></span></p>
                         <p ><span >Driver&rsquo;s License Number/State ID: ________________________________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: __________</span></p>
                         <p><span>By <strong>signing below, I certify</strong> the <strong>information</strong> I provided on and in connection with this form is true and correct to the best of my knowledge. I also understand that any false statements or deliberate omissions on this form may subject me to legal actions for fraudulent misrepresentation.</span></p>
 
                         <p><span>I consent Labtest Diagnostics to share my  results with Inb Sina Community Clinics.</span></p>
-                        <p><span>Patient Signature:_________________________________________ Today&rsquo;s Date: _________________________________</span></p>
+                        <p><span>Patient Signature:_________________________________________ Today&rsquo;s Date: <span class="label-value-200">{{ date('Y-m-d') }}</span></span></p>
                         <p class="table-p-bottom" style="border-bottom:1px solid black;"><strong>PATIENT DECLARATION</strong></p>
                         <p class="table-p-margin"><strong><span>The answers below shall be truthful and inclusive for all members of household (including children and live-in adults). Within the past 14 days:</span></strong></p>
                         <ol class="table-p-top" style="padding:0px;list-style: none;">
