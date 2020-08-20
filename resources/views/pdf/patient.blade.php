@@ -60,9 +60,34 @@
 <table style="font-family:Calibri; font-size: 12px;">
     <tr>
         <td>
-            <div style="text-align: center">
-                <img src="http://labtestest.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="100" />
-{{--                <img src="{{ asset('assets/images/labtest-logo.png') }}" alt="LabTest-Logo" width="100" />--}}
+            <div style="display: inline-block;float: left;">
+                                <img src="{{ asset('assets/images/labtest-logo.png') }}" alt="LabTest-Logo" width="150" />
+                {{--                <img src="http://labtestest.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="150" />--}}
+            </div>
+            <div style="display: inline-block;float: right">
+                <p style="margin: 2px;">
+                    <span>PCR:</span>
+                    <span><input type="checkbox" style="vertical-align: sub" {{ $patient->pcr == 1 ? 'checked' : '' }}>Negative</span>
+                    <span><input type="checkbox" style="vertical-align: sub" {{ $patient->pcr == 2 ? 'checked' : '' }}>Positive</span>
+                    <span style="margin-left: 10px;"><strong>Remarks:</strong></span>
+                    <span >{{ $patient->pcr_remark }}</span>
+                </p>
+                <p style="margin: 2px;">
+                    <span>Blood:</span>
+                    <span><input type="checkbox" style="vertical-align: sub" {{ $patient->blood == 1 ? 'checked' : '' }}>Negative</span>
+                    <span><input type="checkbox" style="vertical-align: sub" {{ $patient->blood == 2 ? 'checked' : '' }}>Positive</span>
+                    <span style="margin-left: 10px;"><strong>Remarks:</strong></span>
+                    <span >{{ $patient->blood_remark }}</span>
+                </p>
+            </div>
+        </td>
+{{--        <td>--}}
+{{--            --}}
+{{--        </td>--}}
+    </tr>
+    <tr>
+        <td>
+            <div style="text-align: center;clear: both">
                 <h4 style="margin:0px;">COVID-19 Test Request Form</h4>
                 <small style="font-size: 12px;">Please complete one form for each patient that Covid-19 testing is requested for. Include form with specimen submission.</small>
             </div>
@@ -132,17 +157,17 @@
                         <p class="table-p-bottom" style="border-bottom:1px solid black;"><strong>PATIENT DECLARATION</strong></p>
                         <p class="table-p-margin"><strong><span>The answers below shall be truthful and inclusive for all members of household (including children and live-in adults). Within the past 14 days:</span></strong></p>
                         <ol class="table-p-top" style="padding:0px;list-style: none;">
-                            <li>
-                                1. Have you travelled outside of <strong>TEXAS OR IN CLOSE CONTACT WHO HAS TRAVELLED OUTSIDE TEXAS</strong>
-                                <span style="margin-left:8px">
-                                    <strong>YES</strong>
-                                </span>
-                                <input type="checkbox" name="billTo" style="vertical-align: sub;">
-                                <strong><span>NO</span></strong>
-                                <input type="checkbox" name="billTo" style="vertical-align: sub;">
-                            </li>
-                            <li>2. Have you had close contact with someone diagnosed with <strong>COVID-19?&nbsp;&nbsp;YES&nbsp;</strong></span><strong><span><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong><strong><span>&nbsp;NO&nbsp;</span></strong><strong><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span>&nbsp;</strong></li>
-                            <li>3. Have you experienced any cold or flu-like symptoms (such as fever, cough, sore throat, respiratory illness, difficulty breathing, loss of smell, Nausea or vomiting, Congestion or runny nose, diarrhea).&nbsp; &nbsp; &nbsp;<strong>YES <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></span><strong>&nbsp;NO <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></li>
+{{--                            <li>--}}
+{{--                                1. Have you travelled outside of <strong>TEXAS OR IN CLOSE CONTACT WHO HAS TRAVELLED OUTSIDE TEXAS</strong>--}}
+{{--                                <span style="margin-left:8px">--}}
+{{--                                    <strong>YES</strong>--}}
+{{--                                </span>--}}
+{{--                                <input type="checkbox" name="billTo" style="vertical-align: sub;">--}}
+{{--                                <strong><span>NO</span></strong>--}}
+{{--                                <input type="checkbox" name="billTo" style="vertical-align: sub;">--}}
+{{--                            </li>--}}
+                            <li>1. Have you had close contact with someone diagnosed with <strong>COVID-19?&nbsp;&nbsp;YES&nbsp;</strong></span><strong><span><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong><strong><span>&nbsp;NO&nbsp;</span></strong><strong><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span>&nbsp;</strong></li>
+                            <li>2. Have you experienced any cold or flu-like symptoms (such as fever, cough, sore throat, respiratory illness, difficulty breathing, loss of smell, Nausea or vomiting, Congestion or runny nose, diarrhea).&nbsp; &nbsp; &nbsp;<strong>YES <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></span><strong>&nbsp;NO <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></li>
                         </ol>
                         <p><strong><span>Phlebotomist Use Only:</span></strong></p>
                         <table border="1" style="border-collapse:collapse;width: 100%">

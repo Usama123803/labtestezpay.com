@@ -159,28 +159,30 @@ class PatientController extends AdminController
         $form = new Form(new Patient());
 
         $form->tab('Basic info', function ($form) {
-            $form->text('first_name', __('First name'))->readonly();
-            $form->text('last_name', __('Last name'))->readonly();
-            $form->text('email_address', __('Email address'))->readonly();
-            $form->text('gender', __('Gender'))->readonly();
-            $form->date('dob', __('Dob'))->default(date('Y-m-d'))->readonly();
-            $form->text('cell_phone', __('Cell phone'))->readonly();
-            $form->text('landline', __('Landline'))->readonly();
-            $form->text('zipcode', __('Zipcode'))->readonly();
+            $form->text('first_name', __('First name'))->required();
+            $form->text('last_name', __('Last name'))->required();
+            $form->text('email_address', __('Email address'))->required();
+            $form->select('gender', __('Gender'))->options(
+                ['male' => 'Male', 'female' => 'Female']
+            )->required();
+            $form->date('dob', __('Dob'))->default(date('Y-m-d'))->required();
+            $form->text('cell_phone', __('Cell phone'))->required();
+            $form->text('landline', __('Landline'));
+            $form->text('zipcode', __('Zipcode'))->required();
 //        $form->select('countryId', __('Country'))->options(
 //            Country::where([["status", 1]])->pluck("name", "id")
 //        );
             $form->select('locationId', __('Location'))->options(
                 Location::where([["status", 1]])->pluck("name", "id")
-            )->readonly();
-            $form->datetime('appointment', __('Appointment'))->default(date('Y-m-d H:i:s'))->readonly();
-            $form->text('city', __('City'))->readonly();
-            $form->textarea('address', __('Address'))->readonly();
+            )->required();
+            $form->datetime('appointment', __('Appointment'))->default(date('Y-m-d H:i:s'));
+            $form->text('city', __('City'));
+            $form->textarea('address', __('Address'));
             $form->select('stateId', __('State'))->options(
                 State::where([["status", 1]])->pluck("name", "id")
-            )->readonly();
-            $form->text('terms', __('Terms'))->readonly();
-            $form->switch('status', __('Status'))->readonly()->default(1);
+            )->required();
+//            $form->text('terms', __('Terms'));
+            $form->switch('status', __('Status'))->default(1);
         })->tab('Remarks', function ($form) {
 
             $form->select('pcr', __('PCR'))->options(
