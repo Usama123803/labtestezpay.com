@@ -109,8 +109,8 @@
                 <tr>
                     <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;vertical-align: top;">
                         <p style="">
-                            <span>Facility: <span class="label-value-200">{{ $patient->location->name }}</span> Phone: <span class="label-value-130">{{ $patient->location->phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-130">{{ $patient->location->fax }}</span></span></p>
-                        <p><span>Address: <span class="label-value-200">{{ $patient->location->address }}</span>&nbsp;&nbsp;City:<span class="label-value-130">{{ $patient->location->city }}</span> State:<span class="label-value-80">{{ $patient->location->state->name }}</span> Zip: <span class="label-value-80">{{ $patient->location->zipcode }}</span> </span></p>
+                        <span>Facility: <span class="label-value-200">{{ $patient->location->name }}</span> Phone: <span class="label-value-130">{{ $patient->location->phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-130">{{ $patient->location->fax }}</span></span></p>
+                        <p><span>Address: <span class="label-value-200">{{ $patient->location->address }}</span>&nbsp;&nbsp;City:<span class="label-value-130">{{ $patient->location->city }}</span> State:<span class="label-value-80">{{ $patient->location->state ? $patient->location->state->name : '' }}</span> Zip: <span class="label-value-80">{{ $patient->location->zipcode }}</span> </span></p>
                         <p>Phone: <span class="label-value-200">{{ $patient->location->alt_phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-200">{{ $patient->location->alt_fax }}</span></p>
                     </td>
                 </tr>

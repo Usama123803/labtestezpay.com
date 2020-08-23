@@ -15,4 +15,7 @@ Route::group([
     $router->resource('patients', PatientController::class);
     $router->resource('locations', LocationController::class);
 
+    $router->get('/patient/send-email/{id}', 'HomeController@patientEmail');
+
+
 });

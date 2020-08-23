@@ -30,13 +30,13 @@ class PatientMailer extends Mailable
      */
     public function build()
     {
-        return $this->from('no-reply@example.com', 'No Reply')
+        return $this->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
             ->view('emails.patient')
             ->with(
                 [
                    'patient'=> $this->patient
                 ])
-            ->attachFromStorage($this->patient->additional_doc);
+            ->attach(storage_path($this->patient->additional_doc));
 //            ->attach(public_path('/images').'/demo.jpg', [
 //                'as' => 'demo.jpg',
 //                'mime' => 'image/jpeg',

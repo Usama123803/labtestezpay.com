@@ -91,11 +91,4 @@ class HomeController extends Controller
 //        return view('pdf.patient',compact('data','patient'));
     }
 
-    public function patientEmail($id)
-    {
-        $patient = Patient::find($id);
-        Mail::to($patient->email_address)->send(new PatientMailer($patient));
-        return "Mail send Successfully";
-    }
-
 }
