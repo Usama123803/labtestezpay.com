@@ -66,7 +66,10 @@ class PatientController extends AdminController
 
         $grid->column('Print')->display(function () {
             $pdfRoute = route('generate.pdf', $this->id);
-            return "<a target='_blank' href='".$pdfRoute."' class='fa fa-file-pdf-o'></a>";
+            $emailRoute = route('patient.email', $this->id);
+            return "<a target='_blank' href='".$pdfRoute."' class='fa fa-file-pdf-o'></a>&nbsp;
+                    <a href='".$emailRoute."' class='fa fa-envelope'></a>
+            ";
         });
 
 
@@ -196,6 +199,8 @@ class PatientController extends AdminController
             );
 
             $form->textarea('blood_remark', __('Blood Remark'));
+
+            $form->file('additional_doc', __('Additional Document'));
 
         });
 

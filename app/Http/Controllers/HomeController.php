@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use App\Location;
+use App\Mail\PatientMailer;
 use App\Patient;
 use App\State;
 //use Barryvdh\DomPDF\PDF;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -71,15 +73,8 @@ class HomeController extends Controller
 
     public function printPdf($id)
     {
-
         $patient = Patient::find($id);
-
-        $data = [
-            'title' => 'Patient COVID-19 Report',
-            'heading' => 'Hello from 99Points.info',
-            'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
-            ];
-
+        $data = ['title' => 'Patient COVID-19 Report'];
         //date in mm/dd/yyyy format; or it can be in other formats as well
         $birthDate = Carbon::parse($patient->dob)->format('m/d/Y');
         $birthDate = explode("/", $birthDate);
@@ -91,10 +86,16 @@ class HomeController extends Controller
         $data['dob_month'] = $birthDate[0];
         $data['dob_day'] = $birthDate[1];
         $data['dob_year'] = $birthDate[2];
-
         $pdf = PDF::loadView('pdf.patient',compact('data','patient'));
         return $pdf->download('patient.pdf');
 //        return view('pdf.patient',compact('data','patient'));
+    }
+
+    public function patientEmail($id)
+    {
+        $patient = Patient::find($id);
+        Mail::to($patient->email_address)->send(new PatientMailer($patient));
+        return "Mail send Successfully";
     }
 
 }

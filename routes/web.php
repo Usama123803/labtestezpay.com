@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','HomeController@index');
 Route::post('storePatient','HomeController@storePatient')->name('store.patient');
 Route::get('/patient/print-pdf/{id}', 'HomeController@printPdf')->name('generate.pdf');
+Route::get('/patient/send-email/{id}', 'HomeController@patientEmail')->name('patient.email');

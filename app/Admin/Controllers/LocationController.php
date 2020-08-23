@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Helper\AdminHelper;
 use App\Location;
+use App\State;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -29,6 +30,14 @@ class LocationController extends AdminController
 
         $grid->column('id', __('Id'))->sortable();
         $grid->column('name', __('Name'));
+        $grid->column('phone', __('Phone'));
+        $grid->column('fax', __('Fax'));
+        $grid->column('address', __('Address'));
+        $grid->column('city', __('City'));
+        $grid->column('state.name', __('state'));
+        $grid->column('zipcode', __('ZipCode'));
+        $grid->column('alt_phone', __('Alt.Phone'));
+        $grid->column('alt_fax', __('Alt.Fax'));
         $grid->column('status', __('Status'))->bool();
 //        $grid->column('deleted_at', __('Deleted at'));
 //        $grid->column('created_at', __('Created at'));
@@ -74,6 +83,18 @@ class LocationController extends AdminController
         $form = new Form(new Location());
 
         $form->text('name', __('Name'));
+        $form->text('phone', __('Phone'));
+        $form->text('fax', __('Fax'));
+        $form->text('address', __('Address'));
+        $form->text('city', __('City'));
+//        $form->text('state', __('state'));
+        $form->select('stateId', __('State'))->options(
+            State::where([["status", 1]])->pluck("name", "id")
+        )->required();
+        $form->text('zipcode', __('ZipCode'));
+        $form->text('alt_phone', __('Alt.Phone'));
+        $form->text('alt_fax', __('Alt.Fax'));
+
         $form->switch('status', __('Status'))->default(1);
 
         return $form;

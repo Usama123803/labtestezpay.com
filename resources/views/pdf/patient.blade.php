@@ -61,8 +61,8 @@
     <tr>
         <td>
             <div style="display: inline-block;float: left;">
-                                <img src="{{ asset('assets/images/labtest-logo.png') }}" alt="LabTest-Logo" width="150" />
-                {{--                <img src="http://labtestest.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="150" />--}}
+{{--                                <img src="{{ asset('assets/images/labtest-logo.png') }}" alt="LabTest-Logo" width="150" />--}}
+                                <img src="http://labtestest.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="150" />
             </div>
             <div style="display: inline-block;float: right">
                 <p style="margin: 2px;">
@@ -109,9 +109,9 @@
                 <tr>
                     <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;vertical-align: top;">
                         <p style="">
-                            <span>Facility:_______________________________ Phone: ______________________&nbsp;&nbsp;Fax: ____________________</span></p>
-                        <p><span>Address: ______________________________&nbsp;&nbsp;City: ____________________ State:_________ Zip: _____________ </span></p>
-                        <p>Phone: _________________________&nbsp;&nbsp;Fax: __________________________</p>
+                            <span>Facility: <span class="label-value-200">{{ $patient->location->name }}</span> Phone: <span class="label-value-130">{{ $patient->location->phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-130">{{ $patient->location->fax }}</span></span></p>
+                        <p><span>Address: <span class="label-value-200">{{ $patient->location->address }}</span>&nbsp;&nbsp;City:<span class="label-value-130">{{ $patient->location->city }}</span> State:<span class="label-value-80">{{ $patient->location->state->name }}</span> Zip: <span class="label-value-80">{{ $patient->location->zipcode }}</span> </span></p>
+                        <p>Phone: <span class="label-value-200">{{ $patient->location->alt_phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-200">{{ $patient->location->alt_fax }}</span></p>
                     </td>
                 </tr>
                 <tr>
@@ -149,7 +149,7 @@
                         <p >
                             <strong><span>Bill To:</span></strong><span>&nbsp; &nbsp; &nbsp;</span><span><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Insurance' ? 'checked' : '' }}></span><span >&nbsp;Insurance&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Uninsured Program' ? 'checked' : '' }}></span><span>&nbsp;Uninsured Program</span></p>
                         <p ><span >Insurance Name &amp; policy: <span class="label-value-250">{{ $patient->ins_name }}</span> Group No: <span class="label-value-80">{{ $patient->group_no }}</span></span></p>
-                        <p ><span >Driver&rsquo;s License Number/State ID: ________________________________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: __________</span></p>
+                        <p ><span >Driver&rsquo;s License Number/State ID: <span class="label-value-200">{{ $patient->drivlic_id }}</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: <span class="label-value-80">{{ $patient->issued_state }}</span></span></p>
                         <p><span>By <strong>signing below, I certify</strong> the <strong>information</strong> I provided on and in connection with this form is true and correct to the best of my knowledge. I also understand that any false statements or deliberate omissions on this form may subject me to legal actions for fraudulent misrepresentation.</span></p>
 
                         <p><span>I consent Labtest Diagnostics to share my  results with Inb Sina Community Clinics.</span></p>
@@ -169,7 +169,7 @@
                             <li>1. Have you had close contact with someone diagnosed with <strong>COVID-19?&nbsp;&nbsp;YES&nbsp;</strong></span><strong><span><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong><strong><span>&nbsp;NO&nbsp;</span></strong><strong><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span>&nbsp;</strong></li>
                             <li>2. Have you experienced any cold or flu-like symptoms (such as fever, cough, sore throat, respiratory illness, difficulty breathing, loss of smell, Nausea or vomiting, Congestion or runny nose, diarrhea).&nbsp; &nbsp; &nbsp;<strong>YES <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></span><strong>&nbsp;NO <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></li>
                         </ol>
-                        <p><strong><span>Phlebotomist Use Only:</span></strong></p>
+                        <p style="margin-top: 0px; margin-bottom: 2px;"><strong><span>Phlebotomist Use Only:</span></strong></p>
                         <table border="1" style="border-collapse:collapse;width: 100%">
                             <tbody>
                             <tr>
