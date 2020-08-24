@@ -61,8 +61,8 @@
     <tr>
         <td>
             <div style="display: inline-block;float: left;">
-{{--                                <img src="{{ asset('assets/images/labtest-logo.png') }}" alt="LabTest-Logo" width="150" />--}}
-                                <img src="http://labtestest.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="150" />
+                                <img src="{{ public_path('assets/images/labtest-logo.png') }}" alt="LabTest-Logo" width="150" />
+{{--                                <img src="http://labtestest.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="150" />--}}
             </div>
             <div style="display: inline-block;float: right">
                 <p style="margin: 2px;">

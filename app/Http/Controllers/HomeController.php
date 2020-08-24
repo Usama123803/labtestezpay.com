@@ -86,8 +86,12 @@ class HomeController extends Controller
         $data['dob_month'] = $birthDate[0];
         $data['dob_day'] = $birthDate[1];
         $data['dob_year'] = $birthDate[2];
-        $pdf = PDF::loadView('pdf.patient',compact('data','patient'));
-        return $pdf->download('patient.pdf');
+
+
+
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('pdf.patient',compact('data','patient'));
+        return $pdf->stream();
+//        return $pdf->download('patient.pdf');
 //        return view('pdf.patient',compact('data','patient'));
     }
 
