@@ -20,12 +20,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        return view('pages.index');
+    }
+    public function patient()
+    {
         $countries = Country::where('status',1)->get();
         $states = State::where('status',1)->get();
         $locations = Location::where('status',1)->get();
 
-
-        return view('pages.index', compact('states','countries','locations'));
+        return view('pages.patient', compact('states','countries','locations'));
     }
 
     /**

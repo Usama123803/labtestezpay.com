@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>@yield('title')</title>
 
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
     @include('includes.styles')
 
     @stack('css')
@@ -12,7 +14,7 @@
 
 <body>
 
-<div class="page-wrapper">
+<div id="page-top">
 
     @include('includes.header')
 
