@@ -531,4 +531,9 @@
 
 @endsection
 
+@push('js')
+    <script src="{!! asset('assets/js/validate.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/js/inputMask.js') !!}"></script>
+@endpush
+
 
