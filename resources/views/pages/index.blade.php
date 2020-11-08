@@ -3,45 +3,46 @@
 @section('title') LabTestEZPay @endsection
 
 @section('content')
-    <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-subheading">Welcome To Our Studio!</div>
-            <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+            <div class="masthead-heading">RT- PCR</div>
+            <div class="masthead-heading">Rapid Antigen Tests</div>
+            <div class="masthead-heading">Blood Test for Antibodies</div>
+            <!--<div class="masthead-subheading">We Provide Private And Affordable Lab Testing Enhanced Patient Experience, Flexible & Discounted Pricing for Cash & Uninsured</div>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a> -->
         </div>
     </header>
-    <!-- Services-->
+
     <section class="page-section" id="services">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Services</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h2 class="section-heading text-uppercase">Covid Testing for Traveller's </h2>
+                <h3 class="section-subheading text-muted">Coronavirus disease 2019 (COVID-19) is the name of the illness caused by the new strain of coronavirus called SARS-CoV-2. Diagnostic tests detect either the genetic material (RNA) of the virus or viral proteins (antigens) in a sample from the respiratory tract. COVID-19 serologic blood tests detect antibodies produced in response to the SARS-CoV-2infection.</h3>
             </div>
             <div class="row text-center">
                 <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                        </span>
-                    <h4 class="my-3">E-Commerce</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <!-- <span class="fa-stack fa-4x">
+                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                         <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                     </span> -->
+                    <h4 class="my-3">RT-PCR</h4>
+                    <p class="text-muted">Reverse Transcription Polymerase Chain Reaction (RT-PCR): Most tests to check for current SARS-CoV-2 infection rely on RT-PCR testing to detect the virus's RNA in a respiratory tract sample from a patient. PCR is a laboratory method used for making a very large number of copies of short sections of DNA from a very small sample of DNA so that it can be detected. This process is called "amplifying" the DNA. (See the article on PCR for more details.) The reverse transcription step allows the viral RNA to be converted into DNA so that the PCR technique can be used.</p>
                 </div>
                 <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
+                    <!--    <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                    <h4 class="my-3">Responsive Design</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        </span> -->
+                    <h4 class="my-3">Rapid Antigen Tests</h4>
+                    <p class="text-muted">These tests detect the viral proteins of SARS-CoV-2 in respiratory samples. The main advantages of antigen tests are that they can provide results in minutes, are simpler than RT-PCR tests to perform, and are sometimes used at the point of care, such as at a health clinic. However, they are not as sensitive as RT-PCR tests, so negative results do not rule out infection.</p>
                 </div>
                 <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                    <h4 class="my-3">Web Security</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <!--  <span class="fa-stack fa-4x">
+                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                         <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                     </span> -->
+                    <h4 class="my-3">Blood Test for Antibodies</h4>
+                    <p class="text-muted">These tests detect antibodies produced by the body's immune system in response to SARS-CoV-2. COVID-19 serology tests can tell whether or not you have had the viral infection in the past. However, antibody tests are not the preferred tests to diagnose current infections. Antibodies don’t show up for about 1 to 2 weeks after you first become sick so antibody tests could miss some early infections. (For more general information on antibodies, also called immunoglobulins, see the article on Immunoglobulins.)</p>
                 </div>
             </div>
         </div>
@@ -60,7 +61,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{{ asset('assets/img/portfolio/01-thumbnail.jpg') }}" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Threads</div>
@@ -74,7 +75,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{{ asset('assets/img/portfolio/02-thumbnail.jpg') }}" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/02-thumbnail.jpg" alt="" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Explore</div>
@@ -88,7 +89,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{{ asset('assets/img/portfolio/03-thumbnail.jpg') }}" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/03-thumbnail.jpg" alt="" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Finish</div>
@@ -102,7 +103,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{{ asset('assets/img/portfolio/04-thumbnail.jpg') }}" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/04-thumbnail.jpg" alt="" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Lines</div>
@@ -116,7 +117,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{{ asset('assets/img/portfolio/05-thumbnail.jpg') }}" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/05-thumbnail.jpg" alt="" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Southwest</div>
@@ -130,7 +131,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{{ asset('assets/img/portfolio/06-thumbnail.jpg') }}" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/06-thumbnail.jpg" alt="" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Window</div>
@@ -150,7 +151,7 @@
             </div>
             <ul class="timeline">
                 <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ asset('assets/img/about/1.jpg') }}" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="" /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>2009-2011</h4>
@@ -160,7 +161,7 @@
                     </div>
                 </li>
                 <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ asset('assets/img/about/2.jpg') }}" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="" /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>March 2011</h4>
@@ -170,7 +171,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ asset('assets/img/about/3.jpg') }}" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="" /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>December 2012</h4>
@@ -180,7 +181,7 @@
                     </div>
                 </li>
                 <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ asset('assets/img/about/4.jpg') }}" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>July 2014</h4>
@@ -213,7 +214,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="{{ asset('assets/img/team/1.jpg') }}" alt="" />
+                        <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="" />
                         <h4>Kay Garland</h4>
                         <p class="text-muted">Lead Designer</p>
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
@@ -223,7 +224,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="{{ asset('assets/img/team/2.jpg') }}" alt="" />
+                        <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="" />
                         <h4>Larry Parker</h4>
                         <p class="text-muted">Lead Marketer</p>
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
@@ -233,7 +234,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="{{ asset('assets/img/team/3.jpg') }}" alt="" />
+                        <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="" />
                         <h4>Diana Petersen</h4>
                         <p class="text-muted">Lead Developer</p>
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
@@ -252,21 +253,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="{{ asset('assets/img/logos/envato.jpg') }}" alt="" /></a>
+                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/envato.jpg" alt="" /></a>
                 </div>
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="{{ asset('assets/img/logos/designmodo.jpg') }}" alt="" /></a>
+                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/designmodo.jpg" alt="" /></a>
                 </div>
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="{{ asset('assets/img/logos/themeforest.jpg') }}" alt="" /></a>
+                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/themeforest.jpg" alt="" /></a>
                 </div>
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid d-block mx-auto" src="{{ asset('assets/img/logos/creative-market.jpg') }}" alt="" /></a>
+                    <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/creative-market.jpg" alt="" /></a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Contact-->
+
     <section class="page-section" id="contact">
         <div class="container">
             <div class="text-center">
@@ -303,6 +304,9 @@
             </form>
         </div>
     </section>
+
+
+
 
 @endsection
 
