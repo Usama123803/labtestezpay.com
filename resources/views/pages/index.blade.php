@@ -251,7 +251,7 @@
                         </div>
                     </form>
                 </div>
-                
+
 
 
 
@@ -348,7 +348,8 @@
 
 
     <!-- About-->
-    <section class="page-section" id="about">
+ 
+ <!--   <section class="page-section" id="about">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">About</h2>
@@ -408,9 +409,10 @@
                 </li>
             </ul>
         </div>
-    </section>
+    </section> -->
+
     <!-- Team-->
-    <section class="page-section bg-light" id="team">
+ <!--   <section class="page-section bg-light" id="team">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
@@ -452,9 +454,10 @@
                 <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
             </div>
         </div>
-    </section>
+    </section>  -->
     <!-- Clients-->
-    <div class="py-5">
+  
+  <!--  <div class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 my-3">
@@ -508,7 +511,7 @@
                 </div>
             </form>
         </div>
-    </section>
+    </section> -->
 
 
 
