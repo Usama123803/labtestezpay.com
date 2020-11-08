@@ -88,12 +88,20 @@
                                 <input type="email" name="email_address" class="form-control" required="required" id="email" placeholder="Email">
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" name="dob" class="form-control" required="required" id="dob" placeholder="DOB">
+                                <input type="email" name="confemail_address" class="form-control" required="required" id="confemail" placeholder="Confirm Email">
                             </div>
 
                         </div>
 
                         <div class="form-row">
+                            
+                            
+                            <div class="form-group col-md-6">
+                                <input type="text" name="dob" class="form-control" required="required" id="dob" placeholder="DOB">
+                            </div>
+                            
+                            
+                            
                             <div class="form-group col-md-6">
                                 <select name="gender" id="gender" required="required" class="form-control">
                                     <option value="" selected>Choose gender</option>
@@ -101,14 +109,19 @@
                                     <option value="female"> Female</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-6">
-                                <input id="cell_phone" name="cell_phone" maxlength="12" placeholder="Cell Phone" class="form-control" required="required" type="text">
-                            </div>
+                            
                         </div>
 
                         <div class="form-row">
+                            
+                           
+                           <div class="form-group col-md-6">
+                                <input id="cell_phone" name="cell_phone" maxlength="12" placeholder="Cell Phone" class="form-control" required="required" type="text">
+                            </div> 
+                            
+                            
                             <div class="form-group col-md-6">
-                                <input id="landline" name="landline" placeholder="Alternate phone number" class="form-control" type="text">
+                                <input id="landline" name="landline" maxlength="12" placeholder="Alternate phone number" class="form-control" type="text">
                             </div>
 
                             {{--   <div class="form-group col-md-6">
@@ -213,8 +226,8 @@
                                         <span class="form-check-label"> Insurance </span>
                                     </label>
                                     <label class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="bill_to" value="Uninsured Program">
-                                        <span class="form-check-label"> Uninsured Program</span>
+                                        <input class="form-check-input" type="radio" name="bill_to" value="Uninsured">
+                                        <span class="form-check-label"> Uninsured</span>
                                     </label>
 
                                 </div>

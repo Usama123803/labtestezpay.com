@@ -14,6 +14,12 @@ $(function(){
                     required: true,
                     email: true
                 },
+                confemail_address : {
+                    required: true,   
+                    email: true,
+                    equalTo: "#email"
+                    
+                },
                 dob: {
                     required: true
                 },
