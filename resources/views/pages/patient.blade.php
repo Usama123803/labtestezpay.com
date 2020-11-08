@@ -1,4 +1,5 @@
 @extends('layout.app')
+@extends('layout.master')
 
 @section('title') LabTestEZPay @endsection
 
