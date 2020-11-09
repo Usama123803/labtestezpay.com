@@ -8,6 +8,7 @@
             <div class="masthead-heading">RT- PCR</div>
             <div class="masthead-heading">Rapid Antigen Tests</div>
             <div class="masthead-heading">Blood Test for Antibodies</div>
+            <div class="masthead-heading"><a class="btn btn-dark" href="http://labtestezpay.com/">For Blood & Other Test Click Here</a> </div>
             <!--<div class="masthead-subheading">We Provide Private And Affordable Lab Testing Enhanced Patient Experience, Flexible & Discounted Pricing for Cash & Uninsured</div>
             <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a> -->
         </div>
