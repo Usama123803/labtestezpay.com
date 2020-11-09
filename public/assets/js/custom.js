@@ -59,6 +59,7 @@ $(function(){
 
     $('#appointment').datetimepicker({
         format: 'MM/DD/YYYY HH:mm'
+        sideBySide: true
     });
     $('#dob').datetimepicker({
         format: 'MM/DD/YYYY'
