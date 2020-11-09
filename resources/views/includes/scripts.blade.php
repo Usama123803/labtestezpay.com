@@ -7,4 +7,14 @@
 <script src="{{ asset('assets/mail/jqBootstrapValidation.js') }}"></script>
 <script src="{{ asset('assets/mail/contact_me.js') }}"></script>
 <!-- Core theme JS-->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
+
+<script src="{!! asset('assets/js/bootstrap-datetimepicker.js') !!}"></script>
+
+@stack('js')
+
+<script src="{!! asset('assets/js/custom.js') !!}"></script>
+
 <script src="{{ asset('js/scripts.js') }}"></script>
