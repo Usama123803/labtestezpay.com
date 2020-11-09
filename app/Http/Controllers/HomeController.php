@@ -29,7 +29,7 @@ class HomeController extends Controller
         $states = State::where('status',1)->get();
         $locations = Location::where('status',1)->get();
 
-        return view('pages.patient', compact('states','countries','locations'));
+        return view('pages.index', compact('states','countries','locations'));
     }
 
     /**
