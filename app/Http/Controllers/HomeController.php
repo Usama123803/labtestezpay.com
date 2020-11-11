@@ -63,7 +63,7 @@ class HomeController extends Controller
             $patient->zipcode           =   $request->zipcode;
 //            $patient->countryId         =   $request->countryId;
             $patient->locationId        =   $request->locationId;
-            $patient->appointment       =   Carbon::parse($request->appointment)->format('Y-m-d H:i:s');
+            $patient->appointment       =   Carbon::parse($request->appointment)->format('m/d/Y H:i:s');
             $patient->city              =   $request->city;
             $patient->address           =   $request->address;
             $patient->stateId           =   $request->stateId;
