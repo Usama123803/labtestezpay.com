@@ -47,7 +47,7 @@ class HomeController extends Controller
             $patient->last_name         =   $request->last_name;
             $patient->email_address     =   $request->email_address;
             $patient->gender            =   $request->gender;
-            $patient->dob               =   Carbon::parse($request->dob)->format('m-d-Y');;
+            $patient->dob               =   Carbon::parse($request->dob)->format('m/d/Y');
             $patient->cell_phone        =   $request->cell_phone;
 
             $patient->is_fax            =   $request->is_fax;
