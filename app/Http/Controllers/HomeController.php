@@ -47,7 +47,7 @@ class HomeController extends Controller
             $patient->last_name         =   $request->last_name;
             $patient->email_address     =   $request->email_address;
             $patient->gender            =   $request->gender;
-            $patient->dob               =   Carbon::parse($request->dob)->format('m/d/Y');
+            $patient->dob               =   Carbon::parse($request->dob)->format('Y-m-d');;
             $patient->cell_phone        =   $request->cell_phone;
 
             $patient->is_fax            =   $request->is_fax;
@@ -63,7 +63,7 @@ class HomeController extends Controller
             $patient->zipcode           =   $request->zipcode;
 //            $patient->countryId         =   $request->countryId;
             $patient->locationId        =   $request->locationId;
-            $patient->appointment       =   Carbon::parse($request->appointment)->format('m/d/Y H:i:s');
+            $patient->appointment       =   Carbon::parse($request->appointment)->format('Y-m-d H:i:s');
             $patient->city              =   $request->city;
             $patient->address           =   $request->address;
             $patient->stateId           =   $request->stateId;
