@@ -11,6 +11,7 @@ use App\State;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -24,8 +25,15 @@ class HomeController extends Controller
         $countries = Country::where('status',1)->get();
         $states = State::where('status',1)->get();
         $locations = Location::where('status',1)->get();
+        $timeSlots = ['08:30','09:15','10:00','10:45','11:30','12:15','13:00','13:45','14:30','15:15','16:00','16:45','17:30'];
 
-        return view('pages.index', compact('states','countries','locations'));
+        $patientsTimeSlotCount = DB::table('patients')
+            ->select('timeslot', DB::raw('count(timeslot) as total'))
+            ->whereIn('timeslot', $timeSlots)
+            ->groupBy('timeslot')
+            ->get();
+
+        return view('pages.index', compact('states','countries','locations','timeSlots','patientsTimeSlotCount'));
     }
     public function patient()
     {
@@ -49,6 +57,7 @@ class HomeController extends Controller
             $patient->gender            =   $request->gender;
             $patient->dob               =   Carbon::parse($request->dob)->format('Y-m-d');;
             $patient->cell_phone        =   $request->cell_phone;
+            $patient->timeslot          =   $request->timeslot;
 
             $patient->is_fax            =   $request->is_fax;
             $patient->fax               =   $request->fax;

@@ -153,7 +153,7 @@
                         <p><span>By <strong>signing below, I certify</strong> the <strong>information</strong> I provided on and in connection with this form is true and correct to the best of my knowledge. I also understand that any false statements or deliberate omissions on this form may subject me to legal actions for fraudulent misrepresentation.</span></p>
 
                         <p><span>I consent Labtest Diagnostics to share my  results with Inb Sina Community Clinics.</span></p>
-                        <p><span>Patient Signature:_________________________________________ Today&rsquo;s Date: <span class="label-value-200">{{ date('Y-m-d') }}</span></span></p>
+                        <p><span>Patient Signature:<span class="label-value-250">{{ $patient->first_name }} {{ $patient->last_name }}</span> Today&rsquo;s Date: <span class="label-value-200">{{ date('Y-m-d') }}</span></span></p>
                         <p class="table-p-bottom" style="border-bottom:1px solid black;"><strong>PATIENT DECLARATION</strong></p>
                         <p class="table-p-margin"><strong><span>The answers below shall be truthful and inclusive for all members of household (including children and live-in adults). Within the past 14 days:</span></strong></p>
                         <ol class="table-p-top" style="padding:0px;list-style: none;">

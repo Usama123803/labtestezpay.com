@@ -15,10 +15,10 @@ $(function(){
                     email: true
                 },
                 confemail_address : {
-                    required: true,   
+                    required: true,
                     email: true,
                     equalTo: "#email"
-                    
+
                 },
                 dob: {
                     required: true
@@ -58,7 +58,7 @@ $(function(){
     }
 
     $('#appointment').datetimepicker({
-        format: 'MM/DD/YYYY HH:mm'
+        format: 'MM/DD/YYYY'
 
     });
     $('#dob').datetimepicker({
