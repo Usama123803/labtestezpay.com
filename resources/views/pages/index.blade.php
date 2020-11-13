@@ -8,7 +8,7 @@
             <div class="masthead-heading">RT- PCR</div>
             <div class="masthead-heading">Rapid Antigen Tests</div>
             <div class="masthead-heading">Blood Test for Antibodies</div>
-            <div class="masthead-heading"><a class="btn btn-dark" href="http://labtestezpay.com/">For Blood & Other Test Click Here</a> </div>
+            <div class="masthead-heading"><a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="http://labtestezpay.com/">For Blood & Other Test Click Here</a> </div>
             <!--<div class="masthead-subheading">We Provide Private And Affordable Lab Testing Enhanced Patient Experience, Flexible & Discounted Pricing for Cash & Uninsured</div>
             <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a> -->
         </div>
@@ -17,7 +17,7 @@
     <section class="page-section" id="services">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Covid Testing for Traveller's </h2>
+                <h2 class="section-heading text-uppercase">COVID RT PCR TEST FOR TRAVELING </h2>
                 <h3 class="section-subheading text-muted">Coronavirus disease 2019 (COVID-19) is the name of the illness caused by the new strain of coronavirus called SARS-CoV-2. Diagnostic tests detect either the genetic material (RNA) of the virus or viral proteins (antigens) in a sample from the respiratory tract. COVID-19 serologic blood tests detect antibodies produced in response to the SARS-CoV-2infection.</h3>
             </div>
             <div class="row text-center">
