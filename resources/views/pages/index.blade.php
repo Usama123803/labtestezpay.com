@@ -235,14 +235,14 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
+                       <!-- <div class="form-row">
                             <div class="form-group col-md-6">
                                 <input id="ins_name" name="ins_name" placeholder="Insurance Name & Policy" class="form-control" type="text">
                             </div>
                             <div class="form-group col-md-6">
                                 <input id="group_no" name="group_no" placeholder="Group No" class="form-control" type="text">
                             </div>
-                        </div>
+                        </div> -->
 
 
 
