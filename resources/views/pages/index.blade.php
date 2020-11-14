@@ -180,11 +180,11 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <input id="appointment" name="appointment" placeholder="Appointment" required="required" class="form-control" type="text">
+                                <input id="appointment" name="appointment" placeholder="Appointment Date" required="required" class="form-control" type="text">
                             </div>
                             <div class="form-group col-md-6">
                                 <select class="form-control" required name ="timeslot">
-                                    <option value ="0"> Please select </option>
+                                    <option value ="0"> Please Select Appointment Time</option>
                                     @foreach($timeSlots as $timeSlot)
                                         <?php $disabled = ''; ?>
                                         @foreach($patientsTimeSlotCount as $patientsTime)

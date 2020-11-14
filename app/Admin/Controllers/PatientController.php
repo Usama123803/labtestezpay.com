@@ -41,11 +41,12 @@ class PatientController extends AdminController
         $grid->column('email_address', __('Email'));
         $grid->column('gender', __('Gender'));
         $grid->column('dob', __('Dob'));
-        $grid->column('cell_phone', __('Cell phone'));
+        $grid->column('cell_phone', __('Cell phone'))->sortable();
 //        $grid->column('zipcode', __('Zipcode'));
 //        $grid->column('country.name', __('Country'));
         $grid->column('location.name', __('Location'));
-        $grid->column('appointment', __('Appointment'));
+        $grid->column('appointment', __('Appointment'))->sortable();
+        $grid->column('timeslot', __('Appointment Time'))->sortable();
 //        $grid->column('city', __('City'));
         $grid->column('state.name', __('State'));
         $grid->column('status', __('Status'))->bool();
@@ -121,6 +122,7 @@ class PatientController extends AdminController
 //        $show->field('country.name', __('Country'));
         $show->field('location.name', __('Location'));
         $show->field('appointment', __('Appointment'));
+        $show->field('timeslot', __('Appointment Time'));
         $show->field('city', __('City'));
         $show->field('address', __('Address'));
         $show->field('state.name', __('State'));
@@ -179,7 +181,8 @@ class PatientController extends AdminController
             $form->select('locationId', __('Location'))->options(
                 Location::where([["status", 1]])->pluck("name", "id")
             )->required();
-            $form->datetime('appointment', __('Appointment'))->default(date('Y-m-d H:i:s'));
+            $form->datetime('appointment', __('Appointment'))->default(date('Y-m-d'));
+            $form->text('timeslot', __('Appointment time'));
             $form->text('city', __('City'));
             $form->textarea('address', __('Address'));
             $form->select('stateId', __('State'))->options(
