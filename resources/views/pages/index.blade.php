@@ -220,9 +220,9 @@
                                         <div class="form-group col-md-12">
                                             <input id="" name="email_cb" placeholder="Email" class="form-control" type="text">
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <!--<div class="form-group col-md-12">
                                             <input id="" name="passcode" maxlength="12" placeholder="Pass Code" class="form-control" type="text">
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                 </div>
@@ -235,11 +235,11 @@
                                 <div class="form-group col-md-12">
                                     <label>
                                         Bill To :
-                                    </label> </br>
+                                    </label> <!-- </br>
                                     <label class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="bill_to" value="Insurance">
                                         <span class="form-check-label"> Insurance </span>
-                                    </label>
+                                    </label> -->
                                     <label class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="bill_to" value="Uninsured">
                                         <span class="form-check-label"> Uninsured</span>
