@@ -17,3 +17,4 @@ Route::get('/','HomeController@index');
 Route::get('/patient','HomeController@patient');
 Route::post('storePatient','HomeController@storePatient')->name('store.patient');
 Route::get('/patient/print-pdf/{id}', 'HomeController@printPdf')->name('generate.pdf');
+Route::get('/appointment/date', 'HomeController@appointmentDate');

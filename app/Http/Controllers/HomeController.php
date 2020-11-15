@@ -28,12 +28,19 @@ class HomeController extends Controller
         $timeSlots = ['08:30','09:15','10:00','10:45','11:30','12:15','13:00','13:45','14:30','15:15','16:00','16:45','17:30'];
 
         $patientsTimeSlotCount = DB::table('patients')
-            ->select('timeslot', DB::raw('count(timeslot) as total'))
+            ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
             ->whereIn('timeslot', $timeSlots)
-            ->groupBy('timeslot')
+            ->groupBy(['timeslot','date'])
             ->get();
 
-        return view('pages.index', compact('states','countries','locations','timeSlots','patientsTimeSlotCount'));
+        $res = $patientsTimeSlotCount->map(function($element){
+           return $element->total <=3 ? $element->date : null;
+        });
+
+
+//        dd($res);
+
+        return view('pages.index', compact('states','countries','locations','timeSlots'));
     }
     public function patient()
     {
@@ -110,6 +117,22 @@ class HomeController extends Controller
         return $pdf->stream();
 //        return $pdf->download('patient.pdf');
 //        return view('pdf.patient',compact('data','patient'));
+    }
+
+    public function appointmentDate()
+    {
+        $date = $_GET['date'];
+        $date = Carbon::parse($date)->format('Y-m-d');
+        $timeSlots = ['08:30','09:15','10:00','10:45','11:30','12:15','13:00','13:45','14:30','15:15','16:00','16:45','17:30'];
+        $patientsTimeSlotCount = DB::table('patients')
+            ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
+            ->whereIn('timeslot', $timeSlots)
+            ->whereDate('created_at', $date)
+            ->groupBy('timeslot')
+            ->get();
+
+        return \response()->json(['data'=> $patientsTimeSlotCount, 'timeSlots' => $timeSlots]);
+
     }
 
 }

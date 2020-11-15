@@ -57,10 +57,7 @@ $(function(){
         });
     }
 
-    $('#appointment').datetimepicker({
-        format: 'MM/DD/YYYY'
 
-    });
     $('#dob').datetimepicker({
         format: 'MM/DD/YYYY'
     });
@@ -77,6 +74,12 @@ $(function(){
         placeholder: ' ',
         showMaskOnHover: false,
         showMaskOnFocus: false,
+    });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     });
 
 

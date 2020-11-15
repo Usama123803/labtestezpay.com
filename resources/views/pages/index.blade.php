@@ -183,16 +183,16 @@
                                 <input id="appointment" name="appointment" placeholder="Appointment" required="required" class="form-control" type="text">
                             </div>
                             <div class="form-group col-md-6">
-                                <select class="form-control" required name ="timeslot">
-                                    <option value ="0"> Please select </option>
+                                <select class="form-control timeSlotSelect" required name ="timeslot">
+                                    <option value =""> Please select </option>
                                     @foreach($timeSlots as $timeSlot)
-                                        <?php $disabled = ''; ?>
-                                        @foreach($patientsTimeSlotCount as $patientsTime)
-                                            @if($patientsTime->total >=3 && $patientsTime->timeslot == $timeSlot)
-                                                <?php $disabled = 'disabled'; ?>
-                                            @endif
-                                        @endforeach
-                                        <option value = "{{ $timeSlot }}" {{ $disabled }}> {{ $timeSlot }} </option>
+<!--                                        --><?php //$disabled = ''; ?>
+{{--                                        @foreach($patientsTimeSlotCount as $patientsTime)--}}
+{{--                                            @if($patientsTime->total >=3 && $patientsTime->timeslot == $timeSlot)--}}
+{{--                                                <?php $disabled = 'disabled'; ?>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+                                        <option value = "{{ $timeSlot }}" > {{ $timeSlot }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -291,6 +291,53 @@
 @push('js')
     <script src="{!! asset('assets/js/validate.js') !!}"></script>
     <script type='text/javascript' src="{!! asset('assets/js/inputMask.js') !!}"></script>
+
+    <script>
+        $(function () {
+            $('#appointment').datetimepicker({
+                format: 'MM/DD/YYYY',
+                // onChangeDateTime:exampleFunction
+            }).on("dp.change", function (e) {
+                let formatedValue = e.date.format(e.date._f);
+                if(formatedValue != ""){
+                    $.ajax({
+                        url: "/appointment/date",
+                        type: "GET",
+                        data: {date: formatedValue},
+                        dataType:"json",
+                        success: function(response) {
+                            console.log("response",response);
+                            if(response.timeSlots != ""){
+
+                                $('.timeSlotSelect').html('');
+                                let html = '<option value="">Please Select</option>';
+                                $(response.timeSlots).each(function (i,element) {
+
+                                    let disabled = '';
+                                    $(response.data).each(function(index,ele){
+                                        if(ele.total >=3 && ele.timeslot == element){
+
+                                            disabled = 'disabled';
+                                        }
+                                    });
+                                    html += '<option value="'+element+'" '+disabled+'>'+element+'</option>';
+                                });
+                                $('.timeSlotSelect').html(html);
+                            }
+                        },
+                        error:function(){
+                            // $('.feedback-message').addClass('hide');
+                        }
+                    });
+                }
+                console.log(formatedValue);
+            });
+            // function exampleFunction(e){
+            //     console.log("Date Selected", e.date);
+            // }
+        });
+    </script>
+
 @endpush
 
 
