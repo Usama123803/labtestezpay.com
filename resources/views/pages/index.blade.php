@@ -180,11 +180,11 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <input id="appointment" name="appointment" placeholder="Appointment" required="required" class="form-control" type="text">
+                                <input id="appointment" name="appointment" placeholder="Appointment Date" required="required" class="form-control" type="text">
                             </div>
                             <div class="form-group col-md-6">
                                 <select class="form-control timeSlotSelect" required name ="timeslot">
-                                    <option value =""> Please select </option>
+                                    <option value =""> Please Select Appointment Time</option>
                                     @foreach($timeSlots as $timeSlot)
 <!--                                        --><?php //$disabled = ''; ?>
 {{--                                        @foreach($patientsTimeSlotCount as $patientsTime)--}}
@@ -220,9 +220,9 @@
                                         <div class="form-group col-md-12">
                                             <input id="" name="email_cb" placeholder="Email" class="form-control" type="text">
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <!--<div class="form-group col-md-12">
                                             <input id="" name="passcode" maxlength="12" placeholder="Pass Code" class="form-control" type="text">
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                 </div>
@@ -235,11 +235,11 @@
                                 <div class="form-group col-md-12">
                                     <label>
                                         Bill To :
-                                    </label> </br>
+                                    </label> <!-- </br>
                                     <label class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="bill_to" value="Insurance">
                                         <span class="form-check-label"> Insurance </span>
-                                    </label>
+                                    </label> -->
                                     <label class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="bill_to" value="Uninsured">
                                         <span class="form-check-label"> Uninsured</span>
@@ -257,8 +257,6 @@
                                 <input id="group_no" name="group_no" placeholder="Group No" class="form-control" type="text">
                             </div>
                         </div> -->
-
-
 
                         <div class="form-row">
                             <div class="form-group">
@@ -306,17 +304,14 @@
                         data: {date: formatedValue},
                         dataType:"json",
                         success: function(response) {
-                            console.log("response",response);
                             if(response.timeSlots != ""){
 
                                 $('.timeSlotSelect').html('');
-                                let html = '<option value="">Please Select</option>';
+                                let html = '<option value="">Please Select Appointment Time</option>';
                                 $(response.timeSlots).each(function (i,element) {
-
                                     let disabled = '';
                                     $(response.data).each(function(index,ele){
                                         if(ele.total >=3 && ele.timeslot == element){
-
                                             disabled = 'disabled';
                                         }
                                     });
