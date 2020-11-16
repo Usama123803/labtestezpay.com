@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title') LabTestEZPay @endsection
+@section('title') LabWork360 @endsection
 
 @section('content')
     <header class="masthead">
