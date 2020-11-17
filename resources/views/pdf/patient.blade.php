@@ -120,7 +120,7 @@
                     <td style="border: 1pt solid windowtext;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">
                         <p style="margin-top: 5px;margin-bottom: 5px;font-size: 13px;">
                             <strong>
-                                <span>How did you hear about us: Kindly check the relevant box and fill out the information.</span>
+                                <span>How did you hear about us:</span>
                             </strong>
                         </p>
                     </td>
@@ -130,7 +130,7 @@
                         <p style="">
                         <span>
                             <input type="checkbox" name="male" style="vertical-align: sub;" {{ $patient->gender == 'male' ? 'checked' : '' }}>
-                                <span>Male</span>&nbsp;
+                                <span>Facebook</span>&nbsp;
                             </span>
                        <!-- <span>Facility: <span class="label-value-200">{{ $patient->location->name }}</span> Phone: <span class="label-value-130">{{ $patient->location->phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-130">{{ $patient->location->fax }}</span></span></p>
                         <p><span>Address: <span class="label-value-200">{{ $patient->location->address }}</span>&nbsp;&nbsp;City:<span class="label-value-130">{{ $patient->location->city }}</span> State:<span class="label-value-80">{{ $patient->location->state ? $patient->location->state->name : '' }}</span> Zip: <span class="label-value-80">{{ $patient->location->zipcode }}</span> </span></p>
