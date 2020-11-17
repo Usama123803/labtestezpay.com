@@ -62,9 +62,9 @@
         <td>
             <div style="display: inline-block;float: left;">
                                 <img src="{{ public_path('assets/images/labtest-logo.png') }}" alt="LabTest-Logo" width="150" />
-{{--                                <img src="http://labtestest.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="150" />--}}
+{{--                                <img src="http://labwork360.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="150" />--}}
             </div>
-            <div style="display: inline-block;float: right">
+           <!-- <div style="display: inline-block;float: right">
                 <p style="margin: 2px;">
                     <span>PCR:</span>
                     <span><input type="checkbox" style="vertical-align: sub" {{ $patient->pcr == 1 ? 'checked' : '' }}>Negative</span>
@@ -79,7 +79,7 @@
                     <span style="margin-left: 10px;"><strong>Remarks:</strong></span>
                     <span >{{ $patient->blood_remark }}</span>
                 </p>
-            </div>
+            </div>-->
         </td>
 {{--        <td>--}}
 {{--            --}}
@@ -114,6 +114,31 @@
                         <p>Phone: <span class="label-value-200">{{ $patient->location->alt_phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-200">{{ $patient->location->alt_fax }}</span></p>
                     </td>
                 </tr>
+
+
+                <tr>
+                    <td style="border: 1pt solid windowtext;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">
+                        <p style="margin-top: 5px;margin-bottom: 5px;font-size: 13px;">
+                            <strong>
+                                <span>How did you hear about us: Kindly check the relevant box and fill out the information.</span>
+                            </strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;vertical-align: top;">
+                        <p style="">
+                        <span>
+                            <input type="checkbox" name="male" style="vertical-align: sub;" {{ $patient->gender == 'male' ? 'checked' : '' }}>
+                                <span>Male</span>&nbsp;
+                            </span>
+                       <!-- <span>Facility: <span class="label-value-200">{{ $patient->location->name }}</span> Phone: <span class="label-value-130">{{ $patient->location->phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-130">{{ $patient->location->fax }}</span></span></p>
+                        <p><span>Address: <span class="label-value-200">{{ $patient->location->address }}</span>&nbsp;&nbsp;City:<span class="label-value-130">{{ $patient->location->city }}</span> State:<span class="label-value-80">{{ $patient->location->state ? $patient->location->state->name : '' }}</span> Zip: <span class="label-value-80">{{ $patient->location->zipcode }}</span> </span></p>
+                        <p>Phone: <span class="label-value-200">{{ $patient->location->alt_phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-200">{{ $patient->location->alt_fax }}</span></p> -->
+                    </td>
+                </tr>
+
+
                 <tr>
                     <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">
                         <p style="margin-top: 5px;margin-bottom: 5px;font-size: 13px;">
@@ -135,7 +160,7 @@
                             <span>
                                 <input type="checkbox" name="male" style="vertical-align: sub;" {{ $patient->gender == 'male' ? 'checked' : '' }}>
                                 <span>Male</span>&nbsp;
-                            </span>  &nbsp;&nbsp;
+                            </span>   &nbsp;&nbsp;
                             <span>
                             <input type="checkbox" name="female" style="vertical-align: sub;" {{ $patient->gender == 'female' ? 'checked' : '' }}>
                             <span >Female&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></span>
@@ -154,7 +179,7 @@
 
                         <p><span>I consent Labtest Diagnostics to share my  results with Inb Sina Community Clinics.</span></p>
                         <p><span>Patient Signature:<span class="label-value-250">{{ $patient->first_name }} {{ $patient->last_name }}</span> Today&rsquo;s Date: <span class="label-value-200">{{ date('Y-m-d') }}</span></span></p>
-                        <p class="table-p-bottom" style="border-bottom:1px solid black;"><strong>PATIENT DECLARATION</strong></p>
+                      <!--  <p class="table-p-bottom" style="border-bottom:1px solid black;"><strong>PATIENT DECLARATION</strong></p>
                         <p class="table-p-margin"><strong><span>The answers below shall be truthful and inclusive for all members of household (including children and live-in adults). Within the past 14 days:</span></strong></p>
                         <ol class="table-p-top" style="padding:0px;list-style: none;">
 {{--                            <li>--}}
@@ -168,7 +193,7 @@
 {{--                            </li>--}}
                             <li>1. Have you had close contact with someone diagnosed with <strong>COVID-19?&nbsp;&nbsp;YES&nbsp;</strong></span><strong><span><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong><strong><span>&nbsp;NO&nbsp;</span></strong><strong><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span>&nbsp;</strong></li>
                             <li>2. Have you experienced any cold or flu-like symptoms (such as fever, cough, sore throat, respiratory illness, difficulty breathing, loss of smell, Nausea or vomiting, Congestion or runny nose, diarrhea).&nbsp; &nbsp; &nbsp;<strong>YES <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></span><strong>&nbsp;NO <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></li>
-                        </ol>
+                        </ol> -->
                         <p style="margin-top: 0px; margin-bottom: 2px;"><strong><span>Phlebotomist Use Only:</span></strong></p>
                         <table border="1" style="border-collapse:collapse;width: 100%">
                             <tbody>
