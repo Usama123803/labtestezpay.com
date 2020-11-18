@@ -122,7 +122,7 @@
                             <strong>
                                 <span>How did you hear about us: </span>
                             </strong>
-                            {{ $patient->hear_about }}
+                            {{ $patient->hear_about == "other" ? $patient->refer_name : $patient->hear_about }}
                         </p>
                     </td>
                 </tr>
