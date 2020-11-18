@@ -65,6 +65,7 @@ class HomeController extends Controller
             $patient->dob               =   Carbon::parse($request->dob)->format('Y-m-d');;
             $patient->cell_phone        =   $request->cell_phone;
             $patient->timeslot          =   $request->timeslot;
+            $patient->hear_about        =   $request->hear_about;
 
             $patient->is_fax            =   $request->is_fax;
             $patient->fax               =   $request->fax;

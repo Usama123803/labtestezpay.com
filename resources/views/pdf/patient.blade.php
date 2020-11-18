@@ -120,8 +120,9 @@
                     <td style="border: 1pt solid windowtext;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">
                         <p style="margin-top: 5px;margin-bottom: 5px;font-size: 13px;">
                             <strong>
-                                <span>How did you hear about us:</span>
+                                <span>How did you hear about us: </span>
                             </strong>
+                            {{ $patient->hear_about }}
                         </p>
                     </td>
                 </tr>
