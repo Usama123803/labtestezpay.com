@@ -66,6 +66,7 @@ class HomeController extends Controller
             $patient->cell_phone        =   $request->cell_phone;
             $patient->timeslot          =   $request->timeslot;
             $patient->hear_about        =   $request->hear_about;
+            $patient->refer_name        =   $request->refer_name;
 
             $patient->is_fax            =   $request->is_fax;
             $patient->fax               =   $request->fax;

@@ -248,9 +248,10 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row">
-                            <div class="form-group">
-                                <div class="form-group col-md-12">
+                            <div class="form-group row col-sm-12">
+                                <div class="form-group col-md-6">
                                     <label>
                                         How did you hear about us:
                                     </label> <!-- </br>
@@ -258,22 +259,27 @@
                                         <input class="form-check-input" type="radio" name="bill_to" value="Insurance">
                                         <span class="form-check-label"> Insurance </span>
                                     </label> -->
-                                <select name="hear_about" id="hear_about" class="form-control">
-                                    <option value="" selected>Please Select</option>
-                                    <option value="familyandfriend"> Family & Friend </option>
-                                    <option value="doctor"> Doctor/Clinic </option>
-                                    <option value="google"> Google </option>
-                                    <option value="bing"> Bing</option>
-                                    <option value="yahoo"> Yahoo</option>
-                                    <option value="facebook"> Facebook</option>
-                                    <option value="youtube"> YouTube</option>
-                                    <option value="instagram"> Instagram</option>
-                                    <option value="commerical"> Commercial</option>
-                                    <option value="newspaper"> Radio Station/Newspaper Name</option>
-                                    <option value="female"> Other</option>
-                                </select>
-
+                                    <select name="hear_about" id="hear_about" class="form-control">
+                                        <option value="" selected>Please Select</option>
+                                        <option value="familyandfriend"> Family & Friend </option>
+                                        <option value="doctor"> Doctor/Clinic </option>
+                                        <option value="google"> Google </option>
+                                        <option value="bing"> Bing</option>
+                                        <option value="yahoo"> Yahoo</option>
+                                        <option value="facebook"> Facebook</option>
+                                        <option value="youtube"> YouTube</option>
+                                        <option value="instagram"> Instagram</option>
+                                        <option value="commerical"> Commercial</option>
+                                        <option value="newspaper"> Radio Station/Newspaper Name</option>
+                                        <option value="other"> Other</option>
+                                    </select>
                                 </div>
+
+                                <div class="form-group col-md-6 refer_name hideMe">
+                                    <label>Refer Name:</label>
+                                    <input type="text" value="" class="form-control" name="refer_name" id="refer_name" />
+                                </div>
+
                             </div>
                         </div>
 
@@ -310,9 +316,17 @@
         </div>
     </section>
 
-
-
 @endsection
+
+
+@push('css')
+    <style>
+        .hideMe{
+            display: none;
+        }
+    </style>
+@endpush
+
 
 @push('js')
     <script src="{!! asset('assets/js/validate.js') !!}"></script>
@@ -322,7 +336,6 @@
         $(function () {
             $('#appointment').datetimepicker({
                 format: 'MM/DD/YYYY',
-                // onChangeDateTime:exampleFunction
             }).on("dp.change", function (e) {
                 let formatedValue = e.date.format(e.date._f);
                 if(formatedValue != ""){
@@ -349,15 +362,11 @@
                             }
                         },
                         error:function(){
-                            // $('.feedback-message').addClass('hide');
+
                         }
                     });
                 }
-                console.log(formatedValue);
             });
-            // function exampleFunction(e){
-            //     console.log("Date Selected", e.date);
-            // }
         });
     </script>
 

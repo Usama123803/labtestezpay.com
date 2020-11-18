@@ -76,6 +76,16 @@ $(function(){
         showMaskOnFocus: false,
     });
 
+    $(document).on('change','#hear_about',function(){
+       const referName =  $(this).val();
+        $('#refer_name').val('');
+        if(referName == 'other'){
+            $('.refer_name').removeClass('hideMe');
+        }else{
+            $('.refer_name').addClass('hideMe');
+        }
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
