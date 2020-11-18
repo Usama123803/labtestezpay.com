@@ -73,6 +73,12 @@ class PatientController extends AdminController
                     <a href='".$emailRoute."' class='fa fa-envelope'></a>
             ";
         });
+        $grid->filter(function($filter){
+            $filter->like('first_name', 'First Name');
+            $filter->like('last_name', 'Last Name');
+            $filter->equal('appointment')->date();
+        });
+
 
 
         return $grid;
