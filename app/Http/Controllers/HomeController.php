@@ -135,4 +135,9 @@ class HomeController extends Controller
 
     }
 
+    public function termsAndCondition()
+    {
+        return view('pages.terms-and-condition');
+    }
+
 }
