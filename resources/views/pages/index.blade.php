@@ -271,7 +271,7 @@
                                         <option value="instagram"> Instagram</option>
                                         <option value="commerical"> Commercial</option>
                                         <option value="newspaper"> Radio Station/Newspaper Name</option>
-                                        <option value="other"> Other</option>
+                                        <option value="other"> Doctor / Clinic / Radio Station / Newspaper / Other</option>
                                     </select>
                                 </div>
 
@@ -298,7 +298,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="terms" id="terms" value="1" required>
                                     <label class="form-check-label" for="terms">
-                                        <small>By clicking Submit, you agree to our Terms & Conditions, Visitor Agreement and Privacy Policy.</small>
+                                        <small>By clicking Submit, you agree to our <a href="{{ url('/terms-and-condition') }}">Terms & Conditions.</a></small>
                                     </label>
                                 </div>
                                 {{--  </div> --}}
