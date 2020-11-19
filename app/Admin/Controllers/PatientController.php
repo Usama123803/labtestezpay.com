@@ -9,6 +9,7 @@ use App\Helper\AdminHelper;
 use App\Location;
 use App\Patient;
 use App\State;
+use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -40,12 +41,22 @@ class PatientController extends AdminController
 
         $grid->column('email_address', __('Email'));
         $grid->column('gender', __('Gender'));
-        $grid->column('dob', __('Dob'));
+//        $grid->column('dob', __('Dob'));
+
+        $grid->column('dob')->display(function ($title) {
+            return Carbon::parse($title)->format('m/d/Y');
+        });
+
         $grid->column('cell_phone', __('Cell phone'))->sortable();
 //        $grid->column('zipcode', __('Zipcode'));
 //        $grid->column('country.name', __('Country'));
         $grid->column('location.name', __('Location'));
-        $grid->column('appointment', __('Appointment'))->sortable();
+//        $grid->column('appointment', __('Appointment'))->sortable();
+
+        $grid->column('appointment')->display(function ($title) {
+            return Carbon::parse($title)->format('m/d/Y');
+        })->sortable();
+
         $grid->column('timeslot', __('Appointment Time'))->sortable();
 //        $grid->column('city', __('City'));
         $grid->column('state.name', __('State'));
