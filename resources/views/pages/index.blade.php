@@ -9,8 +9,8 @@
             <div class="masthead-heading">Rapid Antigen Tests</div>
             <div class="masthead-heading">Blood Test for Antibodies</div>
             <div class="masthead-heading">
-            <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#portfolio">Covid-19 RT PCR Test For Traveling</a> <br>
-            <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#portfolio">Free Covid 19 RT PCR Test</a><br>
+            <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#apptform">Covid-19 RT PCR Test For Traveling</a> <br>
+            <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#apptform">Free Covid 19 RT PCR Test</a><br>
             <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="http://labtestezpay.com/">For Blood & Other Test Click Here</a> 
             
             </div>
@@ -53,7 +53,7 @@
         </div>
     </section>
     <!-- Portfolio Grid-->
-    <section class="page-section bg-light" id="portfolio">
+    <section class="page-section bg-light" id="apptform">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Create your Appointment</h2>
