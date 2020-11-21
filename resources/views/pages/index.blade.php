@@ -267,7 +267,7 @@
                                     <select name="hear_about" id="hear_about" class="form-control">
                                         <option value="" selected>Please Select</option>
                                         <option value="familyandfriend"> Family & Friend </option>
-                                        <option value="doctor"> Doctor/Clinic </option>
+                                       <!-- <option value="doctor"> Doctor/Clinic </option> -->
                                         <option value="google"> Google </option>
                                         <option value="bing"> Bing</option>
                                         <option value="yahoo"> Yahoo</option>
@@ -275,7 +275,7 @@
                                         <option value="youtube"> YouTube</option>
                                         <option value="instagram"> Instagram</option>
                                         <option value="commerical"> Commercial</option>
-                                        <option value="newspaper"> Radio Station/Newspaper Name</option>
+                                        <!-- <option value="newspaper"> Radio Station/Newspaper Name</option> -->
                                         <option value="other"> Doctor / Clinic / Radio Station / Newspaper / Other</option>
                                     </select>
                                 </div>
