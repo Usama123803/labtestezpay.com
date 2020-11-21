@@ -8,9 +8,13 @@
             <div class="masthead-heading">RT- PCR</div>
             <div class="masthead-heading">Rapid Antigen Tests</div>
             <div class="masthead-heading">Blood Test for Antibodies</div>
-            <div class="masthead-heading"><a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="http://labtestezpay.com/">For Blood & Other Test Click Here</a> </div>
-            <!--<div class="masthead-subheading">We Provide Private And Affordable Lab Testing Enhanced Patient Experience, Flexible & Discounted Pricing for Cash & Uninsured</div>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a> -->
+            <div class="masthead-heading">
+            <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#portfolio">Covid-19 RT PCR Test For Traveling</a> <br>
+            <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#portfolio">Free Covid 19 RT PCR Test</a><br>
+            <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="http://labtestezpay.com/">For Blood & Other Test Click Here</a> 
+            
+            </div>
+           
         </div>
     </header>
 
@@ -53,7 +57,7 @@
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Create your Appointment</h2>
-                <h3 class="section-subheading text-muted">Now you can create your appointment online for the COVID testing.</h3>
+                <h3 class="section-subheading text-muted">Now you can create your appointment online for the COVID testing.</h3> 
             </div>
             <div class="row">
 
@@ -63,7 +67,8 @@
 
 
 <div class="col-md-12 py-5 border">
-                    <h4 class="pb-4">Please fill with your details</h4>
+                    <!--<h4 class="pb-4">Please fill with your details</h4> -->
+                    <h5 class="pb-4" style="color: red">Result for Covid-19 RT PCR tests for travelers in 48 hours is $125, 24 hours $150 and same day result $200 <br> Free Covid-19 RT PCR Tests results in 72 to 96 hours.(not for traveling)</h5>
                     @if (Session::has('success'))
                         <div class="alert alert-success mt-2">
                             {!! Session::get('success') !!}
@@ -335,7 +340,7 @@
     <script>
         $(function () {
             $('#appointment').datetimepicker({
-                format: 'MM/DD/YYYY',
+                format: 'MM/DD/YYYY', daysOfWeekDisabled:[0]
             }).on("dp.change", function (e) {
                 let formatedValue = e.date.format(e.date._f);
                 if(formatedValue != ""){
