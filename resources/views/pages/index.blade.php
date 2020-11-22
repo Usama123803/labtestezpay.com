@@ -208,11 +208,20 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
+                                <select class="form-control timeSlotSelect" required name ="result_type">
+                                <option value =""> Select Result Delivered Type</option>
+                                <option value =""> Results delivered in 4 days $100.00</option>
+                                <option value =""> In 3 days $125</option>
+                                <option value =""> In 24 hours (next day evening) $150</option>
+                                <option value =""> Same day results $200</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
                                 <input id="flight_datetime" name="flight_datetime" placeholder="Flight Date and Time" class="form-control" type="text">
                             </div>
                         </div>
 
-                        <div class="form-row">
+                      <!--  <div class="form-row">
                             <div class="form-group">
                                 <div class="form-group col-md-12">
                                     <label>
@@ -236,7 +245,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <div class="form-row">
