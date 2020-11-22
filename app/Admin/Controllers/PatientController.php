@@ -191,6 +191,11 @@ class PatientController extends AdminController
             $form->date('dob', __('Dob'))->default(date('Y-m-d'))->required();
             $form->text('cell_phone', __('Cell phone'))->required();
             $form->text('landline', __('Landline'));
+            $form->textarea('address', __('Address'));
+            $form->text('city', __('City'));
+            $form->select('stateId', __('State'))->options(
+                State::where([["status", 1]])->pluck("name", "id")
+            )->required();
             $form->text('zipcode', __('Zipcode'))->required();
 //        $form->select('countryId', __('Country'))->options(
 //            Country::where([["status", 1]])->pluck("name", "id")
@@ -200,11 +205,9 @@ class PatientController extends AdminController
             )->required();
             $form->datetime('appointment', __('Appointment'))->default(date('Y-m-d'));
             $form->text('timeslot', __('Appointment time'));
-            $form->text('city', __('City'));
-            $form->textarea('address', __('Address'));
-            $form->select('stateId', __('State'))->options(
-                State::where([["status", 1]])->pluck("name", "id")
-            )->required();
+            
+            
+            
 //            $form->text('terms', __('Terms'));
             $form->switch('status', __('Status'))->default(1);
         })->tab('Remarks', function ($form) {

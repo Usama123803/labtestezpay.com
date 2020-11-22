@@ -5,15 +5,17 @@
 @section('content')
     <header class="masthead">
         <div class="container">
-            <div class="masthead-heading">RT- PCR</div>
-            <div class="masthead-heading">Rapid Antigen Tests</div>
-            <div class="masthead-heading">Blood Test for Antibodies</div>
-            <div class="masthead-heading">
+            <div class="masthead-heading"><a id="paid" href="#apptform" style="font-size: 35px">Covid-19 RT PCR Test For Traveling</a> </div>
+            <div class="masthead-heading"><a href="#apptform" style="font-size: 35px">Free Covid-19 RT PCR Test</a> </div>
+            <div class="masthead-heading"><a href="http://labtestezpay.com/" style="font-size: 35px">For Blood & Other Test Click Here</a> </div>
+            <!--<div class="masthead-heading">Rapid Antigen Tests</div>
+            <div class="masthead-heading">Blood Test for Antibodies</div> -->
+            <!--<div class="masthead-heading">
             <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#apptform">Covid-19 RT PCR Test For Traveling</a> <br>
             <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#apptform">Free Covid 19 RT PCR Test</a><br>
             <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="http://labtestezpay.com/">For Blood & Other Test Click Here</a> 
             
-            </div>
+            </div> -->
            
         </div>
     </header>
@@ -68,7 +70,7 @@
 
 <div class="col-md-12 py-5 border">
                     <!--<h4 class="pb-4">Please fill with your details</h4> -->
-                    <h5 class="pb-4" style="color: red">Result for Covid-19 RT PCR tests for travelers in 48 hours is $125, 24 hours $150 and same day result $200 <br> Free Covid-19 RT PCR Tests results in 72 to 96 hours.(not for traveling)</h5>
+                    <h5 id="pcr_paid" class="pb-4" style="color: red">Result for Covid-19 RT PCR tests for travelers in 48 hours is $125, 24 hours $150 and same day result $200 <br> Free Covid-19 RT PCR Tests results in 72 to 96 hours.(not for traveling)</h5>
                     @if (Session::has('success'))
                         <div class="alert alert-success mt-2">
                             {!! Session::get('success') !!}
@@ -204,6 +206,38 @@
 
                         </div>
 
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input id="flight_datetime" name="flight_datetime" placeholder="Flight Date and Time" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-group col-md-12">
+                                    <label>
+                                        Test Price :
+                                    </label> </br>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="testprice" value="1">
+                                        <span class="form-check-label"> Results delivered in 4 days $100.00 </span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="testprice" value="2">
+                                        <span class="form-check-label"> In 3 days $125</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="testprice" value="3">
+                                        <span class="form-check-label"> In 24 hours (next day evening) $150</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="testprice" value="4">
+                                        <span class="form-check-label"> Same day results $200</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="form-row">
                             <div class="form-group">
@@ -240,11 +274,11 @@
                                 <div class="form-group col-md-12">
                                     <label>
                                         Bill To :
-                                    </label> <!-- </br>
+                                    </label>
                                     <label class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="bill_to" value="Insurance">
                                         <span class="form-check-label"> Insurance </span>
-                                    </label> -->
+                                    </label> 
                                     <label class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="bill_to" value="Uninsured">
                                         <span class="form-check-label"> Uninsured</span>
@@ -253,17 +287,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input id="ins_name" name="ins_name" placeholder="Insurance Name & Policy" class="form-control" type="text">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input id="group_no" name="group_no" placeholder="Group No" class="form-control" type="text">
+                            </div>
+                        </div>
 
                         <div class="form-row">
                             <div class="form-group row col-sm-12">
                                 <div class="form-group col-md-6">
                                     <label>
                                         How did you hear about us:
-                                    </label> <!-- </br>
-                                    <label class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="bill_to" value="Insurance">
-                                        <span class="form-check-label"> Insurance </span>
-                                    </label> -->
+                                    </label> 
+
                                     <select name="hear_about" id="hear_about" class="form-control">
                                         <option value="" selected>Please Select</option>
                                         <option value="familyandfriend"> Family & Friend </option>
@@ -287,15 +326,6 @@
 
                             </div>
                         </div>
-
-                       <!-- <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <input id="ins_name" name="ins_name" placeholder="Insurance Name & Policy" class="form-control" type="text">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input id="group_no" name="group_no" placeholder="Group No" class="form-control" type="text">
-                            </div>
-                        </div> -->
 
                         <div class="form-row">
                             <div class="form-group">

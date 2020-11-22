@@ -86,6 +86,16 @@ $(function(){
         }
     });
 
+    //$(document).on('change','#paid',function(){
+      // const pcrPaid =  $(this).val();
+        //$('#pcr_paid').val('');
+        //if(pcrPaid == '1'){
+          //  $('.refer_name').removeClass('hideMe');
+       // }else{
+        //    $('.refer_name').addClass('hideMe');
+        //}
+   // });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
