@@ -60,8 +60,8 @@
 <table style="font-family:Calibri; font-size: 12px;">
     <tr>
         <td>
-            <div style="display: inline-block;float: left;">
-                                <img src="{{ public_path('assets/images/labtest-logo.png') }}" alt="LabTest-Logo" width="150" />
+            <div  style="display: inline-block;text-align: center; width: 100%">
+                                <img src="{{ public_path('assets/images/labtest-logo.jpg') }}" alt="LabTest-Logo" width="150" />
 {{--                                <img src="http://labwork360.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="150" />--}}
             </div>
            <!-- <div style="display: inline-block;float: right">
