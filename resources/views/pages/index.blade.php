@@ -6,7 +6,7 @@
     <header class="masthead">
         <div class="container">
             <div class="masthead-heading"><a id="paid" href="#apptform" style="font-size: 35px">Covid-19 RT PCR Test For Traveling</a> </div>
-            <div class="masthead-heading"><a id="freeTest" href="#apptform" style="font-size: 35px">Free Covid-19 RT PCR Test</a> </div>
+            <div class="masthead-heading"><a id="freeTest" href="#apptform" style="font-size: 35px">Free Covid-19 PCR Test</a> </div>
             <div class="masthead-heading"><a href="http://labtestezpay.com/" style="font-size: 35px">For Blood & Other Test Click Here</a> </div>
             <!--<div class="masthead-heading">Rapid Antigen Tests</div>
             <div class="masthead-heading">Blood Test for Antibodies</div> -->
@@ -71,7 +71,7 @@
 <div class="col-md-12 py-5 border">
                     <!--<h4 class="pb-4">Please fill with your details</h4> -->
                     <h5 id="pcr_paid" class="pb-4 hideMe" style="color: red">Result for Covid-19 RT PCR tests for travelers in 48 hours is $125, 24 hours $150 and same day result $200</h5>
-                    <h5 id="pcr_free" class="pb-4" style="color: red">Free Covid-19 RT PCR Tests results in 72 to 96 hours.(not for traveling)</h5>
+                    <h5 id="pcr_free" class="pb-4" style="color: red">Free Covid-19 PCR Tests Results in 72 to 96 hours. (Not for traveling)</h5>
                     @if (Session::has('success'))
                         <div class="alert alert-success mt-2">
                             {!! Session::get('success') !!}
@@ -212,7 +212,7 @@
                             <div class="form-group col-md-6">
                                 <select class="form-control result_type" required name ="result_type">
                                 <option value =""> Select Result Delivered Type</option>
-                                <option value ="Results delivered in 4 days $100.00"> Results delivered in 4 days $100.00</option>
+                                <!--<option value ="Results delivered in 4 days $100.00"> Results delivered in 4 days $100.00</option> -->
                                 <option value ="In 3 days $125"> In 3 days $125</option>
                                 <option value ="In 24 hours (next day evening) $150"> In 24 hours (next day evening) $150</option>
                                 <option value ="Same day results $200"> Same day results $200</option>

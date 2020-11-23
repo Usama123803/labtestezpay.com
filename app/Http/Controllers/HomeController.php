@@ -109,11 +109,12 @@ class HomeController extends Controller
         $data = ['title' => 'Patient COVID-19 Report'];
         //date in mm/dd/yyyy format; or it can be in other formats as well
         $birthDate = Carbon::parse($patient->dob)->format('m/d/Y');
-        if($patient->flight_datetime){
-            $patient->flight_datetime = Carbon::parse($patient->flight_datetime)->format('m/d/Y H:i:s');
-        }{
-            $patient->flight_datetime = null;
-        }
+        $patient->flight_datetime = Carbon::parse($patient->flight_datetime)->format('m/d/Y H:i:s');
+        //if($patient->flight_datetime){
+          //  $patient->flight_datetime = Carbon::parse($patient->flight_datetime)->format('m/d/Y H:i:s');
+        //}{
+          //  $patient->flight_datetime = null;
+        //}
         $birthDate = explode("/", $birthDate);
         $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
             ? ((date("Y") - $birthDate[2]) - 1)
