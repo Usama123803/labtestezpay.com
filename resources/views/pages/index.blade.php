@@ -6,17 +6,17 @@
     <header class="masthead">
         <div class="container">
             <div class="masthead-heading"><a id="paid" href="#apptform" style="font-size: 35px">Covid-19 RT PCR Test For Traveling</a> </div>
-            <div class="masthead-heading"><a href="#apptform" style="font-size: 35px">Free Covid-19 RT PCR Test</a> </div>
+            <div class="masthead-heading"><a id="freeTest" href="#apptform" style="font-size: 35px">Free Covid-19 RT PCR Test</a> </div>
             <div class="masthead-heading"><a href="http://labtestezpay.com/" style="font-size: 35px">For Blood & Other Test Click Here</a> </div>
             <!--<div class="masthead-heading">Rapid Antigen Tests</div>
             <div class="masthead-heading">Blood Test for Antibodies</div> -->
             <!--<div class="masthead-heading">
             <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#apptform">Covid-19 RT PCR Test For Traveling</a> <br>
             <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="#apptform">Free Covid 19 RT PCR Test</a><br>
-            <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="http://labtestezpay.com/">For Blood & Other Test Click Here</a> 
-            
+            <a class="btn btn-dark" style="background: red; border: white; font-size: large; font-weight: 550;" href="http://labtestezpay.com/">For Blood & Other Test Click Here</a>
+
             </div> -->
-           
+
         </div>
     </header>
 
@@ -59,7 +59,7 @@
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Create your Appointment</h2>
-                <h3 class="section-subheading text-muted">Now you can create your appointment online for the COVID testing.</h3> 
+                <h3 class="section-subheading text-muted">Now you can create your appointment online for the COVID testing.</h3>
             </div>
             <div class="row">
 
@@ -70,7 +70,8 @@
 
 <div class="col-md-12 py-5 border">
                     <!--<h4 class="pb-4">Please fill with your details</h4> -->
-                    <h5 id="pcr_paid" class="pb-4" style="color: red">Result for Covid-19 RT PCR tests for travelers in 48 hours is $125, 24 hours $150 and same day result $200 <br> Free Covid-19 RT PCR Tests results in 72 to 96 hours.(not for traveling)</h5>
+                    <h5 id="pcr_paid" class="pb-4 hideMe" style="color: red">Result for Covid-19 RT PCR tests for travelers in 48 hours is $125, 24 hours $150 and same day result $200</h5>
+                    <h5 id="pcr_free" class="pb-4" style="color: red">Free Covid-19 RT PCR Tests results in 72 to 96 hours.(not for traveling)</h5>
                     @if (Session::has('success'))
                         <div class="alert alert-success mt-2">
                             {!! Session::get('success') !!}
@@ -83,6 +84,7 @@
                     @endif
                     <form id="patientForm" action="{{ route('store.patient') }}" method="post">
                         @csrf
+                        <input type="hidden" id="paid_or_free" name="paid_or_free" value="0">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <input id="first_name" name="first_name" placeholder="First Name" required="required" class="form-control" type="text">
@@ -206,14 +208,14 @@
 
                         </div>
 
-                        <div class="form-row">
+                        <div class="form-row hideMe pcr_paid_fields">
                             <div class="form-group col-md-6">
-                                <select class="form-control timeSlotSelect" required name ="result_type">
+                                <select class="form-control result_type" required name ="result_type">
                                 <option value =""> Select Result Delivered Type</option>
-                                <option value =""> Results delivered in 4 days $100.00</option>
-                                <option value =""> In 3 days $125</option>
-                                <option value =""> In 24 hours (next day evening) $150</option>
-                                <option value =""> Same day results $200</option>
+                                <option value ="Results delivered in 4 days $100.00"> Results delivered in 4 days $100.00</option>
+                                <option value ="In 3 days $125"> In 3 days $125</option>
+                                <option value ="In 24 hours (next day evening) $150"> In 24 hours (next day evening) $150</option>
+                                <option value ="Same day results $200"> Same day results $200</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
@@ -287,7 +289,7 @@
                                     <label class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="bill_to" value="Insurance">
                                         <span class="form-check-label"> Insurance </span>
-                                    </label> 
+                                    </label>
                                     <label class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="bill_to" value="Uninsured">
                                         <span class="form-check-label"> Uninsured</span>
@@ -310,7 +312,7 @@
                                 <div class="form-group col-md-6">
                                     <label>
                                         How did you hear about us:
-                                    </label> 
+                                    </label>
 
                                     <select name="hear_about" id="hear_about" class="form-control">
                                         <option value="" selected>Please Select</option>
@@ -378,6 +380,11 @@
 
     <script>
         $(function () {
+            $('#flight_datetime').datetimepicker({
+                format: 'MM/DD/YYYY HH:mm:ss',
+            });
+
+
             $('#appointment').datetimepicker({
                 format: 'MM/DD/YYYY', daysOfWeekDisabled:[0]
             }).on("dp.change", function (e) {
@@ -411,6 +418,22 @@
                     });
                 }
             });
+
+            $(document).on('click','#paid',function(){
+               $('#flight_datetime, .result_type').val('');
+               $('#paid_or_free').val('1');
+               $('#pcr_paid,.pcr_paid_fields').removeClass('hideMe');
+               $('#pcr_free').addClass('hideMe');
+            });
+
+            $(document).on('click','#freeTest',function(){
+                $('#paid_or_free').val('0');
+               $('#flight_datetime, .result_type').val('');
+               $('#pcr_paid,.pcr_paid_fields').addClass('hideMe');
+               $('#pcr_free').removeClass('hideMe');
+            });
+
+
         });
     </script>
 

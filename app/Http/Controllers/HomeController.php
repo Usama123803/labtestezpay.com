@@ -67,6 +67,9 @@ class HomeController extends Controller
             $patient->timeslot          =   $request->timeslot;
             $patient->hear_about        =   $request->hear_about;
             $patient->refer_name        =   $request->refer_name;
+            $patient->result_type        =   $request->result_type;
+            $patient->flight_datetime   =   Carbon::parse($request->flight_datetime)->format('Y-m-d H:i:s');
+            $patient->paid_or_free      =   $request->paid_or_free;
 
             $patient->is_fax            =   $request->is_fax;
             $patient->fax               =   $request->fax;
@@ -103,6 +106,7 @@ class HomeController extends Controller
         $data = ['title' => 'Patient COVID-19 Report'];
         //date in mm/dd/yyyy format; or it can be in other formats as well
         $birthDate = Carbon::parse($patient->dob)->format('m/d/Y');
+        $patient->flight_datetime = Carbon::parse($patient->flight_datetime)->format('m/d/Y H:i:s');
         $birthDate = explode("/", $birthDate);
         $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
             ? ((date("Y") - $birthDate[2]) - 1)
