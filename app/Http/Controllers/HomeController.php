@@ -62,13 +62,18 @@ class HomeController extends Controller
             $patient->last_name         =   $request->last_name;
             $patient->email_address     =   $request->email_address;
             $patient->gender            =   $request->gender;
-            $patient->dob               =   Carbon::parse($request->dob)->format('Y-m-d');;
+//            $patient->dob               =   Carbon::parse($request->dob)->format('Y-m-d');
+            $patient->dob               =   $request->dob;
             $patient->cell_phone        =   $request->cell_phone;
             $patient->timeslot          =   $request->timeslot;
             $patient->hear_about        =   $request->hear_about;
             $patient->refer_name        =   $request->refer_name;
             $patient->result_type        =   $request->result_type;
-            $patient->flight_datetime   =   Carbon::parse($request->flight_datetime)->format('Y-m-d H:i:s');
+            if(!empty($request->flight_datetime)){
+                $patient->flight_datetime   =   Carbon::parse($request->flight_datetime)->format('Y-m-d H:i:s');
+            }else{
+                $patient->flight_datetime   = null;
+            }
             $patient->paid_or_free      =   $request->paid_or_free;
 
             $patient->is_fax            =   $request->is_fax;
@@ -84,16 +89,14 @@ class HomeController extends Controller
             $patient->zipcode           =   $request->zipcode;
 //            $patient->countryId         =   $request->countryId;
             $patient->locationId        =   $request->locationId;
-            $patient->appointment       =   Carbon::parse($request->appointment)->format('Y-m-d H:i:s');
+//            $patient->appointment       =   Carbon::parse($request->appointment)->format('Y-m-d');
+            $patient->appointment       =   $request->appointment;
             $patient->city              =   $request->city;
             $patient->address           =   $request->address;
             $patient->stateId           =   $request->stateId;
             $patient->terms             =   $request->terms;
             $patient->created_at        =   date('Y-m-d h:i:s');
             $patient->save();
-
-//            dd($request->all());
-
             return redirect()->back()->with('success','Patient added successfully');
         }catch (\Exception $e){
             return redirect()->back()->with('error','Something went wrong while adding patient');
