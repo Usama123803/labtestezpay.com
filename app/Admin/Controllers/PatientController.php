@@ -194,7 +194,7 @@ class PatientController extends AdminController
             $form->select('gender', __('Gender'))->options(
                 ['male' => 'Male', 'female' => 'Female']
             )->required();
-            $form->date('dob', __('Dob'))->required();
+            $form->date('dob', __('Dob'))->format('MM/DD/YYYY')->required();
             $form->text('cell_phone', __('Cell phone'))->required();
             $form->text('landline', __('Landline'));
             $form->textarea('address', __('Address'));
@@ -209,9 +209,8 @@ class PatientController extends AdminController
             $form->select('locationId', __('Location'))->options(
                 Location::where([["status", 1]])->pluck("name", "id")
             )->required();
-            $form->datetime('appointment', __('Appointment'))
-//                ->format('MM/DD/YYYY')
-                ->default(date('m/d/Y'));
+            $form->datetime('appointment', __('Appointment'))->format('MM/DD/YYYY');
+
             $form->text('timeslot', __('Appointment time'));
 
 
@@ -255,9 +254,10 @@ class PatientController extends AdminController
         });
 
 //        $form->saved(function (Form $form) {
+////            dd($form->model()->id);
 //            $patient = Patient::find($form->model()->id);
 //            $patient->dob = Carbon::parse($form->model()->dob)->format('Y-m-d');
-//            $patient->appointment = Carbon::parse($form->model()->appointment)->format('m/d/Y');
+//            $patient->appointment = Carbon::parse($form->model()->appointment)->format('Y-m-d');
 //            $patient->save();
 //        });
 

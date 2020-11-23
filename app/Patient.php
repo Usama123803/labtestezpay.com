@@ -35,4 +35,24 @@ class Patient extends Model
         return $this->belongsTo('App\State', 'stateId');
     }
 
+    public function getDobAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('m/d/Y');
+    }
+
+    public function setDobAttribute($value)
+    {
+        $this->attributes['dob'] = \Carbon\Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function getAppointmentAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('m/d/Y');
+    }
+
+    public function setAppointmentAttribute($value)
+    {
+        $this->attributes['appointment'] = \Carbon\Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
 }
