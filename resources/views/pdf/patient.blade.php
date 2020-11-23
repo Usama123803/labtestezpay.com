@@ -225,6 +225,6 @@
         </td>
     </tr>
 </table>
-
+<p style="text-align: center">{{ $patient->location->name }} {{ $patient->location->address }} {{ $patient->location->city }} {{ $patient->location->state ? $patient->location->state->name : '' }} {{ $patient->location->zipcode }} {{ $patient->location->phone }}</p>
 </body>
 </html>
