@@ -61,6 +61,12 @@ class PatientController extends AdminController
 //        $grid->column('city', __('City'));
         $grid->column('state.name', __('State'));
         $grid->column('status', __('Status'))->bool();
+        $grid->column('paid_or_free', __('Paid/Free'))->display(function ($title) {
+            if($title == 0){
+                return "Free";
+            }
+            return "Paid";
+        });
 
         $grid->disableCreateButton();
         $grid->actions(function ($actions) {
@@ -188,7 +194,7 @@ class PatientController extends AdminController
             $form->select('gender', __('Gender'))->options(
                 ['male' => 'Male', 'female' => 'Female']
             )->required();
-            $form->date('dob', __('Dob'))->default(date('Y-m-d'))->required();
+            $form->date('dob', __('Dob'))->required();
             $form->text('cell_phone', __('Cell phone'))->required();
             $form->text('landline', __('Landline'));
             $form->textarea('address', __('Address'));
@@ -203,11 +209,13 @@ class PatientController extends AdminController
             $form->select('locationId', __('Location'))->options(
                 Location::where([["status", 1]])->pluck("name", "id")
             )->required();
-            $form->datetime('appointment', __('Appointment'))->default(date('Y-m-d'));
+            $form->datetime('appointment', __('Appointment'))
+//                ->format('MM/DD/YYYY')
+                ->default(date('m/d/Y'));
             $form->text('timeslot', __('Appointment time'));
-            
-            
-            
+
+
+
 //            $form->text('terms', __('Terms'));
             $form->switch('status', __('Status'))->default(1);
         })->tab('Remarks', function ($form) {
@@ -229,7 +237,6 @@ class PatientController extends AdminController
         });
 
 
-
         $form->tools(function (Form\Tools $tools) {
             $tools->disableDelete();
             $tools->disableView();
@@ -246,6 +253,13 @@ class PatientController extends AdminController
             // disable `Continue Creating` checkbox
             $footer->disableCreatingCheck();
         });
+
+//        $form->saved(function (Form $form) {
+//            $patient = Patient::find($form->model()->id);
+//            $patient->dob = Carbon::parse($form->model()->dob)->format('Y-m-d');
+//            $patient->appointment = Carbon::parse($form->model()->appointment)->format('m/d/Y');
+//            $patient->save();
+//        });
 
         return $form;
     }
