@@ -5,9 +5,9 @@
 @section('content')
     <header class="masthead">
         <div class="container">
-            <div class="masthead-heading"><a id="paid" href="#apptform" style="font-size: 35px">Covid-19 RT PCR Test For Traveling</a> </div>
-            <div class="masthead-heading"><a id="freeTest" href="#apptform" style="font-size: 35px">Free Covid-19 PCR Test</a> </div>
-            <div class="masthead-heading"><a href="http://labtestezpay.com/" style="font-size: 35px">For Blood & Other Test Click Here</a> </div>
+            <div class="masthead-heading"><a id="paid" href="#apptform" style="font-size: 30px;border: #484343;padding: 5px;border-radius: 10px;background: #f78f1e;color: #2d419a;">Covid-19 RT PCR Test For Traveling</a> </div>
+            <div class="masthead-heading"><a id="freeTest" href="#apptform" style="font-size: 30px;border: #484343;padding: 5px;border-radius: 10px;background: #f78f1e;color: #2d419a;">Free Covid-19 PCR Test</a> </div>
+            <div class="masthead-heading"><a href="http://labtestezpay.com/" style="font-size: 30px;border: #484343;padding: 5px;border-radius: 10px;background: #f78f1e;color: #2d419a;">For Blood & Other Test Click Here</a> </div>
             <!--<div class="masthead-heading">Rapid Antigen Tests</div>
             <div class="masthead-heading">Blood Test for Antibodies</div> -->
             <!--<div class="masthead-heading">
