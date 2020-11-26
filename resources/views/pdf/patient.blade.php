@@ -169,8 +169,8 @@
                         </p>
                         <p style="margin-top:0; margin-bottom: 3px;"><strong><span >I would like to receive my results via:</span></strong></p>
                         <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_fax == 1 ? 'checked' : '' }}></span><span>&nbsp;Fax: <span class="label-value-200">{{ $patient->fax }}</span>&nbsp; &nbsp;</span></p>
-                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_email == 1 ? 'checked' : '' }}></span><span >&nbsp;Email with Passcode Patient email address: <span class="label-value-400">{{ $patient->email_cb }}</span></span></p>
-                        <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Verify Email address:_____________________________________________________________________________________</span></p>
+                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_email == 1 ? 'checked' : '' }}></span><span >&nbsp;Email with Passcode Patient email address: <span class="label-value-400">{{ $patient->email_address }}</span></span></p>
+                        <!--<p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Verify Email address:_____________________________________________________________________________________</span></p> -->
                         <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Passcode: <span class="label-value-130">{{ $patient->passcode }}</span></span></p>
                         <p >
                             <strong><span>Bill To:</span></strong><span>&nbsp; &nbsp; &nbsp;</span><span><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Insurance' ? 'checked' : '' }}></span><span >&nbsp;Insurance&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Uninsured Program' ? 'checked' : '' }}></span><span>&nbsp;Uninsured Program</span></p>
@@ -203,13 +203,13 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Collection Date:</span></p>
+                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Collection Date:</span> <br> &nbsp; {{ $patient->appointment }}</p>
                                 </td>
                                 <td>
-                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Collection Time:</span></p>
+                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Collection Time:</span> <br> &nbsp; {{ $patient->timeslot }} </p>
                                 </td>
                                 <td>
-                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Name:</span></p>
+                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Name:</span><br> &nbsp;</p>
                                 </td>
                             </tr>
                             <tr>
