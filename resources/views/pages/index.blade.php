@@ -380,13 +380,21 @@
 
     <script>
         $(function () {
+            // let disabledDates = [];
+{{--            @foreach($disabledDates as $disabledDate)--}}
+{{--                console.log('====', {{ $disabledDate }} );--}}
+{{--            @endforeach--}}
+
+                let disableDates = @json($disabledDates);
+
+
             $('#flight_datetime').datetimepicker({
                 format: 'MM/DD/YYYY HH:mm:ss',
             });
 
-
             $('#appointment').datetimepicker({
-                format: 'MM/DD/YYYY', daysOfWeekDisabled:[0]
+                format: 'MM/DD/YYYY', daysOfWeekDisabled:[0],
+                disabledDates: disableDates
             }).on("dp.change", function (e) {
                 let formatedValue = e.date.format(e.date._f);
                 if(formatedValue != ""){
@@ -403,7 +411,8 @@
                                 $(response.timeSlots).each(function (i,element) {
                                     let disabled = '';
                                     $(response.data).each(function(index,ele){
-                                        if(ele.total >=3 && ele.timeslot == element){
+
+                                        if(ele.total >= {{ config('site.block_limit') }} && ele.timeslot == element){
                                             disabled = 'disabled';
                                         }
                                     });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Configuration;
 use App\Country;
 use App\Location;
 use App\Mail\PatientMailer;
@@ -10,12 +11,17 @@ use App\State;
 //use Barryvdh\DomPDF\PDF;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
+use DateInterval;
+use DatePeriod;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
+//    protected $timeSlots = [];
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -25,7 +31,22 @@ class HomeController extends Controller
         $countries = Country::where('status',1)->get();
         $states = State::where('status',1)->get();
         $locations = Location::where('status',1)->get();
-        $timeSlots = ['09:00am','09:15am','09:30am','09:45am','10:00am','10:15am','10:30am','10:45am','11:00am','11:15am','11:30am','11:45am','12:00pm','12:15pm','12:30pm','12:45pm','02:00pm','02:15pm','02:30pm','02:45pm','03:00pm','03:15pm','03:30pm','03:45pm','04:00pm','04:15pm','04:30pm','04:45pm','05:00pm'];
+
+        $start_time = config('site.start_time');
+        $end_time = config('site.end_time');
+        $time_interval = config('site.time_interval');
+        $disabledAppointmentDates = config('site.disabled_appointment_dates');
+        $begin = new DateTime($start_time);
+        $end   = new DateTime($end_time);
+        $interval = DateInterval::createFromDateString($time_interval.' min');
+        $times    = new DatePeriod($begin, $interval, $end);
+        $timeSlots = [];
+        foreach ($times as $time) {
+            $timeSlots[] = $time->format('H:i');
+        }
+        $timeSlots[] = $end->format('H:i');
+
+//        $timeSlots = ['09:00am','09:15am','09:30am','09:45am','10:00am','10:15am','10:30am','10:45am','11:00am','11:15am','11:30am','11:45am','12:00pm','12:15pm','12:30pm','12:45pm','02:00pm','02:15pm','02:30pm','02:45pm','03:00pm','03:15pm','03:30pm','03:45pm','04:00pm','04:15pm','04:30pm','04:45pm','05:00pm'];
 
         $patientsTimeSlotCount = DB::table('patients')
             ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
@@ -33,14 +54,25 @@ class HomeController extends Controller
             ->groupBy(['timeslot','date'])
             ->get();
 
-        $res = $patientsTimeSlotCount->map(function($element){
-           return $element->total <=3 ? $element->date : null;
+        $patientsTimeSlotCount->map(function($element){
+           return $element->total <=config('site.block_limit') ? $element->date : null;
         });
 
+//        $res = $disabledAppointmentDates->map(function($element){
+//           return $element['appointment_date'];
+//        });
 
-//        dd($res);
+        $disabledDates = [];
+        foreach($disabledAppointmentDates as $disabledAppointmentDate){
+            $disabledDates[] =$disabledAppointmentDate['appointment_date'];
+        }
 
-        return view('pages.index', compact('states','countries','locations','timeSlots'));
+
+//        dd($disabledAppointmentDates[0]['appointment_date']);
+//        dd($disabledDates);
+
+
+        return view('pages.index', compact('states','countries','locations','timeSlots','disabledDates'));
     }
     public function patient()
     {
@@ -137,15 +169,27 @@ class HomeController extends Controller
     {
         $date = $_GET['date'];
         $date = Carbon::parse($date)->format('Y-m-d');
-        $timeSlots = ['09:00am','09:15am','09:30am','09:45am','10:00am','10:15am','10:30am','10:45am','11:00am','11:15am','11:30am','11:45am','12:00pm','12:15pm','12:30pm','12:45pm','02:00pm','02:15pm','02:30pm','02:45pm','03:00pm','03:15pm','03:30pm','03:45pm','04:00pm','04:15pm','04:30pm','04:45pm','05:00pm'];
+        $start_time = config('site.start_time');
+        $end_time = config('site.end_time');
+        $time_interval = config('site.time_interval');
+        $begin = new DateTime($start_time);
+        $end   = new DateTime($end_time);
+        $interval = DateInterval::createFromDateString($time_interval.' min');
+        $times    = new DatePeriod($begin, $interval, $end);
+        $timeSlots = [];
+        foreach ($times as $time) {
+            $timeSlots[] = $time->format('H:i');
+        }
+        $timeSlots[] = $end->format('H:i');
+//        $timeSlots = ['09:00am','09:15am','09:30am','09:45am','10:00am','10:15am','10:30am','10:45am','11:00am','11:15am','11:30am','11:45am','12:00pm','12:15pm','12:30pm','12:45pm','02:00pm','02:15pm','02:30pm','02:45pm','03:00pm','03:15pm','03:30pm','03:45pm','04:00pm','04:15pm','04:30pm','04:45pm','05:00pm'];
         $patientsTimeSlotCount = DB::table('patients')
             ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
-            ->whereIn('timeslot', $timeSlots)
+            ->whereIn('timeslot',  $timeSlots)
             ->whereDate('created_at', $date)
             ->groupBy('timeslot')
             ->get();
 
-        return \response()->json(['data'=> $patientsTimeSlotCount, 'timeSlots' => $timeSlots]);
+        return \response()->json(['data'=> $patientsTimeSlotCount, 'timeSlots' =>  $timeSlots]);
 
     }
 
