@@ -107,7 +107,7 @@
 
 
                             <div class="form-group col-md-6">
-                                <input type="text" name="dob" class="form-control" required="required" id="dob" placeholder="DOB">
+                                <input type="text" name="dob" class="form-control" required="required" id="dob" placeholder="Date of Birth">
                             </div>
 
 
