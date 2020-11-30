@@ -34,7 +34,9 @@ class AppServiceProvider extends ServiceProvider
                 'end_time'         => $values->end_time,
                 'time_interval'    => $values->time_interval,
                 'block_limit'      => $values->block_limit,
-                'disabled_appointment_dates'      => $values->disabled_appointment_dates
+                'disabled_appointment_dates'      => $values->disabled_appointment_dates,
+                'block_start_time'      => $values->block_start_time,
+                'block_end_time'      => $values->block_end_time
             ]
         ]);
 

@@ -387,7 +387,6 @@
 
                 let disableDates = @json($disabledDates);
 
-
             $('#flight_datetime').datetimepicker({
                 format: 'MM/DD/YYYY HH:mm:ss',
             });

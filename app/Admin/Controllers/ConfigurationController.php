@@ -73,10 +73,12 @@ class ConfigurationController extends AdminController
     {
         $form = new Form(new Configuration());
 
-        $form->time('start_time', __('Start time'))->default(date('H:i:s'))->required();;
-        $form->time('end_time', __('End time'))->default(date('H:i:s'))->required();;
-        $form->number('time_interval', __('Time interval'))->min(1)->required();;
-        $form->number('block_limit', __('Block limit'))->min(1)->required();;
+        $form->time('start_time', __('Start time'))->default(date('H:i:s'))->required();
+        $form->time('end_time', __('End time'))->default(date('H:i:s'))->required();
+        $form->time('block_start_time', __('Block Start time'));
+        $form->time('block_end_time', __('Block Start time'));
+        $form->number('time_interval', __('Time interval'))->min(1)->required();
+        $form->number('block_limit', __('Block limit'))->min(1)->required();
 
         $form->table('disabled_appointment_dates', function ($table) {
             $table->date('appointment_date');
