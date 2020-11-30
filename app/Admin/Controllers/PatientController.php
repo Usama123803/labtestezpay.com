@@ -14,6 +14,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Illuminate\Support\Facades\Auth;
 
 class PatientController extends AdminController
 {
@@ -32,6 +33,13 @@ class PatientController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Patient());
+
+        $authUser = Auth::guard('admin')->user();
+//        dd($authUser->locationId);
+
+        if($authUser && $authUser->locationId){
+            $grid->model()->where('locationId', $authUser->locationId);
+        }
 
         $grid->column('id', __('Id'))->sortable();
 
