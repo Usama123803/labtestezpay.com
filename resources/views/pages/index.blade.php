@@ -85,6 +85,20 @@
                     <form id="patientForm" action="{{ route('store.patient') }}" method="post">
                         @csrf
                         <input type="hidden" id="paid_or_free" name="paid_or_free" value="0">
+                        
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <select name="locationId" id="locationId" required="required" class="form-control">
+                                    <option value="" selected>Select Location</option>
+                                    @if(!empty($locations) && count($locations) > 0)
+                                        @foreach($locations as $location)
+                                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <input id="first_name" name="first_name" placeholder="First Name" required="required" class="form-control" type="text">
@@ -93,6 +107,20 @@
                                 <input id="last_name" name="last_name" placeholder="Last Name" required="required" class="form-control" type="text">
                             </div>
                         </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="text" name="dob" class="form-control" required="required" id="dob" placeholder="Date of Birth">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <select name="gender" id="gender" required="required" class="form-control">
+                                    <option value="" selected>Choose gender</option>
+                                    <option value="male"> Male</option>
+                                    <option value="female"> Female</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <input type="email" name="email_address" class="form-control" required="required" id="email" placeholder="Email">
@@ -101,35 +129,12 @@
                                 <input type="email" name="confemail_address" class="form-control" required="required" id="confemail" placeholder="Confirm Email">
                             </div>
 
-                        </div>
+                        </div>        
 
                         <div class="form-row">
-
-
-                            <div class="form-group col-md-6">
-                                <input type="text" name="dob" class="form-control" required="required" id="dob" placeholder="Date of Birth">
-                            </div>
-
-
-
-                            <div class="form-group col-md-6">
-                                <select name="gender" id="gender" required="required" class="form-control">
-                                    <option value="" selected>Choose gender</option>
-                                    <option value="male"> Male</option>
-                                    <option value="female"> Female</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="form-row">
-
-
                            <div class="form-group col-md-6">
                                 <input id="cell_phone" name="cell_phone" maxlength="12" placeholder="Cell Phone" class="form-control" required="required" type="text">
                             </div>
-
-
                             <div class="form-group col-md-6">
                                 <input id="landline" name="landline" maxlength="12" placeholder="Alternate phone number" class="form-control" type="text">
                             </div>
@@ -144,9 +149,14 @@
                                        @endif
                                    </select>
                                </div> --}}
-
                         </div>
 
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <textarea id="address" name="address" required="required" placeholder="Address" cols="40" rows="2" class="form-control"></textarea>
+                            </div>   
+                        </div>
+                        
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <input id="city" name="city" placeholder="City" required="required" class="form-control" type="text">
@@ -169,25 +179,10 @@
                             <div class="form-group col-md-6">
                                 <input id="zipcode" name="zipcode" placeholder="Zip Code" required="required" class="form-control" type="text">
                             </div>
-
-                            <div class="form-group col-md-6">
-                                <select name="locationId" id="locationId" required="required" class="form-control">
-                                    <option value="" selected>Select Location</option>
-                                    @if(!empty($locations) && count($locations) > 0)
-                                        @foreach($locations as $location)
-                                            <option value="{{ $location->id }}">{{ $location->name }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
-
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <textarea id="address" name="address" required="required" placeholder="Address" cols="40" rows="2" class="form-control"></textarea>
-                            </div>
-
+                            
                             <div class="form-group col-md-6">
                                 <input id="appointment" name="appointment" placeholder="Appointment Date" required="required" class="form-control" type="text">
                             </div>
