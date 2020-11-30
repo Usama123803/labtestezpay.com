@@ -19,5 +19,6 @@ Route::group([
 
     $router->resource('configurations', ConfigurationController::class);
 
+    $router->resource('admin-users', AdminUserController::class);
 
 });
