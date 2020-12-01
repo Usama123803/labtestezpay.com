@@ -58,8 +58,15 @@ $(function(){
     }
 
 
-    $('#dob').datetimepicker({
-        format: 'MM/DD/YYYY'
+    //$('#dob').datetimepicker({
+      //  format: 'MM/DD/YYYY'
+    //});
+
+    $("#dob").inputmask({
+        mask: '99/99/9999',
+        placeholder: 'MM/DD/YYYY',
+        showMaskOnHover: false,
+        showMaskOnFocus: false,
     });
 
     $("#cell_phone").inputmask({

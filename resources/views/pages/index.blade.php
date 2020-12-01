@@ -110,7 +110,7 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" name="dob" class="form-control" required="required" id="dob" placeholder="Date of Birth">
+                                <input type="text" name="dob" class="form-control" required="required" id="dob" placeholder="MM/DD/YYYY (Date of birth)">
                             </div>
                             <div class="form-group col-md-6">
                                 <select name="gender" id="gender" required="required" class="form-control">
