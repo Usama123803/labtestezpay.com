@@ -208,9 +208,9 @@
                                 <select class="form-control result_type" required name ="result_type">
                                 <option value =""> Select Result Delivered Type</option>
                                 <!--<option value ="Results delivered in 4 days $100.00"> Results delivered in 4 days $100.00</option> -->
-                                <option value ="In 3 days $125"> In 3 days $125</option>
-                                <option value ="In 24 hours (next day evening) $150"> In 24 hours (next day evening) $150</option>
-                                <option value ="Same day results $200"> Same day results $200</option>
+                                <option value ="72 Hours $125"> 72 Hours $125</option>
+                                <option value ="24 hours $150"> 24 hours $150</option>
+                                <option value ="Same day $200"> Same day $200</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
