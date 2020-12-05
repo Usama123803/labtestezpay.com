@@ -8,6 +8,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{{ $data['title'] }}</title>
     <style>
+        .sz{
+            font-size: 15px;
+        }
         .table-p-bottom{
             margin-bottom: 2px;
         }
@@ -151,10 +154,10 @@
                 </tr>
                 <tr>
                     <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 450.6pt;vertical-align: top;">
-                        <p class="table-p-bottom"><span>First Name: <span class="label-value-200">{{ $patient->first_name }}</span>&nbsp;&nbsp;Last Name: <span class="label-value-200">{{ $patient->last_name }}</span></span></p>
-                        <p class="table-p-bottom"><span>Phone: <span class="label-value-130">{{ $patient->cell_phone }}</span></span><span>&nbsp;</span><span>Address: <span class="label-value-200">{{ $patient->address }}</span> City <span class="label-value-130">{{ $patient->city }}</span></span></p>
+                        <p class="table-p-bottom"><span>First Name: <span class="sz label-value-200">{{ $patient->first_name }}</span>&nbsp;&nbsp;Last Name: <span class="sz label-value-200">{{ $patient->last_name }}</span></span></p>
+                        <p class="table-p-bottom"><span>Phone: <span class="sz label-value-130">{{ $patient->cell_phone }}</span></span><span>&nbsp;</span><span>Address: <span class="sz label-value-200">{{ $patient->address }}</span> City <span class="sz label-value-130">{{ $patient->city }}</span></span></p>
                         <p class="table-p-bottom">
-                            <span>&nbsp;State: <span class="label-value-130">{{ $patient->state->name }}</span>&nbsp;&nbsp;Zip: <span class="label-value-130">{{ $patient->zipcode }}</span> Age: <span class="label-value-130 width-60">{{ $data['age'] }}</span>&nbsp; &nbsp;Date of Birth: <span class="dob-underline">{{ $data['dob_month'] }}</span>/<span class="dob-underline">{{ $data['dob_day'] }}</span>/<span class="dob-underline">{{ $data['dob_year'] }}</span></span>
+                            <span>&nbsp;State: <span class="sz label-value-130">{{ $patient->state->name }}</span>&nbsp;&nbsp;Zip: <span class="sz label-value-130">{{ $patient->zipcode }}</span> Age: <span class="sz label-value-130 width-60">{{ $data['age'] }}</span>&nbsp; &nbsp;Date of Birth: <span class="sz dob-underline">{{ $data['dob_month'] }}</span>/<span class="sz dob-underline">{{ $data['dob_day'] }}</span>/<span class="sz dob-underline">{{ $data['dob_year'] }}</span></span>
                         </p>
                         <p>
                             <span>Biological Sex:</span> &nbsp;
@@ -168,21 +171,21 @@
                             <span>(mm&nbsp; &nbsp;/&nbsp; &nbsp;dd&nbsp; &nbsp;/&nbsp; &nbsp;yyyy)</span>
                         </p>
                         <p style="margin-top:0; margin-bottom: 3px;"><strong><span >I would like to receive my results via:</span></strong></p>
-                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_fax == 1 ? 'checked' : '' }}></span><span>&nbsp;Fax: <span class="label-value-200">{{ $patient->fax }}</span>&nbsp; &nbsp;</span></p>
-                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_email == 1 ? 'checked' : '' }}></span><span >&nbsp;Email with Passcode Patient email address: <span class="label-value-400">{{ $patient->email_address }}</span></span></p>
+                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_fax == 1 ? 'checked' : '' }}></span><span>&nbsp;Fax: <span class="sz label-value-200">{{ $patient->fax }}</span>&nbsp; &nbsp;</span></p>
+                        <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_email == 1 ? 'checked' : '' }}></span><span >&nbsp;Email with Passcode Patient email address: <span class="sz label-value-400">{{ $patient->email_address }}</span></span></p>
                         <!--<p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Verify Email address:_____________________________________________________________________________________</span></p> -->
-                        <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Passcode: <span class="label-value-130">{{ $patient->passcode }}</span></span></p>
+                        <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Passcode: <span class="sz label-value-130">{{ $patient->passcode }}</span></span></p>
                         <p >
                             <strong><span>Bill To:</span></strong><span>&nbsp; &nbsp; &nbsp;</span><span><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Insurance' ? 'checked' : '' }}></span><span >&nbsp;Insurance&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Uninsured Program' ? 'checked' : '' }}></span><span>&nbsp;Uninsured Program</span></p>
                         @if($patient->paid_or_free == 1)
-                            <p><span>Result Delivered Type: <span class="label-value-250">{{ $patient->result_type }}</span>&nbsp;&nbsp;Flight Date & Time: <span class="label-value-200">{{ $patient->flight_datetime }}</span></span></p>
+                            <p><span>Result Delivered Type: <span class="sz label-value-250">{{ $patient->result_type }}</span>&nbsp;&nbsp;Flight Date & Time: <span class="sz label-value-200">{{ $patient->flight_datetime }}</span></span></p>
                         @endif
-                        <p ><span >Insurance Name &amp; policy: <span class="label-value-250">{{ $patient->ins_name }}</span> Group No: <span class="label-value-80">{{ $patient->group_no }}</span></span></p>
-                        <p ><span >Driver&rsquo;s License Number/State ID: <span class="label-value-200">{{ $patient->drivlic_id }}</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: <span class="label-value-80">{{ $patient->issued_state }}</span></span></p>
+                        <p ><span >Insurance Name &amp; policy: <span class="sz label-value-250">{{ $patient->ins_name }}</span> Group No: <span class="sz label-value-80">{{ $patient->group_no }}</span></span></p>
+                        <p ><span >Driver&rsquo;s License Number/State ID: <span class="sz label-value-200">{{ $patient->drivlic_id }}</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: <span class="sz label-value-80">{{ $patient->issued_state }}</span></span></p>
                         <p><span>By <strong>signing below, I certify</strong> the <strong>information</strong> I provided on and in connection with this form is true and correct to the best of my knowledge. I also understand that any false statements or deliberate omissions on this form may subject me to legal actions for fraudulent misrepresentation.</span></p>
 
                         <p><span>I consent Labtest Diagnostics to share my  results with Inb Sina Community Clinics.</span></p>
-                        <p><span>Patient Signature:<span class="label-value-250">{{ $patient->first_name }} {{ $patient->last_name }}</span> Today&rsquo;s Date: <span class="label-value-200">{{ date('Y-m-d') }}</span></span></p>
+                        <p><span>Patient Signature:<span class="sz label-value-250">{{ $patient->first_name }} {{ $patient->last_name }}</span> Today&rsquo;s Date: <span class="sz label-value-200">{{ date('Y-m-d') }}</span></span></p>
                       <!--  <p class="table-p-bottom" style="border-bottom:1px solid black;"><strong>PATIENT DECLARATION</strong></p>
                         <p class="table-p-margin"><strong><span>The answers below shall be truthful and inclusive for all members of household (including children and live-in adults). Within the past 14 days:</span></strong></p>
                         <ol class="table-p-top" style="padding:0px;list-style: none;">
