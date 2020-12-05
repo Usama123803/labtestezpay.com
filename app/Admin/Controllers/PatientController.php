@@ -68,12 +68,19 @@ class PatientController extends AdminController
         $grid->column('timeslot', __('Appointment Time'))->sortable();
 //        $grid->column('city', __('City'));
         $grid->column('state.name', __('State'));
-        $grid->column('status', __('Status'))->bool();
+//        $grid->column('status', __('Status'))->bool();
         $grid->column('paid_or_free', __('Paid/Free'))->display(function ($title) {
             if($title == 0){
                 return "Free";
             }
             return "Paid";
+        });
+
+        $grid->column('checkin', __('CheckIn'))->display(function ($title) {
+            if($title){
+                return "<i class='fa fa-check text-success'></i>";
+            }
+            return "";
         });
 
         $grid->disableCreateButton();
@@ -94,8 +101,10 @@ class PatientController extends AdminController
             $pdfRoute = route('generate.pdf', $this->id);
 //            $emailRoute = route('patient.email', $this->id);
             $emailRoute = '/admin/patient/send-email/'.$this->id;
+            $checkInRoute = '/admin/patient/checkin/'.$this->id;
             return "<a target='_blank' href='".$pdfRoute."' class='fa fa-file-pdf-o'></a>&nbsp;
                     <a href='".$emailRoute."' class='fa fa-envelope'></a>
+                    <a href='".$checkInRoute."' class='btn btn-sm btn-primary'>CheckIn</a>
             ";
         });
         $grid->filter(function($filter){

@@ -28,4 +28,13 @@ class HomeController extends Controller
         return back();
     }
 
+    public function patientCheckIn(Content $content, $id)
+    {
+        $patient = Patient::find($id);
+        $patient->checkin = 1;
+        $patient->save();
+        $content->withSuccess('Success', 'CheckIn status updated successfully of '.$patient->first_name .' '.$patient->last_name);
+        return back();
+    }
+
 }
