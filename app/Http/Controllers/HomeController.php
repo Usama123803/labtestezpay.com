@@ -204,4 +204,11 @@ class HomeController extends Controller
         return view('pages.terms-and-condition');
     }
 
+    public function locationById()
+    {
+        $locationId = $_GET['id'];
+        $result = Location::find($locationId)->first();
+        return \response()->json($result);
+    }
+
 }

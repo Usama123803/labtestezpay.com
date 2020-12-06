@@ -85,7 +85,7 @@
                     <form id="patientForm" action="{{ route('store.patient') }}" method="post">
                         @csrf
                         <input type="hidden" id="paid_or_free" name="paid_or_free" value="0">
-                        
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <select name="locationId" id="locationId" required="required" class="form-control">
@@ -129,7 +129,7 @@
                                 <input type="email" name="confemail_address" class="form-control" required="required" id="confemail" placeholder="Confirm Email">
                             </div>
 
-                        </div>        
+                        </div>
 
                         <div class="form-row">
                            <div class="form-group col-md-6">
@@ -154,9 +154,9 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <textarea id="address" name="address" required="required" placeholder="Address" cols="40" rows="2" class="form-control"></textarea>
-                            </div>   
+                            </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <input id="city" name="city" placeholder="City" required="required" class="form-control" type="text">
@@ -182,7 +182,7 @@
                         </div>
 
                         <div class="form-row">
-                            
+
                             <div class="form-group col-md-6">
                                 <input id="appointment" name="appointment" placeholder="Appointment Date" required="required" class="form-control" type="text">
                             </div>
@@ -205,12 +205,15 @@
 
                         <div class="form-row hideMe pcr_paid_fields">
                             <div class="form-group col-md-6">
-                                <select class="form-control result_type" required name ="result_type">
+                                <select id="resultType" class="form-control result_type" required name ="result_type">
                                 <option value =""> Select Result Delivered Type</option>
                                 <!--<option value ="Results delivered in 4 days $100.00"> Results delivered in 4 days $100.00</option> -->
-                                <option value ="72 Hours $125"> 72 Hours $125</option>
-                                <option value ="24 hours $150"> 24 hours $150</option>
-                                <option value ="Same day $200"> Same day $200</option>
+{{--                                <option value ="72 Hours $125"> 72 Hours $125</option>--}}
+{{--                                <option value ="24 hours $150"> 24 hours $150</option>--}}
+{{--                                <option value ="Same day $200"> Same day $200</option>--}}
+
+
+
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
@@ -434,6 +437,39 @@
                $('#flight_datetime, .result_type').val('');
                $('#pcr_paid,.pcr_paid_fields').addClass('hideMe');
                $('#pcr_free').removeClass('hideMe');
+            });
+
+            $(document).on('change','#locationId',function(){
+                console.log("locationId",);
+                $.ajax({
+                    url: "/location",
+                    type: "GET",
+                    data: { id: $(this).val()},
+                    dataType:"json",
+                    success: function(response) {
+                        $('#resultType').html('');
+
+                        console.log('response');
+
+                    // <option value ="72 Hours $125"> 72 Hours $125</option>
+                    // <option value ="24 hours $150"> 24 hours $150</option>
+                    // <option value ="Same day $200"> Same day $200</option>
+
+                        let html = '<option value="">Select Result Delivered Type</option>';
+                        if(response){
+                            html += '<option value="72 Hours $'+response.hours_1+'">72 Hours $'+response.hours_1+'</option>';
+                            html += '<option value="24 Hours $'+response.hours_2+'">24 Hours $'+response.hours_2+'</option>';
+                            html += '<option value="Same day $'+response.same_day+'">Same day $'+response.same_day+'</option>';
+                        }
+
+                        $('#resultType').html(html);
+                    },
+                    error:function(){
+
+                    }
+                });
+                //
+
             });
 
 
