@@ -207,7 +207,7 @@ class HomeController extends Controller
     public function locationById()
     {
         $locationId = $_GET['id'];
-        $result = Location::find($locationId)->first();
+        $result = Location::find($locationId);
         return \response()->json($result);
     }
 

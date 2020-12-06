@@ -449,7 +449,7 @@
                     success: function(response) {
                         $('#resultType').html('');
 
-                        console.log('response');
+                        // console.log('response', response);
 
                     // <option value ="72 Hours $125"> 72 Hours $125</option>
                     // <option value ="24 hours $150"> 24 hours $150</option>
