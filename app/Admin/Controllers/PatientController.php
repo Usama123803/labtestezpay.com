@@ -98,13 +98,20 @@ class PatientController extends AdminController
         AdminHelper::gridDateFormat($grid, 'created_at', 'Created at');
 
         $grid->column('Print')->display(function () {
+
+//          dd($this);
+
             $pdfRoute = route('generate.pdf', $this->id);
 //            $emailRoute = route('patient.email', $this->id);
             $emailRoute = '/admin/patient/send-email/'.$this->id;
             $checkInRoute = '/admin/patient/checkin/'.$this->id;
+            $btnTitle = 'CheckIn';
+            if($this->checkin == 1){
+                $btnTitle = 'CheckOut';
+            }
             return "<a target='_blank' href='".$pdfRoute."' class='fa fa-file-pdf-o'></a>&nbsp;
                     <a href='".$emailRoute."' class='fa fa-envelope'></a>
-                    <a href='".$checkInRoute."' class='btn btn-sm btn-primary'>CheckIn</a>
+                    <a href='".$checkInRoute."' class='btn btn-sm btn-primary'>$btnTitle</a>
             ";
         });
         $grid->filter(function($filter){

@@ -31,7 +31,11 @@ class HomeController extends Controller
     public function patientCheckIn(Content $content, $id)
     {
         $patient = Patient::find($id);
-        $patient->checkin = 1;
+        if($patient->checkin == 0){
+            $patient->checkin = 1;
+        }else{
+            $patient->checkin = 0;
+        }
         $patient->save();
         $content->withSuccess('Success', 'CheckIn status updated successfully of '.$patient->first_name .' '.$patient->last_name);
         return back();
