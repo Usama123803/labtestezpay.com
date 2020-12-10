@@ -206,7 +206,7 @@
                         <div class="form-row hideMe pcr_paid_fields">
                             <div class="form-group col-md-6">
                                 <select id="resultType" class="form-control result_type" required name ="result_type">
-                                <option value =""> Select Result Delivered Type</option>
+                                <option value =""> Select your price and service time</option>
                                 <!--<option value ="Results delivered in 4 days $100.00"> Results delivered in 4 days $100.00</option> -->
 {{--                                <option value ="72 Hours $125"> 72 Hours $125</option>--}}
 {{--                                <option value ="24 hours $150"> 24 hours $150</option>--}}
