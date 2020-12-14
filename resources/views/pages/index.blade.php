@@ -455,7 +455,7 @@
                     // <option value ="24 hours $150"> 24 hours $150</option>
                     // <option value ="Same day $200"> Same day $200</option>
 
-                        let html = '<option value="">Select Result Delivered Type</option>';
+                        let html = '<option value="">Select your price and service time</option>';
                         if(response){
                             if(response.hours_1){
                                 html += '<option value="72 Hours $'+response.hours_1+'">72 Hours $'+response.hours_1+'</option>';
