@@ -22,4 +22,6 @@ Route::group([
 
     $router->resource('admin-users', AdminUserController::class);
 
+    $router->resource('covid-symptoms', CovidSymptomController::class);
+
 });
