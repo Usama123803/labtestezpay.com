@@ -84,9 +84,9 @@ class LocationController extends AdminController
 
         $form->text('name', __('Name'));
         $form->text('phone', __('Phone'));
-        $form->number('hours_1', __('72 Hours $'))->min(1);
-        $form->number('hours_2', __('24 Hours $'))->min(1);
-        $form->number('same_day', __('Same day $'))->min(1);
+        $form->number('hours_1', __('72 Hours $'))->min(0);
+        $form->number('hours_2', __('24 Hours $'))->min(0);
+        $form->number('same_day', __('Same day $'))->min(0);
         $form->text('fax', __('Fax'));
         $form->text('address', __('Address'));
         $form->text('city', __('City'));
