@@ -15,9 +15,13 @@ class HomeController extends Controller
 {
     public function index(Content $content)
     {
+//        $html = "<h1>Testnig</h1>";
         return $content
             ->title('Dashboard')
             ->description('Description...');
+//            ->body($html);
+            //->view('pages.terms-and-condition');
+            //->anchor('url', 'linkname', 'attributes');
     }
 
     public function patientEmail(Content $content, $id)

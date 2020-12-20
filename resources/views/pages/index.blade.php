@@ -97,6 +97,16 @@
                                     @endif
                                 </select>
                             </div>
+
+                            <div class="form-group col-md-6">
+                                <select required name="covidSymptoms[]" class="selectpicker w-100 multiselect-dropdown" multiple data-live-search="true" title="Select Covid Symptoms">
+                                    @if(!empty($covidSymptoms) && count($covidSymptoms) > 0)
+                                        @foreach($covidSymptoms as $covidSymptom)
+                                            <option value="{{ $covidSymptom->id }}">{{ $covidSymptom->name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-row">
@@ -368,7 +378,21 @@
         .hideMe{
             display: none;
         }
+        .multiselect-dropdown button.dropdown-toggle{
+            display: block;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">
 @endpush
 
 
@@ -426,17 +450,17 @@
             });
 
             $(document).on('click','#paid',function(){
-               $('#flight_datetime, .result_type').val('');
+               $('#flight_datetime, .result_type, #covid_symptoms_id').val('');
                $('#paid_or_free').val('1');
                $('#pcr_paid,.pcr_paid_fields').removeClass('hideMe');
-               $('#pcr_free').addClass('hideMe');
+               $('#pcr_free, #covid_symptoms_id').addClass('hideMe');
             });
 
             $(document).on('click','#freeTest',function(){
                 $('#paid_or_free').val('0');
                $('#flight_datetime, .result_type').val('');
                $('#pcr_paid,.pcr_paid_fields').addClass('hideMe');
-               $('#pcr_free').removeClass('hideMe');
+               $('#pcr_free, #covid_symptoms_id').removeClass('hideMe');
             });
 
             $(document).on('change','#locationId',function(){
@@ -482,6 +506,6 @@
         });
     </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
 @endpush
-
-

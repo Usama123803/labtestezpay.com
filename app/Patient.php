@@ -55,4 +55,20 @@ class Patient extends Model
         $this->attributes['appointment'] = \Carbon\Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
     }
 
+    /**
+     * Used to create relation between location and patient
+     *
+     */
+//    public function covidSymptom(){
+//        return $this->belongsTo('App\CovidSymptom', 'covid_symptoms_id');
+//    }
+
+    /**
+     * Used to create relation between user and course
+     *
+     */
+    public function covidSymptoms(){
+        return $this->belongsToMany('App\CovidSymptom','patient_covid_symptoms');
+    }
+
 }

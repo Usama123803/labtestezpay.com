@@ -59,6 +59,7 @@ class PatientController extends AdminController
 //        $grid->column('zipcode', __('Zipcode'));
 //        $grid->column('country.name', __('Country'));
         $grid->column('location.name', __('Location'));
+//        $grid->column('covidSymptom.name', __('Covid Symptom'));
 //        $grid->column('appointment', __('Appointment'))->sortable();
 
         $grid->column('appointment')->display(function ($title) {
@@ -168,12 +169,13 @@ class PatientController extends AdminController
         $show->field('zipcode', __('Zipcode'));
 //        $show->field('country.name', __('Country'));
         $show->field('location.name', __('Location'));
+//        $show->field('covidSymptom.name', __('Covid Symptom'));
         $show->field('appointment', __('Appointment'));
         $show->field('timeslot', __('Appointment Time'));
         $show->field('city', __('City'));
         $show->field('address', __('Address'));
         $show->field('state.name', __('State'));
-        $show->field('terms', __('Terms'));
+//        $show->field('terms', __('Terms'));
         $show->field('terms', __('Terms'))->as(function ($terms) {
             if($terms === 1){
                 return "Yes";
@@ -236,8 +238,6 @@ class PatientController extends AdminController
             $form->datetime('appointment', __('Appointment'))->format('MM/DD/YYYY');
 
             $form->text('timeslot', __('Appointment time'));
-
-
 
 //            $form->text('terms', __('Terms'));
             $form->switch('status', __('Status'))->default(1);

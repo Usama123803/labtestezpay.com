@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Configuration;
 use App\Country;
+use App\CovidSymptom;
 use App\Location;
 use App\Mail\PatientMailer;
 use App\Patient;
+use App\PatientCovidSymptom;
 use App\State;
 //use Barryvdh\DomPDF\PDF;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -31,6 +33,8 @@ class HomeController extends Controller
         $countries = Country::where('status',1)->get();
         $states = State::where('status',1)->get();
         $locations = Location::where('status',1)->get();
+        $covidSymptoms = CovidSymptom::where('status',1)->get();
+
 
         $start_time = config('site.start_time');
         $end_time = config('site.end_time');
@@ -67,12 +71,7 @@ class HomeController extends Controller
             $disabledDates[] =$disabledAppointmentDate['appointment_date'];
         }
 
-
-//        dd($disabledAppointmentDates[0]['appointment_date']);
-//        dd($disabledDates);
-
-
-        return view('pages.index', compact('states','countries','locations','timeSlots','disabledDates'));
+        return view('pages.index', compact('states','countries','locations','timeSlots','disabledDates','covidSymptoms'));
     }
     public function patient()
     {
@@ -88,6 +87,8 @@ class HomeController extends Controller
      */
     public function storePatient(Request $request)
     {
+//        dd($request->covidSymptoms);
+
         try {
             $patient = new Patient;
             $patient->first_name        =   $request->first_name;
@@ -119,8 +120,9 @@ class HomeController extends Controller
 
             $patient->landline          =   $request->landline;
             $patient->zipcode           =   $request->zipcode;
-//            $patient->countryId         =   $request->countryId;
+//            $patient->countryId       =   $request->countryId;
             $patient->locationId        =   $request->locationId;
+//            $patient->covid_symptoms_id =   $request->covid_symptoms_id;
 //            $patient->appointment       =   Carbon::parse($request->appointment)->format('Y-m-d');
             $patient->appointment       =   $request->appointment;
             $patient->city              =   $request->city;
@@ -129,6 +131,17 @@ class HomeController extends Controller
             $patient->terms             =   $request->terms;
             $patient->created_at        =   date('Y-m-d h:i:s');
             $patient->save();
+
+            $covidSymptomData = [];
+            if(!empty($request->covidSymptoms)){
+                foreach($request->covidSymptoms as $covidSymptom){
+                    $covidSymptomData[] = array('covid_symptom_id' => $covidSymptom,'patient_id' => $patient->id);
+                }
+            }
+            if($covidSymptomData && count($covidSymptomData) > 0){
+                PatientCovidSymptom::insert($covidSymptomData);
+            }
+
             return redirect()->back()->with('success','Patient added successfully');
         }catch (\Exception $e){
             return redirect()->back()->with('error','Something went wrong while adding patient');
@@ -138,6 +151,8 @@ class HomeController extends Controller
     public function printPdf($id)
     {
         $patient = Patient::find($id);
+        $covidSymptoms = $patient->covidSymptoms->pluck('name')->implode(', ');
+
         $data = ['title' => 'Patient COVID-19 Report'];
         //date in mm/dd/yyyy format; or it can be in other formats as well
         $birthDate = Carbon::parse($patient->dob)->format('m/d/Y');
@@ -159,7 +174,8 @@ class HomeController extends Controller
 
 
 
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('pdf.patient',compact('data','patient'));
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
+            ->loadView('pdf.patient',compact('data','patient','covidSymptoms'));
         return $pdf->stream();
 //        return $pdf->download('patient.pdf');
 //        return view('pdf.patient',compact('data','patient'));
