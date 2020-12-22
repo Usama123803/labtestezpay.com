@@ -402,12 +402,7 @@
 
     <script>
         $(function () {
-            // let disabledDates = [];
-{{--            @foreach($disabledDates as $disabledDate)--}}
-{{--                console.log('====', {{ $disabledDate }} );--}}
-{{--            @endforeach--}}
-
-                let disableDates = @json($disabledDates);
+           let disableDates = @json($disabledDates);
 
             $('#flight_datetime').datetimepicker({
                 format: 'MM/DD/YYYY HH:mm:ss',
@@ -473,12 +468,6 @@
                     success: function(response) {
                         $('#resultType').html('');
 
-                        // console.log('response', response);
-
-                    // <option value ="72 Hours $125"> 72 Hours $125</option>
-                    // <option value ="24 hours $150"> 24 hours $150</option>
-                    // <option value ="Same day $200"> Same day $200</option>
-
                         let html = '<option value="">Select your price and service time</option>';
                         if(response){
                             if(response.hours_1){
@@ -491,7 +480,6 @@
                                 html += '<option value="Same day $'+response.same_day+'">Same day $'+response.same_day+'</option>';
                             }
                         }
-
                         $('#resultType').html(html);
                     },
                     error:function(){
