@@ -5,23 +5,27 @@ namespace App\Admin\Controllers;
 use App\Http\Controllers\Controller;
 use App\Mail\PatientMailer;
 use App\Patient;
+use App\Timesheet;
+use Carbon\Carbon;
 use Encore\Admin\Controllers\Dashboard;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
     public function index(Content $content)
     {
-//        $html = "<h1>Testnig</h1>";
+        $authUser = Auth::guard('admin')->user();
+        $timesheet = Timesheet::whereDate('created_at', Carbon::today())->where('user_id',$authUser->id)->first();
+
         return $content
             ->title('Dashboard')
-            ->description('Description...');
-//            ->body($html);
-            //->view('pages.terms-and-condition');
-            //->anchor('url', 'linkname', 'attributes');
+            ->description('Description...')
+            ->view('pages.timesheet', compact('timesheet'));
     }
 
     public function patientEmail(Content $content, $id)

@@ -24,4 +24,6 @@ Route::group([
 
     $router->resource('covid-symptoms', CovidSymptomController::class);
 
+    $router->resource('timesheets', TimesheetController::class);
+
 });
