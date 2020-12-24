@@ -288,7 +288,7 @@
                         </div>
 
 
-                        <div class="form-row">
+                        <div class="form-row insuranc">
                             <div class="form-group">
                                 <div class="form-group col-md-12">
                                     <label>
@@ -306,7 +306,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
+                        <div class="form-row insdetail">
                             <div class="form-group col-md-6">
                                 <input id="ins_name" name="ins_name" placeholder="Insurance Name & Policy" class="form-control" type="text">
                             </div>
@@ -447,12 +447,16 @@
             $(document).on('click','#paid',function(){
                $('#flight_datetime, .result_type, #covid_symptoms_id').val('');
                $('#paid_or_free').val('1');
+               $('.insuranc').addClass('hideMe');
+               $('.insdetail').addClass('hideMe');
                $('#pcr_paid,.pcr_paid_fields').removeClass('hideMe');
                $('#pcr_free, #covid_symptoms_id').addClass('hideMe');
             });
 
             $(document).on('click','#freeTest',function(){
                 $('#paid_or_free').val('0');
+                $('.insuranc').removeClass('hideMe');
+               $('.insdetail').removeClass('hideMe');
                $('#flight_datetime, .result_type').val('');
                $('#pcr_paid,.pcr_paid_fields').addClass('hideMe');
                $('#pcr_free, #covid_symptoms_id').removeClass('hideMe');
