@@ -35,6 +35,7 @@ class TimesheetController extends AdminController
         }
 
         $grid->column('id', __('Id'))->sortable();
+        $grid->column('adminUser.name', __('User'));
         $grid->column('check_in', __('Check in'));
         $grid->column('check_out', __('Check out'));
         $grid->column('break_in', __('Break in'));
