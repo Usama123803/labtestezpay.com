@@ -98,8 +98,8 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <select required name="covidSymptoms[]" class="selectpicker w-100 multiselect-dropdown" multiple data-live-search="true" title="Select Covid Symptoms">
+                            <div class="form-group col-md-6" id="covid_symptoms_div">
+                                <select required="required" id="covid_symptoms_id" name="covidSymptoms[]" class="selectpicker w-100 multiselect-dropdown" multiple data-live-search="true" title="Select Covid Symptoms">
                                     @if(!empty($covidSymptoms) && count($covidSymptoms) > 0)
                                         @foreach($covidSymptoms as $covidSymptom)
                                             <option value="{{ $covidSymptom->id }}">{{ $covidSymptom->name }}</option>
@@ -448,14 +448,16 @@
                $('#flight_datetime, .result_type, #covid_symptoms_id').val('');
                $('#paid_or_free').val('1');
                $('#pcr_paid,.pcr_paid_fields').removeClass('hideMe');
-               $('#pcr_free, #covid_symptoms_id').addClass('hideMe');
+               $('#pcr_free, #covid_symptoms_div').addClass('hideMe');
+               $('#covid_symptoms_id').attr('required',false);
             });
 
             $(document).on('click','#freeTest',function(){
-                $('#paid_or_free').val('0');
+               $('#covid_symptoms_id').attr('required',true);
+               $('#paid_or_free').val('0');
                $('#flight_datetime, .result_type').val('');
                $('#pcr_paid,.pcr_paid_fields').addClass('hideMe');
-               $('#pcr_free, #covid_symptoms_id').removeClass('hideMe');
+               $('#pcr_free, #covid_symptoms_div').removeClass('hideMe');
             });
 
             $(document).on('change','#locationId',function(){
