@@ -31,7 +31,7 @@ class PatientMailer extends Mailable
     public function build()
     {
 
-        dd(public_path('storage/'.$this->patient->additional_doc));
+        //dd(public_path('storage/'.$this->patient->additional_doc));
 
         return $this->from(env('MAIL_FROM_ADDRESS', 'no-reply@labtestest.com'), env('MAIL_FROM_NAME'))
             ->subject('Patient Documents')
