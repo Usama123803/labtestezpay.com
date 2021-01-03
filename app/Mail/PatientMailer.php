@@ -30,6 +30,9 @@ class PatientMailer extends Mailable
      */
     public function build()
     {
+
+        dd(public_path('storage/'.$this->patient->additional_doc));
+
         return $this->from(env('MAIL_FROM_ADDRESS', 'no-reply@labtestest.com'), env('MAIL_FROM_NAME'))
             ->subject('Patient Documents')
             ->view('emails.patient')
@@ -37,7 +40,8 @@ class PatientMailer extends Mailable
                 [
                    'patient'=> $this->patient
                 ])
-            ->attach(asset('storage/'.$this->patient->additional_doc));
+//            ->attach(asset('storage/'.$this->patient->additional_doc));
+            ->attach(public_path('storage/'.$this->patient->additional_doc));
 //            ->attach(public_path('/images').'/demo.jpg', [
 //                'as' => 'demo.jpg',
 //                'mime' => 'image/jpeg',
