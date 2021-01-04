@@ -34,7 +34,7 @@ class PatientMailer extends Mailable
         //dd(public_path('storage/'.$this->patient->additional_doc));
 
         return $this->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'))
-            ->subject('Patient Documents')
+            ->subject('COVID 19 RT PCR TEST RESULTS')
             ->view('emails.patient')
             ->with(
                 [
