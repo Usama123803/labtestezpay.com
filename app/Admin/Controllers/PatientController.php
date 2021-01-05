@@ -119,6 +119,7 @@ class PatientController extends AdminController
             $filter->like('first_name', 'First Name');
             $filter->like('last_name', 'Last Name');
             $filter->equal('appointment')->date();
+            $filter->equal('dob')->date();
         });
 
 
