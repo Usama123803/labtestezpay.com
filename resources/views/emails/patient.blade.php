@@ -14,6 +14,12 @@
     <tr>
         <td>
         <br>
+            Your password is your 8 digit date of birth in MMDDYYYY format.
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <br>
             Please see your results for the COVID-19 PCR test. If your result is 'POSITIVE', You are required to isolate yourself from others in the family and follow all the precautions suggested by health authorities and CDC. Wear a mask and follow all personal hygiene protocols to stop the spread of the COVID.
         </td>
     </tr>
