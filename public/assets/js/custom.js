@@ -103,6 +103,19 @@ $(function(){
         //}
    // });
 
+
+    $(document).on('change','.insuranceRadioBtn',function () {
+        console.log("9898989",$(this).val());
+        if($(this).val() == "Insurance"){
+            $('input[name="ins_name"], input[name="group_no"]').addClass('required');
+            $('input[name="ins_name"], input[name="group_no"]').attr('required',true);
+        }else{
+            $('input[name="ins_name"], input[name="group_no"]').removeClass('required');
+            $('input[name="ins_name"], input[name="group_no"]').attr('required',false);
+        }
+    });
+
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -10507,3 +10507,6 @@ section#contact form#contactForm :-ms-input-placeholder {
 .hideMe{
     display: none;
 }
+.error{
+    color:red;
+}

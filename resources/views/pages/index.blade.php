@@ -295,11 +295,11 @@
                                         Bill To :
                                     </label>
                                     <label class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="bill_to" value="Insurance">
+                                        <input class="form-check-input insuranceRadioBtn" type="radio" name="bill_to" value="Insurance">
                                         <span class="form-check-label"> Insurance </span>
                                     </label>
                                     <label class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="bill_to" value="Uninsured">
+                                        <input class="form-check-input insuranceRadioBtn" type="radio" name="bill_to" value="Uninsured">
                                         <span class="form-check-label"> Uninsured</span>
                                     </label>
 
