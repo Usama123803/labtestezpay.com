@@ -226,4 +226,17 @@ class HomeController extends Controller
         return \response()->json($result);
     }
 
+    public function patientConfirmationEmail($patient)
+    {
+        $emailSubject = "Confirmation Email";
+        $name = $patient->first_name.' '.$patient->last_name;
+        $clientEmail = $patient->email;
+        Mail::send('emails.patient-confirmation', compact("patient"),function ($m) use ($emailSubject, $name, $clientEmail){
+            $m->from(config('site.from_email'), config('site.company_name'));
+            $m->to($clientEmail, $name)->subject($emailSubject);
+            $m->bcc(config('site.contact_email'));
+        });
+    }
+
+
 }

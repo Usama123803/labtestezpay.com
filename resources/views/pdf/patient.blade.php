@@ -126,6 +126,17 @@
                                 <span>How did you hear about us: </span>
                             </strong>
                             {{ $patient->hear_about == "other" ? $patient->refer_name : $patient->hear_about }}
+
+                            <span style="float:right;">
+                                <strong>
+                                    <span>Report Type: </span>
+                                </strong>
+                                @if($patient->paid_or_free == 1)
+                                    Paid
+                                @else
+                                    Free
+                                @endif
+                            </span>
                         </p>
                     </td>
                 </tr>
