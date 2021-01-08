@@ -8,31 +8,13 @@
     <tr>
         <td>
         <br>
-            Please see the attached document for your test results.
+            Your Appointment is confirmed please come on <strong>{{ \Carbon\Carbon::parse($patient->appointment)->format('m/d/Y') }}</strong> -  <strong>{{ $patient->timeslot }}</strong>
         </td>
     </tr>
     <tr>
         <td>
         <br>
-            Your password is your 8 digit date of birth in MMDDYYYY format.
-        </td>
-    </tr>
-    <tr>
-        <td>
-        <br>
-            Please see your results for the COVID-19 PCR test. If your result is 'POSITIVE', You are required to isolate yourself from others in the family and follow all the precautions suggested by health authorities and CDC. Wear a mask and follow all personal hygiene protocols to stop the spread of the COVID.
-        </td>
-    </tr>
-    <tr>
-        <td>
-        <br>
-            Please contact your primary care provider as soon as possible so that      you can get timely guidance and treatment.
-        </td>
-    </tr>
-    <tr>
-        <td>
-        <br>
-            Find below some useful links for further guidance. 
+            Find below some useful links for further guidance.
             <br>
             https://www.cdc.gov/coronavirus/2019-ncov/if-you-are-sick/steps-when-sick.html
             <br>

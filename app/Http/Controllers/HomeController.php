@@ -141,6 +141,9 @@ class HomeController extends Controller
                 PatientCovidSymptom::insert($covidSymptomData);
             }
 
+            // To Send the email for confirmation appointment
+            $this->patientConfirmationEmail($patient->id);
+
             return redirect()->back()->with('success','Patient added successfully');
         }catch (\Exception $e){
             return redirect()->back()->with('error','Something went wrong while adding patient');
@@ -226,15 +229,16 @@ class HomeController extends Controller
         return \response()->json($result);
     }
 
-    public function patientConfirmationEmail($patient)
+    public function patientConfirmationEmail($patientId)
     {
+        $patient = Patient::where('id',$patientId)->first();
         $emailSubject = "Confirmation Email";
         $name = $patient->first_name.' '.$patient->last_name;
         $clientEmail = $patient->email;
         Mail::send('emails.patient-confirmation', compact("patient"),function ($m) use ($emailSubject, $name, $clientEmail){
-            $m->from(config('site.from_email'), config('site.company_name'));
+            $m->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'));
             $m->to($clientEmail, $name)->subject($emailSubject);
-            $m->bcc(config('site.contact_email'));
+//            $m->bcc(config('site.contact_email'));
         });
     }
 
