@@ -7,6 +7,7 @@ use App\Admin\Extensions\CheckRow;
 use App\Country;
 use App\Helper\AdminHelper;
 use App\Location;
+use App\Mail\PatientMailer;
 use App\Patient;
 use App\State;
 use Carbon\Carbon;
@@ -15,6 +16,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PatientController extends AdminController
 {
@@ -278,13 +280,16 @@ class PatientController extends AdminController
             $footer->disableCreatingCheck();
         });
 
-//        $form->saved(function (Form $form) {
-////            dd($form->model()->id);
+        $form->saved(function (Form $form) {
+//            dd($form->model()->id);
+
+            $patient = Patient::find($form->model()->id);
+            Mail::to($patient->email_address)->send(new PatientMailer($patient));
 //            $patient = Patient::find($form->model()->id);
 //            $patient->dob = Carbon::parse($form->model()->dob)->format('Y-m-d');
 //            $patient->appointment = Carbon::parse($form->model()->appointment)->format('Y-m-d');
 //            $patient->save();
-//        });
+        });
 
         return $form;
     }
