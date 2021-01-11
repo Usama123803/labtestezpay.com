@@ -82,23 +82,36 @@ class LocationController extends AdminController
     {
         $form = new Form(new Location());
 
-        $form->text('name', __('Name'));
-        $form->text('phone', __('Phone'));
-        $form->number('hours_1', __('72 Hours $'))->min(0);
-        $form->number('hours_2', __('24 Hours $'))->min(0);
-        $form->number('same_day', __('Same day $'))->min(0);
-        $form->text('fax', __('Fax'));
-        $form->text('address', __('Address'));
-        $form->text('city', __('City'));
+        $form->tab('Basic info', function ($form) {
+            $form->text('name', __('Name'));
+            $form->text('phone', __('Phone'));
+            $form->number('hours_1', __('72 Hours $'))->min(0);
+            $form->number('hours_2', __('24 Hours $'))->min(0);
+            $form->number('same_day', __('Same day $'))->min(0);
+            $form->text('fax', __('Fax'));
+            $form->text('address', __('Address'));
+            $form->text('city', __('City'));
 //        $form->text('state', __('state'));
-        $form->select('stateId', __('State'))->options(
-            State::where([["status", 1]])->pluck("name", "id")
-        )->required();
-        $form->text('zipcode', __('ZipCode'));
-        $form->text('alt_phone', __('Alt.Phone'));
-        $form->text('alt_fax', __('Alt.Fax'));
+            $form->select('stateId', __('State'))->options(
+                State::where([["status", 1]])->pluck("name", "id")
+            )->required();
+            $form->text('zipcode', __('ZipCode'));
+            $form->text('alt_phone', __('Alt.Phone'));
+            $form->text('alt_fax', __('Alt.Fax'));
 
-        $form->switch('status', __('Status'))->default(1);
+            $form->switch('status', __('Status'))->default(1);
+        })->tab('Timings', function ($form) {
+            $form->time('start_time', __('Start time'))->default(date('H:i:s'))->required();
+            $form->time('end_time', __('End time'))->default(date('H:i:s'))->required();
+            $form->time('block_start_time', __('Block Start time'));
+            $form->time('block_end_time', __('Block End time'));
+            $form->number('time_interval', __('Time interval'))->min(1)->required();
+            $form->number('block_limit', __('Block limit'))->min(1)->required();
+        })->tab('Appointment Dates', function ($form) {
+            $form->table('disabled_appointment_dates', function ($table) {
+                $table->date('appointment_date');
+            });
+        });
 
         return $form;
     }

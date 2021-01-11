@@ -197,7 +197,7 @@
                                 <input id="appointment" name="appointment" placeholder="Appointment Date" required="required" class="form-control" type="text">
                             </div>
                             <div class="form-group col-md-6">
-                                <select class="form-control timeSlotSelect" required name ="timeslot">
+                                <select class="form-control timeSlotSelect" id="timeSlotSelect" required name ="timeslot">
                                     <option value =""> Please Select Appointment Time</option>
                                     @foreach($timeSlots as $timeSlot)
 <!--                                        --><?php //$disabled = ''; ?>
@@ -402,47 +402,47 @@
 
     <script>
         $(function () {
-           let disableDates = @json($disabledDates);
+           {{--let disableDates = @json($disabledDates);--}}
 
             $('#flight_datetime').datetimepicker({
                 format: 'MM/DD/YYYY HH:mm:ss',
             });
 
-            $('#appointment').datetimepicker({
-                format: 'MM/DD/YYYY', daysOfWeekDisabled:[0],
-                disabledDates: disableDates
-            }).on("dp.change", function (e) {
-                let formatedValue = e.date.format(e.date._f);
-                if(formatedValue != ""){
-                    $.ajax({
-                        url: "/appointment/date",
-                        type: "GET",
-                        data: {date: formatedValue},
-                        dataType:"json",
-                        success: function(response) {
-                            if(response.timeSlots != ""){
+            {{--$('#appointment').datetimepicker({--}}
+            {{--    format: 'MM/DD/YYYY', daysOfWeekDisabled:[0],--}}
+            {{--    disabledDates: disableDates--}}
+            {{--}).on("dp.change", function (e) {--}}
+            {{--    let formatedValue = e.date.format(e.date._f);--}}
+            {{--    if(formatedValue != ""){--}}
+            {{--        $.ajax({--}}
+            {{--            url: "/appointment/date",--}}
+            {{--            type: "GET",--}}
+            {{--            data: {date: formatedValue},--}}
+            {{--            dataType:"json",--}}
+            {{--            success: function(response) {--}}
+            {{--                if(response.timeSlots != ""){--}}
 
-                                $('.timeSlotSelect').html('');
-                                let html = '<option value="">Please Select Appointment Time</option>';
-                                $(response.timeSlots).each(function (i,element) {
-                                    let disabled = '';
-                                    $(response.data).each(function(index,ele){
+            {{--                    $('.timeSlotSelect').html('');--}}
+            {{--                    let html = '<option value="">Please Select Appointment Time</option>';--}}
+            {{--                    $(response.timeSlots).each(function (i,element) {--}}
+            {{--                        let disabled = '';--}}
+            {{--                        $(response.data).each(function(index,ele){--}}
 
-                                        if(ele.total >= {{ config('site.block_limit') }} && ele.timeslot == element){
-                                            disabled = 'disabled';
-                                        }
-                                    });
-                                    html += '<option value="'+element+'" '+disabled+'>'+element+'</option>';
-                                });
-                                $('.timeSlotSelect').html(html);
-                            }
-                        },
-                        error:function(){
+            {{--                            if(ele.total >= {{ config('site.block_limit') }} && ele.timeslot == element){--}}
+            {{--                                disabled = 'disabled';--}}
+            {{--                            }--}}
+            {{--                        });--}}
+            {{--                        html += '<option value="'+element+'" '+disabled+'>'+element+'</option>';--}}
+            {{--                    });--}}
+            {{--                    $('.timeSlotSelect').html(html);--}}
+            {{--                }--}}
+            {{--            },--}}
+            {{--            error:function(){--}}
 
-                        }
-                    });
-                }
-            });
+            {{--            }--}}
+            {{--        });--}}
+            {{--    }--}}
+            {{--});--}}
 
             $(document).on('click','#paid',function(){
                $('#flight_datetime, .result_type, #covid_symptoms_id').val('');
@@ -465,7 +465,7 @@
             });
 
             $(document).on('change','#locationId',function(){
-                console.log("locationId",);
+                // console.log("locationId",);
                 $.ajax({
                     url: "/location",
                     type: "GET",
@@ -473,6 +473,11 @@
                     dataType:"json",
                     success: function(response) {
                         $('#resultType').html('');
+
+                        {{--let disableDates = @json($disabledDates);--}}
+                        setDateTimepickerInit(response.disableDates);
+
+                        $('#timeSlotSelect').html(response.timeSlotsOptions);
 
                         let html = '<option value="">Select your price and service time</option>';
                         if(response){
@@ -495,6 +500,45 @@
                 //
 
             });
+
+
+            function setDateTimepickerInit(disableDates){
+                $('#appointment').datetimepicker({
+                    format: 'MM/DD/YYYY', daysOfWeekDisabled:[0],
+                    disabledDates: disableDates
+                }).on("dp.change", function (e) {
+                    let formatedValue = e.date.format(e.date._f);
+                    if(formatedValue != ""){
+                        $.ajax({
+                            url: "/appointment/date",
+                            type: "GET",
+                            data: {date: formatedValue},
+                            dataType:"json",
+                            success: function(response) {
+                                if(response.timeSlots != ""){
+
+                                    $('.timeSlotSelect').html('');
+                                    let html = '<option value="">Please Select Appointment Time</option>';
+                                    $(response.timeSlots).each(function (i,element) {
+                                        let disabled = '';
+                                        $(response.data).each(function(index,ele){
+
+                                            if(ele.total >= {{ config('site.block_limit') }} && ele.timeslot == element){
+                                                disabled = 'disabled';
+                                            }
+                                        });
+                                        html += '<option value="'+element+'" '+disabled+'>'+element+'</option>';
+                                    });
+                                    $('.timeSlotSelect').html(html);
+                                }
+                            },
+                            error:function(){
+
+                            }
+                        });
+                    }
+                });
+            }
 
 
         });

@@ -117,6 +117,13 @@ class PatientController extends AdminController
                     <a href='".$checkInRoute."' class='btn btn-sm btn-primary'>$btnTitle</a>
             ";
         });
+
+//        $grid->column('Sticker')->display(function () {
+//            $pdfRoute = route('generate.pdf', $this->id);
+//            return "<a target='_blank' href='".$pdfRoute."' class='fa fa-sticky-note'></a>
+//            ";
+//        });
+
         $grid->filter(function($filter){
             $filter->like('first_name', 'First Name');
             $filter->like('last_name', 'Last Name');

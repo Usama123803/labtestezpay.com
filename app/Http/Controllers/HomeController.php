@@ -36,39 +36,42 @@ class HomeController extends Controller
         $covidSymptoms = CovidSymptom::where('status',1)->get();
 
 
-        $start_time = config('site.start_time');
-        $end_time = config('site.end_time');
-        $block_start_time = new DateTime(config('site.block_start_time'));
-        $block_end_time = new DateTime(config('site.block_end_time'));
-        $time_interval = config('site.time_interval');
-        $disabledAppointmentDates = config('site.disabled_appointment_dates');
-        $begin = new DateTime($start_time);
-        $end   = new DateTime($end_time);
-        $interval = DateInterval::createFromDateString($time_interval.' min');
-        $times    = new DatePeriod($begin, $interval, $end);
-        $timeSlots = [];
-        foreach ($times as $time) {
-            if($time->format('H:i') >= $block_start_time->format('H:i') && $time->format('H:i') <= $block_end_time->format('H:i') ){
-                // you need to do somthing
-            }else{
-                $timeSlots[] = $time->format('H:i');
-            }
-        }
-        $timeSlots[] = $end->format('H:i');
-        $patientsTimeSlotCount = DB::table('patients')
-            ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
-            ->whereIn('timeslot', $timeSlots)
-            ->groupBy(['timeslot','date'])
-            ->get();
+//        $start_time = config('site.start_time');
+//        $end_time = config('site.end_time');
+//        $block_start_time = new DateTime(config('site.block_start_time'));
+//        $block_end_time = new DateTime(config('site.block_end_time'));
+//        $time_interval = config('site.time_interval');
+//        $disabledAppointmentDates = config('site.disabled_appointment_dates');
+//        $begin = new DateTime($start_time);
+//        $end   = new DateTime($end_time);
+//        $interval = DateInterval::createFromDateString($time_interval.' min');
+//        $times    = new DatePeriod($begin, $interval, $end);
+//        $timeSlots = [];
+//        foreach ($times as $time) {
+//            if($time->format('H:i') >= $block_start_time->format('H:i') && $time->format('H:i') <= $block_end_time->format('H:i') ){
+//                // you need to do somthing
+//            }else{
+//                $timeSlots[] = $time->format('H:i');
+//            }
+//        }
+//        $timeSlots[] = $end->format('H:i');
+//        $patientsTimeSlotCount = DB::table('patients')
+//            ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
+//            ->whereIn('timeslot', $timeSlots)
+//            ->groupBy(['timeslot','date'])
+//            ->get();
+//
+//        $patientsTimeSlotCount->map(function($element){
+//           return $element->total <=config('site.block_limit') ? $element->date : null;
+//        });
+//
+//        $disabledDates = [];
+//        foreach($disabledAppointmentDates as $disabledAppointmentDate){
+//            $disabledDates[] =$disabledAppointmentDate['appointment_date'];
+//        }
 
-        $patientsTimeSlotCount->map(function($element){
-           return $element->total <=config('site.block_limit') ? $element->date : null;
-        });
+        $disabledDates = $timeSlots = [];
 
-        $disabledDates = [];
-        foreach($disabledAppointmentDates as $disabledAppointmentDate){
-            $disabledDates[] =$disabledAppointmentDate['appointment_date'];
-        }
 
         return view('pages.index', compact('states','countries','locations','timeSlots','disabledDates','covidSymptoms'));
     }
@@ -226,7 +229,52 @@ class HomeController extends Controller
     {
         $locationId = $_GET['id'];
         $result = Location::find($locationId);
-        return \response()->json($result);
+
+        $start_time = $result->start_time;
+        $end_time = $result->end_time;
+        $block_start_time = new DateTime($result->block_start_time);
+        $block_end_time = new DateTime($result->block_end_time);
+        $time_interval = $result->time_interval;
+        $disabledAppointmentDates = $result->disabled_appointment_dates;
+        $begin = new DateTime($start_time);
+        $end   = new DateTime($end_time);
+        $interval = DateInterval::createFromDateString($time_interval.' min');
+        $times    = new DatePeriod($begin, $interval, $end);
+        $timeSlots = [];
+        foreach ($times as $time) {
+            if($time->format('H:i') >= $block_start_time->format('H:i') && $time->format('H:i') <= $block_end_time->format('H:i') ){
+                // you need to do somthing
+            }else{
+                $timeSlots[] = $time->format('H:i');
+            }
+        }
+        $timeSlots[] = $end->format('H:i');
+        $patientsTimeSlotCount = DB::table('patients')
+            ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
+            ->whereIn('timeslot', $timeSlots)
+            ->groupBy(['timeslot','date'])
+            ->get();
+
+        $patientsTimeSlotCount->map(function($element) use ($result) {
+           return $element->total <= $result->block_limit ? $element->date : null;
+        });
+
+        $disabledDates = [];
+        foreach($disabledAppointmentDates as $disabledAppointmentDate){
+            $disabledDates[] =$disabledAppointmentDate['appointment_date'];
+        }
+
+        $timeSlotsOptions = '<option value="">Please Select Appointment Time</option>';
+        foreach($timeSlots as $timeSlot):
+            $timeSlotsOptions .= '<option value = "'.$timeSlot.'" > '.$timeSlot.' </option>';
+        endforeach;
+
+        return \response()->json([
+            "result"=> $result,
+            "disabledDates"=> $disabledDates,
+            "timeSlots"=> $timeSlots,
+            "timeSlotsOptions"=> $timeSlotsOptions
+        ]);
     }
 
     public function patientConfirmationEmail($patientId)

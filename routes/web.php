@@ -24,3 +24,4 @@ Route::get('/admin/checkin', 'TimesheetController@checkIn');
 Route::get('/admin/checkout', 'TimesheetController@checkOut');
 Route::get('/admin/breakin', 'TimesheetController@breakIn');
 Route::get('/admin/breakout', 'TimesheetController@breakOut');
+Route::get('/patient/generate-sticker-pdf/{id}', 'HomeController@printStickerPdf')->name('generate.pdf');
