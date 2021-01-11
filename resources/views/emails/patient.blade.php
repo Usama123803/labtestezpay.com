@@ -42,6 +42,15 @@
     <tr>
         <td>
         <br>
+            This email is sent from an account we use for sending messages only, so if you want to contact us, don't reply to this email. We won't get your response 
+        <br>
+        Please send your queries to ali4labtests@gmail.com
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+        <br>
             -----------------------------------------------
             Confidentiality Statement:  This email is confidential.  The information herein is intended only for the person or entity to which it is addressed and may contain confidential and/or privileged material.  Any review, re-transmission, dissemination, or other use of this information by persons or entities other than the intended recipient is prohibited.  If you are not the intended recipient, you must not disclose or use the information contained in the email. If you have received this email in error, please contact the sender immediately and delete the document.
         </td>

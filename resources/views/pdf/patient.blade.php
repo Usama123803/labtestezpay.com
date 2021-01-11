@@ -126,17 +126,14 @@
                                 <span>How did you hear about us: </span>
                             </strong>
                             {{ $patient->hear_about == "other" ? $patient->refer_name : $patient->hear_about }}
-
+                            @if($patient->paid_or_free == 1)
                             <span style="float:right;">
                                 <strong>
-                                    <span>Report Type: </span>
+                                    <span>PAID </span>
                                 </strong>
-                                @if($patient->paid_or_free == 1)
-                                    Paid
-                                @else
-                                    Free
-                                @endif
+                                
                             </span>
+                            @endif
                         </p>
                     </td>
                 </tr>
@@ -186,17 +183,23 @@
                         <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_email == 1 ? 'checked' : '' }}></span><span >&nbsp;Email with Passcode Patient email address: <span class="sz label-value-400">{{ $patient->email_address }}</span></span></p>
                         <!--<p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Verify Email address:_____________________________________________________________________________________</span></p> -->
                         <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Passcode: <span class="sz label-value-130">{{ $patient->passcode }}</span></span></p>
+                        @if($patient->paid_or_free == 0)
                         <p >
                             <strong><span>Bill To:</span></strong><span>&nbsp; &nbsp; &nbsp;</span><span><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Insurance' ? 'checked' : '' }}></span><span >&nbsp;Insurance&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->bill_to == 'Uninsured Program' ? 'checked' : '' }}></span><span>&nbsp;Uninsured Program</span></p>
+                        @endif
                         @if($patient->paid_or_free == 1)
                             <p><span>Result Delivered Type: <span class="sz label-value-250">{{ $patient->result_type }}</span>&nbsp;&nbsp;Flight Date & Time: <span class="sz label-value-200">{{ $patient->flight_datetime }}</span></span></p>
                         @endif
+                        @if($patient->paid_or_free == 0)
                         <p ><span >Insurance Name &amp; policy: <span class="sz label-value-250">{{ $patient->ins_name }}</span> Group No: <span class="sz label-value-80">{{ $patient->group_no }}</span></span></p>
+                        @endif
                         <p ><span >Driver&rsquo;s License Number/State ID: <span class="sz label-value-200">{{ $patient->drivlic_id }}</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: <span class="sz label-value-80">{{ $patient->issued_state }}</span></span></p>
                         <p><span>By <strong>signing below, I certify</strong> the <strong>information</strong> I provided on and in connection with this form is true and correct to the best of my knowledge. I also understand that any false statements or deliberate omissions on this form may subject me to legal actions for fraudulent misrepresentation.</span></p>
 
                         <p><span>I consent Labtest Diagnostics to share my  results with Inb Sina Community Clinics.</span></p>
+                        @if($patient->paid_or_free == 0)
                         <p><span>Covid Symptoms:<span class="sz label-value-250">{{ $covidSymptoms }}</span></span></p>
+                        @endif
                         <p><span>Patient Signature:<span class="sz label-value-250">{{ $patient->first_name }} {{ $patient->last_name }}</span> Appointment&rsquo;s Date: <span class="sz label-value-200">{{ $patient->appointment }} </span></span></p>
                       <!--  <p class="table-p-bottom" style="border-bottom:1px solid black;"><strong>PATIENT DECLARATION</strong></p>
                         <p class="table-p-margin"><strong><span>The answers below shall be truthful and inclusive for all members of household (including children and live-in adults). Within the past 14 days:</span></strong></p>

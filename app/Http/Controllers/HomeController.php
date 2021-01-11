@@ -145,7 +145,7 @@ class HomeController extends Controller
             }
 
             // To Send the email for confirmation appointment
-            $this->patientConfirmationEmail($patient->id);
+           // $this->patientConfirmationEmail($patient->id);
 
             return redirect()->back()->with('success','Patient added successfully');
         }catch (\Exception $e){

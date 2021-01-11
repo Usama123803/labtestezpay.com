@@ -90,7 +90,7 @@ class PatientController extends AdminController
         $grid->actions(function ($actions) {
             $actions->append(new CheckRow($actions->getKey()));
 //            $actions->disableEdit();
-            $actions->disableDelete();
+ //           $actions->disableDelete();
 //            $actions->prepend('<a href=""><i class="fa fa-paper-plane"></i></a>');
         });
 
