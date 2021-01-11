@@ -466,6 +466,13 @@
 
             $(document).on('change','#locationId',function(){
                 // console.log("locationId",);
+
+                if($(this).val() == ""){
+                    $('#appointment').val('');
+                    $('#timeSlotSelect').html('<option value="">Please Select Appointment Time</option>');
+                    return false;
+                }
+
                 $.ajax({
                     url: "/location",
                     type: "GET",
@@ -474,8 +481,7 @@
                     success: function(response) {
                         $('#resultType').html('');
 
-                        {{--let disableDates = @json($disabledDates);--}}
-                        setDateTimepickerInit(response.disableDates);
+                        setDateTimepickerInit(response.disabledDates);
 
                         $('#timeSlotSelect').html(response.timeSlotsOptions);
 
@@ -503,6 +509,9 @@
 
 
             function setDateTimepickerInit(disableDates){
+
+                //console.log("disableDates", disableDates);
+
                 $('#appointment').datetimepicker({
                     format: 'MM/DD/YYYY', daysOfWeekDisabled:[0],
                     disabledDates: disableDates
