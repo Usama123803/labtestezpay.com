@@ -128,7 +128,16 @@ class PatientController extends AdminController
             $filter->like('first_name', 'First Name');
             $filter->like('last_name', 'Last Name');
             $filter->equal('appointment')->date();
-            $filter->equal('dob')->date();
+//            $filter->equal('dob')->datetime(['format' => 'MM/DD/YYYY']);
+            $filter->where(function ($query) {
+                if($this->input){
+                    $dob = Carbon::parse($this->input)->format('Y-m-d');
+                    $query->whereRaw("`dob` = '{$dob}'");
+                }
+            }, 'Date of Birth', 'dob')->datetime([
+                'format' => 'MM/DD/YYYY'
+            ]);
+
         });
 
 
