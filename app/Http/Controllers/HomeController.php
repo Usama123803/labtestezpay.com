@@ -283,7 +283,8 @@ class HomeController extends Controller
         $emailSubject = "Confirmation Email";
         $name = $patient->first_name.' '.$patient->last_name;
         $clientEmail = $patient->email;
-        Mail::send('emails.patient-confirmation', compact("patient"),function ($m) use ($emailSubject, $name, $clientEmail){
+        Mail::send('emails.patient-confirmation', compact("patient"),function ($m)
+        use ($emailSubject, $name, $clientEmail){
             $m->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'));
             $m->to($clientEmail, $name)->subject($emailSubject);
 //            $m->bcc(config('site.contact_email'));
