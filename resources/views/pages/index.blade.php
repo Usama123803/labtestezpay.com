@@ -480,21 +480,22 @@
                     dataType:"json",
                     success: function(response) {
                         $('#resultType').html('');
-
+                        console.log(response);
                         setDateTimepickerInit(response.disabledDates);
 
                         $('#timeSlotSelect').html(response.timeSlotsOptions);
 
                         let html = '<option value="">Select your price and service time</option>';
                         if(response){
-                            if(response.hours_1){
-                                html += '<option value="72 Hours $'+response.hours_1+'">72 Hours $'+response.hours_1+'</option>';
+                            if(response.result.hours_1){
+                                //console.log(result);
+                                html += '<option value="72 Hours $'+response.result.hours_1+'">72 Hours $'+response.result.hours_1+'</option>';
                             }
-                            if(response.hours_2){
-                                html += '<option value="24 Hours $'+response.hours_2+'">24 Hours $'+response.hours_2+'</option>';
+                            if(response.result.hours_2){
+                                html += '<option value="24 Hours $'+response.result.hours_2+'">24 Hours $'+response.result.hours_2+'</option>';
                             }
-                            if(response.same_day){
-                                html += '<option value="Same day $'+response.same_day+'">Same day $'+response.same_day+'</option>';
+                            if(response.result.same_day){
+                                html += '<option value="Same day $'+response.result.same_day+'">Same day $'+response.result.same_day+'</option>';
                             }
                         }
                         $('#resultType').html(html);
