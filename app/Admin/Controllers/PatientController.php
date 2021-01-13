@@ -101,9 +101,6 @@ class PatientController extends AdminController
         AdminHelper::gridDateFormat($grid, 'created_at', 'Created at');
 
         $grid->column('Print')->display(function () {
-
-//          dd($this);
-
             $pdfRoute = route('generate.pdf', $this->id);
 //            $emailRoute = route('patient.email', $this->id);
             $emailRoute = '/admin/patient/send-email/'.$this->id;
@@ -298,7 +295,6 @@ class PatientController extends AdminController
 
         $form->saved(function (Form $form) {
 //            dd($form->model()->id);
-
             $patient = Patient::find($form->model()->id);
             Mail::to($patient->email_address)->send(new PatientMailer($patient));
 //            $patient = Patient::find($form->model()->id);

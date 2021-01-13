@@ -156,6 +156,13 @@ class HomeController extends Controller
     public function printPdf($id)
     {
         $patient = Patient::find($id);
+
+//      Checkin while click on print pdf file
+        if($patient->checkin == 0){
+            $patient->checkin = 1;
+            $patient->save();
+        }
+
         $covidSymptoms = $patient->covidSymptoms->pluck('name')->implode(', ');
 
         $data = ['title' => 'Patient COVID-19 Report'];
