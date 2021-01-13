@@ -391,6 +391,10 @@
             border-radius: .25rem;
             transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
         }
+        .dropdown-menu.show{
+            min-width: auto !important;
+            width: 100%;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">
 @endpush
@@ -402,47 +406,9 @@
 
     <script>
         $(function () {
-           {{--let disableDates = @json($disabledDates);--}}
-
             $('#flight_datetime').datetimepicker({
                 format: 'MM/DD/YYYY HH:mm:ss',
             });
-
-            {{--$('#appointment').datetimepicker({--}}
-            {{--    format: 'MM/DD/YYYY', daysOfWeekDisabled:[0],--}}
-            {{--    disabledDates: disableDates--}}
-            {{--}).on("dp.change", function (e) {--}}
-            {{--    let formatedValue = e.date.format(e.date._f);--}}
-            {{--    if(formatedValue != ""){--}}
-            {{--        $.ajax({--}}
-            {{--            url: "/appointment/date",--}}
-            {{--            type: "GET",--}}
-            {{--            data: {date: formatedValue},--}}
-            {{--            dataType:"json",--}}
-            {{--            success: function(response) {--}}
-            {{--                if(response.timeSlots != ""){--}}
-
-            {{--                    $('.timeSlotSelect').html('');--}}
-            {{--                    let html = '<option value="">Please Select Appointment Time</option>';--}}
-            {{--                    $(response.timeSlots).each(function (i,element) {--}}
-            {{--                        let disabled = '';--}}
-            {{--                        $(response.data).each(function(index,ele){--}}
-
-            {{--                            if(ele.total >= {{ config('site.block_limit') }} && ele.timeslot == element){--}}
-            {{--                                disabled = 'disabled';--}}
-            {{--                            }--}}
-            {{--                        });--}}
-            {{--                        html += '<option value="'+element+'" '+disabled+'>'+element+'</option>';--}}
-            {{--                    });--}}
-            {{--                    $('.timeSlotSelect').html(html);--}}
-            {{--                }--}}
-            {{--            },--}}
-            {{--            error:function(){--}}
-
-            {{--            }--}}
-            {{--        });--}}
-            {{--    }--}}
-            {{--});--}}
 
             $(document).on('click','#paid',function(){
                $('#flight_datetime, .result_type, #covid_symptoms_id').val('');
