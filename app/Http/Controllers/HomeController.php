@@ -145,7 +145,7 @@ class HomeController extends Controller
             }
 
             // To Send the email for confirmation appointment
-            // $this->patientConfirmationEmail($patient->id);
+             $this->patientConfirmationEmail($patient->id);
 
             return redirect()->back()->with('success','Patient added successfully');
         }catch (\Exception $e){
@@ -287,9 +287,13 @@ class HomeController extends Controller
     public function patientConfirmationEmail($patientId)
     {
         $patient = Patient::where('id',$patientId)->first();
+
+//        Mail::to($patient->email_address)->send(new PatientMailer($patient));
+
+
         $emailSubject = "Confirmation Email";
         $name = $patient->first_name.' '.$patient->last_name;
-        $clientEmail = $patient->email;
+        $clientEmail = $patient->email_address;
         Mail::send('emails.patient-confirmation', compact("patient"),function ($m)
         use ($emailSubject, $name, $clientEmail){
             $m->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'));
