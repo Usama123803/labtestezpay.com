@@ -431,14 +431,11 @@
             });
 
             $(document).on('change','#locationId',function(){
-                // console.log("locationId",);
-
                 if($(this).val() == ""){
                     $('#appointment').val('');
                     $('#timeSlotSelect').html('<option value="">Please Select Appointment Time</option>');
                     return false;
                 }
-
                 $.ajax({
                     url: "/location",
                     type: "GET",
@@ -448,13 +445,10 @@
                         $('#resultType').html('');
                         console.log(response);
                         setDateTimepickerInit(response.disabledDates);
-
                         $('#timeSlotSelect').html(response.timeSlotsOptions);
-
                         let html = '<option value="">Select your price and service time</option>';
                         if(response){
                             if(response.result.hours_1){
-                                //console.log(result);
                                 html += '<option value="72 Hours $'+response.result.hours_1+'">72 Hours $'+response.result.hours_1+'</option>';
                             }
                             if(response.result.hours_2){
@@ -476,9 +470,6 @@
 
 
             function setDateTimepickerInit(disableDates){
-
-                //console.log("disableDates", disableDates);
-
                 $('#appointment').datetimepicker({
                     format: 'MM/DD/YYYY', daysOfWeekDisabled:[0],
                     disabledDates: disableDates
@@ -492,13 +483,11 @@
                             dataType:"json",
                             success: function(response) {
                                 if(response.timeSlots != ""){
-
                                     $('.timeSlotSelect').html('');
                                     let html = '<option value="">Please Select Appointment Time</option>';
                                     $(response.timeSlots).each(function (i,element) {
                                         let disabled = '';
                                         $(response.data).each(function(index,ele){
-
                                             if(ele.total >= {{ config('site.block_limit') }} && ele.timeslot == element){
                                                 disabled = 'disabled';
                                             }
