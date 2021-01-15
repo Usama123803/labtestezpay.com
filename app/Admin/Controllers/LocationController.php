@@ -101,10 +101,12 @@ class LocationController extends AdminController
 
             $form->switch('status', __('Status'))->default(1);
         })->tab('Timings', function ($form) {
-            $form->time('start_time', __('Start time'))->default(date('h:i:s'))->format('hh:mm:ss')->required();
-            $form->time('end_time', __('End time'))->default(date('h:i:s'))->format('hh:mm:ss')->required();
-            $form->time('block_start_time', __('Block Start time'))->format('hh:mm:ss');
-            $form->time('block_end_time', __('Block End time'))->format('hh:mm:ss');
+            $form->time('start_time', __('Start time'))->default(date('H:i:s'))->required();
+            $form->time('end_time', __('End time'))->default(date('H:i:s'))->required();
+            $form->time('block_start_time', __('Block Start time'));
+//                ->format('hh:mm:ss');
+            $form->time('block_end_time', __('Block End time'));
+//                ->format('hh:mm:ss');
             $form->number('time_interval', __('Time interval'))->min(1)->required();
             $form->number('block_limit', __('Block limit'))->min(1)->required();
         })->tab('Appointment Dates', function ($form) {

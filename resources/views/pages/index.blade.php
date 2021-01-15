@@ -443,7 +443,7 @@
                     dataType:"json",
                     success: function(response) {
                         $('#resultType').html('');
-                        console.log(response);
+                        // console.log(response);
                         setDateTimepickerInit(response.disabledDates);
                         $('#timeSlotSelect').html(response.timeSlotsOptions);
                         let html = '<option value="">Select your price and service time</option>';
@@ -474,34 +474,34 @@
                     format: 'MM/DD/YYYY', daysOfWeekDisabled:[0],
                     disabledDates: disableDates
                 }).on("dp.change", function (e) {
-                    let formatedValue = e.date.format(e.date._f);
-                    if(formatedValue != ""){
-                        $.ajax({
-                            url: "/appointment/date",
-                            type: "GET",
-                            data: {date: formatedValue},
-                            dataType:"json",
-                            success: function(response) {
-                                if(response.timeSlots != ""){
-                                    $('.timeSlotSelect').html('');
-                                    let html = '<option value="">Please Select Appointment Time</option>';
-                                    $(response.timeSlots).each(function (i,element) {
-                                        let disabled = '';
-                                        $(response.data).each(function(index,ele){
-                                            if(ele.total >= {{ config('site.block_limit') }} && ele.timeslot == element){
-                                                disabled = 'disabled';
-                                            }
-                                        });
-                                        html += '<option value="'+element+'" '+disabled+'>'+element+'</option>';
-                                    });
-                                    $('.timeSlotSelect').html(html);
-                                }
-                            },
-                            error:function(){
+                    {{--let formatedValue = e.date.format(e.date._f);--}}
+                    {{--if(formatedValue != ""){--}}
+                    {{--    $.ajax({--}}
+                    {{--        url: "/appointment/date",--}}
+                    {{--        type: "GET",--}}
+                    {{--        data: {date: formatedValue},--}}
+                    {{--        dataType:"json",--}}
+                    {{--        success: function(response) {--}}
+                    {{--            if(response.timeSlots != ""){--}}
+                    {{--                $('.timeSlotSelect').html('');--}}
+                    {{--                let html = '<option value="">Please Select Appointment Time</option>';--}}
+                    {{--                $(response.timeSlots).each(function (i,element) {--}}
+                    {{--                    let disabled = '';--}}
+                    {{--                    $(response.data).each(function(index,ele){--}}
+                    {{--                        if(ele.total >= {{ config('site.block_limit') }} && ele.timeslot == element){--}}
+                    {{--                            disabled = 'disabled';--}}
+                    {{--                        }--}}
+                    {{--                    });--}}
+                    {{--                    html += '<option value="'+element+'" '+disabled+'>'+element+'</option>';--}}
+                    {{--                });--}}
+                    {{--                $('.timeSlotSelect').html(html);--}}
+                    {{--            }--}}
+                    {{--        },--}}
+                    {{--        error:function(){--}}
 
-                            }
-                        });
-                    }
+                    {{--        }--}}
+                    {{--    });--}}
+                    {{--}--}}
                 });
             }
 

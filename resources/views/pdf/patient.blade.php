@@ -131,7 +131,7 @@
                                 <strong>
                                     <span>PAID </span>
                                 </strong>
-                                
+
                             </span>
                             @endif
                         </p>
@@ -224,7 +224,7 @@
                                     <p style="margin-top:0px;"><span style='font-size:14px;'>Collection Date:</span> <br> &nbsp; {{ $patient->appointment }}</p>
                                 </td>
                                 <td>
-                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Collection Time:</span> <br> &nbsp; {{ $patient->timeslot }} </p>
+                                    <p style="margin-top:0px;"><span style='font-size:14px;'>Collection Time:</span> <br> &nbsp; {{ date("h:i a", strtotime($patient->timeslot)) }} </p>
                                 </td>
                                 <td>
                                     <p style="margin-top:0px;"><span style='font-size:14px;'>Name:</span><br> &nbsp;</p>
