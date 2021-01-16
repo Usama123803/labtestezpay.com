@@ -87,7 +87,7 @@
                         <input type="hidden" id="paid_or_free" name="paid_or_free" value="0">
 
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <select name="locationId" id="locationId" required="required" class="form-control">
                                     <option value="" selected>Select Location</option>
                                     @if(!empty($locations) && count($locations) > 0)
@@ -98,7 +98,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-md-6" id="covid_symptoms_div">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12" id="covid_symptoms_div">
                                 <select required="required" id="covid_symptoms_id" name="covidSymptoms[]" class="selectpicker w-100 multiselect-dropdown" multiple data-live-search="true" title="Select Covid Symptoms">
                                     @if(!empty($covidSymptoms) && count($covidSymptoms) > 0)
                                         @foreach($covidSymptoms as $covidSymptom)
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input id="first_name" name="first_name" placeholder="First Name" required="required" class="form-control" type="text">
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
@@ -119,10 +119,10 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input type="text" name="dob" class="form-control" required="required" id="dob" placeholder="MM/DD/YYYY (Date of birth)">
                             </div>
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <select name="gender" id="gender" required="required" class="form-control">
                                     <option value="" selected>Choose gender</option>
                                     <option value="male"> Male</option>
@@ -132,20 +132,20 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input type="email" name="email_address" class="form-control" required="required" id="email" placeholder="Email">
                             </div>
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input type="email" name="confemail_address" class="form-control" required="required" id="confemail" placeholder="Confirm Email">
                             </div>
 
                         </div>
 
                         <div class="form-row">
-                           <div class="form-group col-md-6 col-sm-12">
+                           <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input id="cell_phone" name="cell_phone" maxlength="12" placeholder="Cell Phone" class="form-control" required="required" type="text">
                             </div>
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input id="landline" name="landline" maxlength="12" placeholder="Alternate phone number" class="form-control" type="text">
                             </div>
 
@@ -162,17 +162,17 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-12 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <textarea id="address" name="address" required="required" placeholder="Address" cols="40" rows="2" class="form-control"></textarea>
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input id="city" name="city" placeholder="City" required="required" class="form-control" type="text">
                             </div>
 
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <select name="stateId" id="stateId" required="required" class="form-control">
                                     <option value="" selected>Select State</option>
                                     @if(!empty($states) && count($states) > 0)
@@ -186,17 +186,17 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input id="zipcode" name="zipcode" placeholder="Zip Code" required="required" class="form-control" type="text">
                             </div>
                         </div>
 
                         <div class="form-row">
 
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input id="appointment" name="appointment" placeholder="Appointment Date" required="required" class="form-control" type="text">
                             </div>
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <select class="form-control timeSlotSelect" id="timeSlotSelect" required name ="timeslot">
                                     <option value =""> Please Select Appointment Time</option>
                                     @foreach($timeSlots as $timeSlot)
@@ -214,7 +214,7 @@
                         </div>
 
                         <div class="form-row hideMe pcr_paid_fields">
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <select id="resultType" class="form-control result_type" required name ="result_type">
                                 <option value =""> Select your price and service time</option>
                                 <!--<option value ="Results delivered in 4 days $100.00"> Results delivered in 4 days $100.00</option> -->
@@ -226,14 +226,14 @@
 
                                 </select>
                             </div>
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input id="flight_datetime" name="flight_datetime" placeholder="Flight Date and Time" class="form-control" type="text">
                             </div>
                         </div>
 
                       <!--  <div class="form-row">
                             <div class="form-group">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label>
                                         Test Price :
                                     </label> </br>
@@ -260,7 +260,7 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <div class="form-group col-md-12 col-sm-12">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                     <label>
                                         I would like to receive my result via:
                                     </label> </br>
@@ -290,7 +290,7 @@
 
                         <div class="form-row insuranc">
                             <div class="form-group">
-                                <div class="form-group col-md-12 col-sm-12">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                     <label>
                                         Bill To :
                                     </label>
@@ -307,7 +307,7 @@
                             </div>
                         </div>
                         <div class="form-row insdetail">
-                            <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <input id="ins_name" name="ins_name" placeholder="Insurance Name & Policy" class="form-control" type="text">
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
@@ -316,8 +316,8 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group row col-sm-12">
-                                <div class="form-group col-md-6 col-sm-12">
+                            <div class="form-group row col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label>
                                         How did you hear about us:
                                     </label>
