@@ -302,6 +302,9 @@ class HomeController extends Controller
         $emailSubject = "Confirmation Email";
         $name = $patient->first_name.' '.$patient->last_name;
         $clientEmail = $patient->email_address;
+
+        $patient->timeslot = Carbon::parse($patient->timeslot)->format('h:i a');
+
         Mail::send('emails.patient-confirmation', compact("patient"),function ($m)
         use ($emailSubject, $name, $clientEmail){
             $m->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'));

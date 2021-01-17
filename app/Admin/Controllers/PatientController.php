@@ -10,6 +10,7 @@ use App\Location;
 use App\Mail\PatientMailer;
 use App\Patient;
 use App\State;
+use App\UsersLocation;
 use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -37,10 +38,9 @@ class PatientController extends AdminController
         $grid = new Grid(new Patient());
 
         $authUser = Auth::guard('admin')->user();
-//        dd($authUser->locationId);
-
-        if($authUser && $authUser->locationId){
-            $grid->model()->where('locationId', $authUser->locationId);
+        if($authUser && $authUser->id <> 1){ // ID is for admin
+            $locationIds = UsersLocation::where('user_id', $authUser->id)->pluck('location_id');
+            $grid->model()->whereIn('locationId', $locationIds);
         }
 
         $grid->column('id', __('Id'))->sortable();
@@ -68,7 +68,12 @@ class PatientController extends AdminController
             return Carbon::parse($title)->format('m/d/Y');
         })->sortable();
 
-        $grid->column('timeslot', __('Appointment Time'))->sortable();
+        $grid->column('timeslot', __('Appointment Time'))->display(function ($time) {
+            return Carbon::parse($time)->format('h:i a');
+        })->sortable();
+
+//        $grid->column('timeslot', __('Appointment Time'))->sortable();
+
 //        $grid->column('city', __('City'));
         $grid->column('state.name', __('State'));
 //        $grid->column('status', __('Status'))->bool();
@@ -121,7 +126,7 @@ class PatientController extends AdminController
 //            ";
 //        });
 
-        $grid->filter(function($filter){
+        $grid->filter(function($filter) use ($authUser){
             $filter->like('first_name', 'First Name');
             $filter->like('last_name', 'Last Name');
             $filter->equal('appointment')->date();
@@ -134,6 +139,18 @@ class PatientController extends AdminController
             }, 'Date of Birth', 'dob')->datetime([
                 'format' => 'MM/DD/YYYY'
             ]);
+
+            if($authUser){
+                if($authUser->id <> 1){
+                    $locationIds = UsersLocation::where('user_id', 2)->pluck('location_id');
+                    $locationsByUsers = Location::where([["status", 1]])->whereIn('id', $locationIds)->pluck("name", "id");
+                }else{
+                    $locationsByUsers = Location::where([["status", 1]])->pluck("name", "id");
+                }
+                $filter->in('locationId','Locations')->multipleSelect(
+                    $locationsByUsers
+                );
+            }
 
         });
 

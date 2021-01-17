@@ -34,7 +34,7 @@ class AdminUserController extends AdminController
         $grid->column('username', __('Username'));
 //        $grid->column('password', __('Password'));
         $grid->column('name', __('Name'));
-        $grid->column('location.name', __('Location'));
+//        $grid->column('location.name', __('Location'));
 //        $grid->column('avatar', __('Avatar'));
 //        $grid->column('remember_token', __('Remember token'));
 //        $grid->column('created_at', __('Created at'));
@@ -92,7 +92,7 @@ class AdminUserController extends AdminController
 //        $form->password('password', __('Password'))->required();
 //        $form->password('password_confirmation', __('Password confirmation'))->required();
 
-        $form->select('locationId', __('Location'))->options(
+        $form->multipleSelect('locations', __('Location'))->options(
             Location::where([["status", 1]])->pluck("name", "id")
         )->required();
 //        $form->text('remember_token', __('Remember token'));
