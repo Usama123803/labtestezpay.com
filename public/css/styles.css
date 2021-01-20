@@ -10510,3 +10510,9 @@ section#contact form#contactForm :-ms-input-placeholder {
 .error{
     color:red;
 }
+@media only screen and (max-width: 991px) {
+    .container-auto{
+        width: auto !important;
+        max-width: inherit !important;
+    }
+}

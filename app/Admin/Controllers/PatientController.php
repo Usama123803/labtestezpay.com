@@ -129,7 +129,6 @@ class PatientController extends AdminController
         $grid->filter(function($filter) use ($authUser){
             $filter->like('first_name', 'First Name');
             $filter->like('last_name', 'Last Name');
-            $filter->equal('appointment')->date();
 //            $filter->equal('dob')->datetime(['format' => 'MM/DD/YYYY']);
             $filter->where(function ($query) {
                 if($this->input){
@@ -139,6 +138,9 @@ class PatientController extends AdminController
             }, 'Date of Birth', 'dob')->datetime([
                 'format' => 'MM/DD/YYYY'
             ]);
+
+            // set datetime field type
+            $filter->between('appointment', 'Appointment')->date();
 
             if($authUser){
                 if($authUser->id <> 1){

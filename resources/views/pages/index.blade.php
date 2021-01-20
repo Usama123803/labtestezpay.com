@@ -4,7 +4,7 @@
 
 @section('content')
     <header class="masthead">
-        <div class="container">
+            <div class="container">
             <div class="masthead-heading"><a id="paid" href="#apptform" style="font-size: 30px;border: #484343;padding: 5px;border-radius: 10px;background: #f78f1e;color: #2d419a;">Covid-19 RT PCR Test For Traveling</a> </div>
             <div class="masthead-heading"><a id="freeTest" href="#apptform" style="font-size: 30px;border: #484343;padding: 5px;border-radius: 10px;background: #f78f1e;color: #2d419a;">Free Covid-19 PCR Test</a> </div>
             <div class="masthead-heading"><a href="http://labtestezpay.com/" style="font-size: 30px;border: #484343;padding: 5px;border-radius: 10px;background: #f78f1e;color: #2d419a;">For Blood & Other Test Click Here</a> </div>
@@ -56,7 +56,7 @@
     </section>
     <!-- Portfolio Grid-->
     <section class="page-section bg-light" id="apptform">
-        <div class="container">
+        <div class="container container-auto">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Create your Appointment</h2>
                 <h3 class="section-subheading text-muted">Now you can create your appointment online for the COVID testing.</h3>
