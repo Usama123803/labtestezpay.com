@@ -177,7 +177,11 @@
                                     <option value="" selected>Select State</option>
                                     @if(!empty($states) && count($states) > 0)
                                         @foreach($states as $state)
-                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                            <?php $selected = ''; ?>
+                                            @if($state->id == 51)
+                                                <?php $selected = 'selected'; ?>
+                                            @endif
+                                            <option value="{{ $state->id }}" {{ $selected }}>{{ $state->name }}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -299,7 +303,7 @@
                                         <span class="form-check-label"> Insurance </span>
                                     </label>
                                     <label class="form-check form-check-inline">
-                                        <input class="form-check-input insuranceRadioBtn" type="radio" name="bill_to" value="Uninsured">
+                                        <input class="form-check-input insuranceRadioBtn" type="radio" checked name="bill_to" value="Uninsured">
                                         <span class="form-check-label"> Uninsured</span>
                                     </label>
 
