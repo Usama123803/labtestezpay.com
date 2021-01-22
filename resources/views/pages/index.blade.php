@@ -411,7 +411,8 @@
     <script>
         $(function () {
             $('#flight_datetime').datetimepicker({
-                format: 'MM/DD/YYYY HH:mm:ss',
+                // format: 'MM/DD/YYYY HH:mm:ss',
+                format: 'MM/DD/YYYY hh:mm A',
             });
 
             $(document).on('click','#paid',function(){
