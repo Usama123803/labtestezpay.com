@@ -1,58 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>DYMO: QR-code</title>
-    <!-- JQuery -->
-    <script src = "http://code.jquery.com/jquery-1.4.2.min.js" type="text/javascript" charset="UTF-8"> </script>
-    <!-- Dymo Script -->
-    <script src="{{ asset('assets/js/DYMO.Label.Framework.2.0.2.js') }}"></script>
-    <!-- QR Code -->
-    <script src="{{ asset('assets/js/QRCode.js') }}"></script>
-    <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Address Label Demo - Dymo Printer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <script type="text/javascript" src="http://labelwriter.com/software/dls/sdk/js/dymo.connect.framework.js"></script>
+{{--    <script type="text/javascript" src="labels.js"></script>--}}
+    <script src="{{ asset('assets/js/labels.js') }}"></script>
 </head>
-
 <body>
-
 <div class="container">
-
-    <div class="jumbotron">
-        <h3>DYMO Label Framework JavaScript Library Samples: QR code</h3>
-        <div class="header">
-            <div id="sampleDesctiption">
-                <span>
-                    This sample shows different ways to print a label with a QR-code barcode.
-                </span>
+    <h1 class="page-header">Print an Address Label <small>With a Dymo LabelWriter</small></h1>
+    <form>
+        <div class="form-group">
+            <textarea id="address-box" name="address-box" class="form-control" rows="6" disabled="disabled" data-bind="disable: message() !== 'Ready'"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar">
+                    <button class="btn btn-primary" onclick="return dymoPrint()"  disabled="disabled" data-bind="disable: message() !== 'Ready'">
+                        Print label
+                    </button>
+                    <button type="reset" class="btn btn-default" disabled="disabled" data-bind="disable: message() !== 'Ready'">
+                        Clear
+                    </button>
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#debugModal">
+                        <span data-bind="text: message">Loading</span>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 
-
-    <div class="container">
-        <div class="printControls">
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="printersDiv">
-                        <label for="printersSelect">Printer:</label><br/>
-                        <select class="form-control" id="printersSelect"></select>
+        <!-- Modal -->
+        <div class="modal fade" id="debugModal" tabindex="-1" role="dialog" aria-labelledby="debugModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Printer information</h4>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt>Environment</dt>
+                            <dd>Browser supported: <span data-bind="text: browserSupported, visible: environmentChecked()"></span></dd>
+                            <dd>Dymo framework installed: <span data-bind="text: frameworkInstalled, visible: environmentChecked()"></span></dd>
+                            <dd>Dymo webservice ready: <span data-bind="text: webServicePresent, visible: environmentChecked()"></span></dd>
+                            <dt>Printer</dt>
+                            <dd>Name: <span data-bind="text: printerName, visible: printerChecked()"></span></dd>
+                            <dd>Connected: <span data-bind="text: printerConnected, visible: printerChecked()"></span></dd>
+                            <dt>Label</dt>
+                            <dd>Acquired: <span data-bind="text: lebelaAcquired, visible: lebelAjaxComplete()"></span></dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
-
-            <div id="printDiv" style="padding-top:20px">
-                <button class="btn btn-primary btn-lg" id="printButton">Print QR Code</button>
-            </div>
-
         </div>
-    </div>
 
+    </form>
 </div>
-
-
-
 </body>
-
 </html>
