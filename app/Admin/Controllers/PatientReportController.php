@@ -3,12 +3,15 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Extensions\CheckRow;
+use App\Location;
 use App\Patient;
+use App\UsersLocation;
 use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Illuminate\Support\Facades\Auth;
 
 class PatientReportController extends AdminController
 {
@@ -44,7 +47,7 @@ class PatientReportController extends AdminController
 
 
         $grid->column('gender', __('Gender'));
-        $grid->column('dob')->display(function ($title) {
+        $grid->column('dob','Date of Birth')->width('400')->display(function ($title) {
             return Carbon::parse($title)->format('m/d/Y');
         });
 
@@ -74,6 +77,42 @@ class PatientReportController extends AdminController
         $grid->column('remarks', __('Remarks'));
         $grid->disableCreateButton();
         $grid->disableActions();
+
+        $authUser = Auth::guard('admin')->user();
+        if($authUser && $authUser->id <> 1){ // ID is for admin
+            $locationIds = UsersLocation::where('user_id', $authUser->id)->pluck('location_id');
+            $grid->model()->whereIn('locationId', $locationIds);
+        }
+
+        $grid->filter(function($filter) use ($authUser){
+            $filter->like('first_name', 'First Name');
+            $filter->like('last_name', 'Last Name');
+//            $filter->equal('dob')->datetime(['format' => 'MM/DD/YYYY']);
+            $filter->where(function ($query) {
+                if($this->input){
+                    $dob = Carbon::parse($this->input)->format('Y-m-d');
+                    $query->whereRaw("`dob` = '{$dob}'");
+                }
+            }, 'Date of Birth', 'dob')->datetime([
+                'format' => 'MM/DD/YYYY'
+            ]);
+
+            // set datetime field type
+            $filter->between('appointment', 'Appointment')->date();
+            if($authUser){
+                if($authUser->id <> 1){
+                    $locationIds = UsersLocation::where('user_id', 2)->pluck('location_id');
+                    $locationsByUsers = Location::where([["status", 1]])->whereIn('id', $locationIds)->pluck("name", "id");
+                }else{
+                    $locationsByUsers = Location::where([["status", 1]])->pluck("name", "id");
+                }
+                $filter->in('locationId','Locations')->multipleSelect(
+                    $locationsByUsers
+                );
+            }
+
+        });
+
 
         return $grid;
     }
