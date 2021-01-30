@@ -26,5 +26,8 @@ Route::group([
 
     $router->resource('timesheets', TimesheetController::class);
 
+    $router->resource('patients-report', PatientReportController::class);
+
+
 });
 
