@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\CheckRow;
 use App\Helper\AdminHelper;
 use App\Location;
 use App\State;
@@ -38,10 +39,15 @@ class LocationController extends AdminController
         $grid->column('zipcode', __('ZipCode'));
         $grid->column('alt_phone', __('Alt.Phone'));
         $grid->column('alt_fax', __('Alt.Fax'));
-        $grid->column('status', __('Status'))->bool();
+        $grid->column('status', __('Status'))->switch();
 //        $grid->column('deleted_at', __('Deleted at'));
 //        $grid->column('created_at', __('Created at'));
 //        $grid->column('updated_at', __('Updated at'));
+
+        $grid->actions(function ($actions) {
+            $actions->disableDelete();
+        });
+
         AdminHelper::gridDateFormat($grid, 'deleted_at', 'Deleted at');
         AdminHelper::gridDateFormat($grid, 'created_at', 'Created at');
         AdminHelper::gridDateFormat($grid, 'updated_at', 'Updated at');

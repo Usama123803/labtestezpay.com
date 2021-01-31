@@ -154,6 +154,9 @@ class PatientController extends AdminController
                 );
             }
 
+            $filter->equal('checkin')->select([1 => 'Yes', 0 => 'No']);
+
+
         });
 
 
