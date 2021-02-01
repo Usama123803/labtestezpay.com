@@ -40,7 +40,7 @@ class PatientReportController extends AdminController
 //        $grid->column('first_name', __('First name'));
 //        $grid->column('last_name', __('Last name'));
 
-        $grid->column('', __('Email address'));
+        $grid->column('email_address', __('Email'));
         $grid->column('', __('Test Identifier'));
         $grid->column('', __('Date Collected'));
         $grid->column('', __('Collecting Location'));
