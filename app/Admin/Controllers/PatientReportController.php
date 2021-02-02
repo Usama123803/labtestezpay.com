@@ -41,6 +41,7 @@ class PatientReportController extends AdminController
 //        $grid->column('last_name', __('Last name'));
 
         $grid->column('email_address', __('Email'));
+        $grid->column('cell_phone', __('Cell phone'))->sortable();
         $grid->column('', __('Test Identifier'));
         $grid->column('', __('Date Collected'));
         $grid->column('', __('Collecting Location'));

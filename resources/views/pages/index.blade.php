@@ -70,8 +70,9 @@
 
 <div class="col-md-12 py-5 border">
                     <!--<h4 class="pb-4">Please fill with your details</h4> -->
-                    <h5 id="pcr_paid" class="pb-4 hideMe" style="color: red">Make sure you've entered your information same as on your passport </h5>
-                    <h5 id="pcr_free" class="pb-4" style="color: red">Free Covid-19 PCR Tests Results in 96 hours. (Not for traveling)</h5>
+                    <h5 id="pcr_paid" class="text-danger hideMe">Make sure you've entered your information same as on your passport </h5>
+                    <h5 id="pcr_free" class="text-danger">Free Covid-19 PCR Tests Results in 96 hours. (Not for traveling)</h5>
+                    <h5 class="pb-4 text-danger">Valid Photo ID is required</h5>
                     @if (Session::has('success'))
                         <div class="alert alert-success mt-2">
                             {!! Session::get('success') !!}
