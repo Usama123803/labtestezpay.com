@@ -43,8 +43,12 @@ class PatientReportController extends AdminController
         $grid->column('email_address', __('Email'));
         $grid->column('cell_phone', __('Cell phone'))->sortable();
         $grid->column('', __('Test Identifier'));
-        $grid->column('', __('Date Collected'));
-        $grid->column('', __('Collecting Location'));
+
+        $grid->column('appointment', __('Date Collected'))->display(function ($title) {
+            return Carbon::parse($title)->format('m/d/Y');
+        })->sortable();
+
+        $grid->column('location.name', __('Collecting Location'));
 
 
         $grid->column('gender', __('Gender'));
@@ -60,7 +64,7 @@ class PatientReportController extends AdminController
         });
 
         $grid->column('', __('Test Type'));
-        $grid->column('location.name', __('Testing Lab'));
+        $grid->column('', __('Testing Lab'));
 
         $grid->column('', __('Collecting Bill Code'));
         $grid->column('', __('Collecting Billed Amount'));
