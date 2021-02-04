@@ -30,32 +30,21 @@ class PatientReportController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Patient());
-
         $grid->column('id', __('Id'));
-
         $grid->column('Name')->display(function () {
             return $this->first_name." ".$this->last_name;
         });
-
-//        $grid->column('first_name', __('First name'));
-//        $grid->column('last_name', __('Last name'));
-
         $grid->column('email_address', __('Email'));
         $grid->column('cell_phone', __('Cell phone'))->sortable();
-        $grid->column('', __('Test Identifier'));
-
+        $grid->column('test_identifier', __('Test Identifier'));
         $grid->column('appointment', __('Date Collected'))->display(function ($title) {
             return Carbon::parse($title)->format('m/d/Y');
         })->sortable();
-
         $grid->column('location.name', __('Collecting Location'));
-
-
         $grid->column('gender', __('Gender'));
         $grid->column('dob','Date of Birth')->width('400')->display(function ($title) {
             return Carbon::parse($title)->format('m/d/Y');
         });
-
         $grid->column('status', __('Status'))->display(function ($status) {
             if($status === 0){
                 return "Inactive";
@@ -63,15 +52,15 @@ class PatientReportController extends AdminController
             return "Active";
         });
 
-        $grid->column('', __('Test Type'));
-        $grid->column('', __('Testing Lab'));
+        $grid->column('test_type', __('Test Type'));
+        $grid->column('testing_lab', __('Testing Lab'));
 
-        $grid->column('', __('Collecting Bill Code'));
-        $grid->column('', __('Collecting Billed Amount'));
-        $grid->column('', __('Collecting Paid Amount'));
-        $grid->column('', __('Testing Bill Code'));
-        $grid->column('', __('Testing Billed Amount'));
-        $grid->column('', __('Testing Paid Amount'));
+        $grid->column('collection_bill_code', __('Collecting Bill Code'));
+        $grid->column('collecting_billed_amount', __('Collecting Billed Amount'));
+        $grid->column('collecting_paid_amount', __('Collecting Paid Amount'));
+        $grid->column('testing_bill_code', __('Testing Bill Code'));
+        $grid->column('testing_billed_amount', __('Testing Billed Amount'));
+        $grid->column('testing_paid_amount', __('Testing Paid Amount'));
         $grid->column('bill_to',__('Insurance/Uninsured?'));
         $grid->column('paid_or_free', __('Paid/Free'))->display(function ($title) {
             if($title == 0){
@@ -82,17 +71,14 @@ class PatientReportController extends AdminController
         $grid->column('remarks', __('Remarks'));
         $grid->disableCreateButton();
         $grid->disableActions();
-
         $authUser = Auth::guard('admin')->user();
         if($authUser && $authUser->id <> 1){ // ID is for admin
             $locationIds = UsersLocation::where('user_id', $authUser->id)->pluck('location_id');
             $grid->model()->whereIn('locationId', $locationIds);
         }
-
         $grid->filter(function($filter) use ($authUser){
             $filter->like('first_name', 'First Name');
             $filter->like('last_name', 'Last Name');
-//            $filter->equal('dob')->datetime(['format' => 'MM/DD/YYYY']);
             $filter->where(function ($query) {
                 if($this->input){
                     $dob = Carbon::parse($this->input)->format('Y-m-d');
@@ -101,8 +87,6 @@ class PatientReportController extends AdminController
             }, 'Date of Birth', 'dob')->datetime([
                 'format' => 'MM/DD/YYYY'
             ]);
-
-            // set datetime field type
             $filter->between('appointment', 'Appointment')->date();
             if($authUser){
                 if($authUser->id <> 1){
