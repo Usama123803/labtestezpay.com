@@ -174,7 +174,6 @@ class PatientController extends AdminController
     {
         $show = new Show(Patient::findOrFail($id));
 
-//        $show->field('id', __('Id'));
         $show->field('first_name', __('First name'));
         $show->field('last_name', __('Last name'));
         $show->field('email_address', __('Email address'));
@@ -205,15 +204,12 @@ class PatientController extends AdminController
 
         $show->field('landline', __('Alternate Phone Number'));
         $show->field('zipcode', __('Zipcode'));
-//        $show->field('country.name', __('Country'));
         $show->field('location.name', __('Location'));
-//        $show->field('covidSymptom.name', __('Covid Symptom'));
         $show->field('appointment', __('Appointment'));
         $show->field('timeslot', __('Appointment Time'));
         $show->field('city', __('City'));
         $show->field('address', __('Address'));
         $show->field('state.name', __('State'));
-//        $show->field('terms', __('Terms'));
         $show->field('terms', __('Terms'))->as(function ($terms) {
             if($terms === 1){
                 return "Yes";
@@ -227,14 +223,9 @@ class PatientController extends AdminController
             return "Active";
         });
 
-//        AdminHelper::showDateFormat($show , 'deleted_at', 'Deleted at');
         AdminHelper::showDateFormat($show , 'created_at', 'Created at');
-//        AdminHelper::showDateFormat($show, 'updated_at','Updated at');
-
         $show->panel()
             ->tools(function ($tools) {
-//                $tools->disableEdit();
-//                $tools->disableList();
                 $tools->disableDelete();
             });
 
@@ -267,36 +258,23 @@ class PatientController extends AdminController
                 State::where([["status", 1]])->pluck("name", "id")
             )->required();
             $form->text('zipcode', __('Zipcode'))->required();
-//        $form->select('countryId', __('Country'))->options(
-//            Country::where([["status", 1]])->pluck("name", "id")
-//        );
             $form->select('locationId', __('Location'))->options(
                 Location::where([["status", 1]])->pluck("name", "id")
             )->required();
             $form->datetime('appointment', __('Appointment'))->format('MM/DD/YYYY');
-
             $form->text('timeslot', __('Appointment time'));
-
-//            $form->text('terms', __('Terms'));
             $form->switch('status', __('Status'))->default(1);
         })->tab('Remarks', function ($form) {
-
             $form->select('pcr', __('PCR'))->options(
                 [1 => 'Negative', 2 => 'Positive']
             );
-
             $form->textarea('pcr_remark', __('PCR Remark'));
-
             $form->select('blood', __('Blood'))->options(
                 [1 => 'Negative', 2 => 'Positive']
             );
-
             $form->textarea('blood_remark', __('Blood Remark'));
-
             $form->file('additional_doc', __('Additional Document'));
-
         });
-
 
         $form->tools(function (Form\Tools $tools) {
             $tools->disableDelete();
@@ -305,24 +283,14 @@ class PatientController extends AdminController
         });
 
         $form->footer(function ($footer) {
-            // disable reset btn
             $footer->disableReset();
-            // disable `View` checkbox
             $footer->disableViewCheck();
-            // disable `Continue editing` checkbox
-//            $footer->disableEditingCheck();
-            // disable `Continue Creating` checkbox
             $footer->disableCreatingCheck();
         });
 
         $form->saved(function (Form $form) {
-//            dd($form->model()->id);
             $patient = Patient::find($form->model()->id);
             Mail::to($patient->email_address)->send(new PatientMailer($patient));
-//            $patient = Patient::find($form->model()->id);
-//            $patient->dob = Carbon::parse($form->model()->dob)->format('Y-m-d');
-//            $patient->appointment = Carbon::parse($form->model()->appointment)->format('Y-m-d');
-//            $patient->save();
         });
 
         return $form;
