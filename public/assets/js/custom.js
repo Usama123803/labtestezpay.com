@@ -24,7 +24,7 @@ $(function(){
                 }
             }
             return false;
-        }, "File size must be less than {0}");
+        }, "File size must be less than 2MB");
 
 
 

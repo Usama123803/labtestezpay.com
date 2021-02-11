@@ -480,8 +480,7 @@
 @push('js')
     <script src="{!! asset('assets/js/validate.js') !!}"></script>
     <script type='text/javascript' src="{!! asset('assets/js/inputMask.js') !!}"></script>
-
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/additional-methods.js"></script>
+    <script src="{!! asset('assets/js/additional-methods.js') !!}"></script>
 
     <script>
         $(function () {
