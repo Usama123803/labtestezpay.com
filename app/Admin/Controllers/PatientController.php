@@ -181,6 +181,9 @@ class PatientController extends AdminController
         $show->field('dob', __('Dob'));
         $show->field('cell_phone', __('Cell phone'));
 
+        AdminHelper::displayImage($show, "Front Image", 'front');
+        AdminHelper::displayImage($show, "Back Image",'back');
+
         $show->field('is_fax', __('Is fax'))->as(function ($is_fax) {
             if($is_fax === 1){
                 return "Yes";

@@ -37,4 +37,8 @@ class AdminHelper{
         });
     }
 
+    static function displayImage($show, $label = "Image", $fieldName = 'image'){
+        $show->field($fieldName, __($label))->image();
+    }
+
 }

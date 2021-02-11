@@ -14,6 +14,8 @@ class SendPatientEmail extends Action
 {
     protected $selector = '.send-patient-email';
 
+    public $name = 'Send Patient Report';
+
     public function handle(Request $request)
     {
         if($request->all()){
@@ -32,7 +34,7 @@ class SendPatientEmail extends Action
     public function form()
     {
         $this->email('email', 'User Email')->rules('required');
-        $this->file('file', 'Please select file')->rules('required|mimes:pdf,xlx,csv');
+        $this->file('file', 'Please select file')->rules('required');
     }
 
     public function html()
@@ -49,15 +51,6 @@ HTML;
             return $fileName;
         }
         return null;
-    }
-
-    public function createDirectory()
-    {
-        //$path = public_path('patients');
-        $path = 'patients';
-//        if(!Storage::isDirectory($path)){
-            Storage::makeDirectory($path, 0777, true, true);
-//        }
     }
 
 }

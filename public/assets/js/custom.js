@@ -2,6 +2,32 @@
 $(function(){
     //Contact Form Validation
     if($('#patientForm').length){
+
+        // $.validator.addMethod('filesize', function (value, element, param) {
+        //     return this.optional(element) || (element.files[0].size <= param)
+        // }, 'File size must be less than {0}');
+
+        jQuery.validator.addMethod("filesize", function(value, element, param) {
+            var isOptional = this.optional(element),
+                file;
+
+            if(isOptional) {
+                return isOptional;
+            }
+
+            if ($(element).attr("type") === "file") {
+
+                if (element.files && element.files.length) {
+
+                    file = element.files[0];
+                    return ( file.size && file.size <= param );
+                }
+            }
+            return false;
+        }, "File size must be less than {0}");
+
+
+
         $('#patientForm').validate({
             rules: {
                 first_name: {
@@ -18,7 +44,6 @@ $(function(){
                     required: true,
                     email: true,
                     equalTo: "#email"
-
                 },
                 dob: {
                     required: true
@@ -52,15 +77,20 @@ $(function(){
                 },
                 term: {
                     required: true
+                },
+                front_picture: {
+                    required: true,
+                    extension: "jpg|jpeg|png",
+                    filesize: 2000000,
+                },
+                back_picture: {
+                    required: true,
+                    extension: "jpg|jpeg|png",
+                    filesize: 2000000,
                 }
             }
         });
     }
-
-
-    //$('#dob').datetimepicker({
-      //  format: 'MM/DD/YYYY'
-    //});
 
     $("#dob").inputmask({
         mask: '99/99/9999',
@@ -92,17 +122,6 @@ $(function(){
             $('.refer_name').addClass('hideMe');
         }
     });
-
-    //$(document).on('change','#paid',function(){
-      // const pcrPaid =  $(this).val();
-        //$('#pcr_paid').val('');
-        //if(pcrPaid == '1'){
-          //  $('.refer_name').removeClass('hideMe');
-       // }else{
-        //    $('.refer_name').addClass('hideMe');
-        //}
-   // });
-
 
     $(document).on('change','.insuranceRadioBtn',function () {
         console.log("9898989",$(this).val());
