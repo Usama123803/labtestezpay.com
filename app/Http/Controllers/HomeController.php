@@ -69,8 +69,14 @@ class HomeController extends Controller
                 $patient->flight_datetime   = null;
             }
 
-            $patient->front = GeneralHelper::uploadAttachment($request, 'front_picture');
-            $patient->back  = GeneralHelper::uploadAttachment($request, 'back_picture');
+            $patient->front = null;
+            if($request->file('front_picture')){
+                $patient->front = GeneralHelper::uploadAttachment($request, 'front_picture');
+            }
+            $patient->back = null;
+            if($request->file('back_picture')){
+                $patient->back  = GeneralHelper::uploadAttachment($request, 'back_picture');
+            }
 
             $patient->paid_or_free      =   $request->paid_or_free;
             $patient->is_fax            =   $request->is_fax;
