@@ -101,6 +101,8 @@ class PatientReportController extends AdminController
                 );
             }
 
+            $filter->equal('checkin')->select([1 => 'Yes', 0 => 'No']);
+
         });
 
         $grid->tools(function (Grid\Tools $tools) {
