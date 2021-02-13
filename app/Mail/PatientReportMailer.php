@@ -11,9 +11,9 @@ class PatientReportMailer extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $subject;
-    protected $fileName = '';
-    protected $message = '';
+    public $subject;
+    public $fileName = '';
+    public $message = '';
 
 
     /**

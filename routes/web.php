@@ -27,3 +27,4 @@ Route::get('/admin/breakout', 'TimesheetController@breakOut');
 //Route::get('/patient/generate-sticker-pdf/{id}', 'HomeController@printStickerPdf')->name('generate.pdf');
 Route::get('/dymo-printer', 'DymoprinterController@index');
 Route::get('/shipping-label', 'DymoprinterController@labelXML');
+Route::get('/read-pdf', 'DymoprinterController@readPdf');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\PdfToText\Pdf;
 
 class DymoprinterController extends Controller
 {
@@ -44,4 +45,16 @@ class DymoprinterController extends Controller
 	</ObjectInfo>
 </DieCutLabel>';
     }
+
+    public function readPdf()
+    {
+//        dd(__DIR__);
+        $pdfDoc = url('storage/pdftotext/1.pdf');
+//        $pdfDoc = url('/public/storage');
+        $text = (new Pdf('/usr/local/bin/pdftotext'))
+            ->setPdf($pdfDoc)
+            ->text();
+        echo $text;
+    }
+
 }
