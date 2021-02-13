@@ -12,15 +12,18 @@ use App\Patient;
 use App\State;
 use App\UsersLocation;
 use Carbon\Carbon;
+use Encore\Admin\Admin;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
+use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class PatientController extends AdminController
 {
+
     /**
      * Title for current resource.
      *
