@@ -405,13 +405,13 @@
                             <div class="form-group row col-lg-12 col-md-12 col-sm-12 col-sm-12">
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label>
-                                        Front ID Card Picture
+                                        Upload Document (Insurance Card front/ Driving license/ID Card etc)
                                     </label>
                                     <input type="file" name="front_picture" accept="image/*" class="form-control" />
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label>
-                                        Back ID Card Picture
+                                        Upload Document (Insurance Card Back/ Driving license/ID Card etc)
                                     </label>
                                     <input type="file" name="back_picture" accept="image/*" class="form-control" />
                                 </div>
