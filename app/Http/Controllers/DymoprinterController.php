@@ -19,45 +19,45 @@ class DymoprinterController extends Controller
   <DYMOLabel Version="3">
     <Description>DYMO Label</Description>
     <Orientation>Landscape</Orientation>
-    <LabelName>WhiteNameBadgeS0722560</LabelName>
-    <InitialLength>0</InitialLength>
+    <LabelName>6MMX7M-TAPE BLACK/WHITE</LabelName>
+    <InitialLength>0.2444444</InitialLength>
     <BorderStyle>SolidLine</BorderStyle>
     <DYMORect>
       <DYMOPoint>
-        <X>0.23</X>
-        <Y>0.05666666</Y>
+        <X>0.4166667</X>
+        <Y>0.02222222</Y>
       </DYMOPoint>
       <Size>
-        <Width>3.21</Width>
-        <Height>1.53</Height>
+        <Width>0.5</Width>
+        <Height>0.2</Height>
       </Size>
     </DYMORect>
     <BorderColor>
       <SolidColorBrush>
-        <Color A="1" R="0" G="0" B="0"></Color>
+        <Color A="1" R="0.1372549" G="0.1215686" B="0.1254902"></Color>
       </SolidColorBrush>
     </BorderColor>
     <BorderThickness>1</BorderThickness>
     <Show_Border>False</Show_Border>
-    <DynamicLayoutManager>
+    <ContinuousLayoutManager>
       <RotationBehavior>ClearObjects</RotationBehavior>
       <LabelObjects>
         <TextObject>
-          <Name>ITextObject0</Name>
+          <Name>TEXT</Name>
           <Brushes>
             <BackgroundBrush>
               <SolidColorBrush>
-                <Color A="0" R="0" G="0" B="0"></Color>
+                <Color A="0" R="0.1372549" G="0.1215686" B="0.1254902"></Color>
               </SolidColorBrush>
             </BackgroundBrush>
             <BorderBrush>
               <SolidColorBrush>
-                <Color A="1" R="0" G="0" B="0"></Color>
+                <Color A="1" R="0.137" G="0.122" B="0.125"></Color>
               </SolidColorBrush>
             </BorderBrush>
             <StrokeBrush>
               <SolidColorBrush>
-                <Color A="1" R="0" G="0" B="0"></Color>
+                <Color A="1" R="0" G="0.018" B="0.014"></Color>
               </SolidColorBrush>
             </StrokeBrush>
             <FillBrush>
@@ -84,16 +84,16 @@ class DymoprinterController extends Controller
             <IsVertical>False</IsVertical>
             <LineTextSpan>
               <TextSpan>
-                <Text>TEXT</Text>
+                <Text>Testing</Text>
                 <FontInfo>
                   <FontName>Segoe UI</FontName>
-                  <FontSize>40.7</FontSize>
+                  <FontSize>10</FontSize>
                   <IsBold>False</IsBold>
                   <IsItalic>False</IsItalic>
                   <IsUnderline>False</IsUnderline>
                   <FontBrush>
                     <SolidColorBrush>
-                      <Color A="1" R="0" G="0" B="0"></Color>
+                      <Color A="1" R="0.1372549" G="0.1215686" B="0.1254902"></Color>
                     </SolidColorBrush>
                   </FontBrush>
                 </FontInfo>
@@ -102,17 +102,17 @@ class DymoprinterController extends Controller
           </FormattedText>
           <ObjectLayout>
             <DYMOPoint>
-              <X>0.9475003</X>
-              <Y>0.3391667</Y>
+              <X>0.4166667</X>
+              <Y>0.02222222</Y>
             </DYMOPoint>
             <Size>
-              <Width>1.605</Width>
-              <Height>0.765</Height>
+              <Width>0.5</Width>
+              <Height>0.2</Height>
             </Size>
           </ObjectLayout>
         </TextObject>
       </LabelObjects>
-    </DynamicLayoutManager>
+    </ContinuousLayoutManager>
   </DYMOLabel>
   <LabelApplication>Blank</LabelApplication>
   <DataTable>
