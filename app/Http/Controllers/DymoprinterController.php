@@ -131,7 +131,7 @@ class DymoprinterController extends Controller
 
         $text = (new Pdf())
             ->setPdf($pdfDoc)
-            >setOptions(['layout'])
+            ->setOptions(['layout'])
             ->text();
         echo $text;
     }
