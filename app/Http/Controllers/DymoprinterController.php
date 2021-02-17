@@ -131,10 +131,12 @@ class DymoprinterController extends Controller
 
         $text = (new Pdf())
             ->setPdf($pdfDoc)
-            ->setOptions(['layout', 'r 96'])
-            ->addOptions(['f 1'])
+            ->setOptions(['-layout', 'r 96'])
             ->text();
-        echo $text;
+
+        echo "<pre>";
+        print_r($text);
+        dd($text);
     }
 
 }
