@@ -134,9 +134,10 @@ class DymoprinterController extends Controller
             ->setOptions(['-layout', 'r 96'])
             ->text();
 
-        echo "<pre>";
-        print_r($text);
-        dd($text);
+        if (str_contains($text, 'Name: Syed Rizvi')) {
+            echo 'true';
+            dd($text);
+        }
     }
 
 }
