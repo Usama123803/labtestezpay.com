@@ -127,10 +127,11 @@ class DymoprinterController extends Controller
         $pdfDoc = public_path('storage/pdftotext/1.pdf');
 //        $pdfDoc = url('/public/storage');
 
-//        dd($pdfDoc);
+        dd($pdfDoc);
 
         $text = (new Pdf())
             ->setPdf($pdfDoc)
+            >setOptions(['layout'])
             ->text();
         echo $text;
     }
