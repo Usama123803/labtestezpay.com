@@ -38,7 +38,7 @@ class AdminHelper{
     }
 
     static function displayImage($show, $label = "Image", $fieldName = 'image'){
-        $show->field($fieldName, __($label))->image(public_path('storage/'));
+        $show->field($fieldName, __($label))->image(storage_path().'/');
     }
 
 }
