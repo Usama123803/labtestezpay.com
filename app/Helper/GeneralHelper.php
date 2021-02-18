@@ -9,7 +9,8 @@ class GeneralHelper{
     static function uploadAttachment($request,$fileName = 'file', $path = 'patients')
     {
         if ($request) {
-            $newName = $fileName . '.' . $request->file($fileName)->extension();
+            $random = time().rand(10,100);
+            $newName = $fileName.'_'.$random. '.' . $request->file($fileName)->extension();
             Storage::disk('public')->putFileAs($path, $request->file($fileName), $newName);
             return $path . '/' . $newName;
         }
