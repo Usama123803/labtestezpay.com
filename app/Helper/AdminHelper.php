@@ -5,6 +5,7 @@ use App\Admin\Actions\Post\BatchRestore;
 use App\Admin\Actions\Post\Restore;
 use Carbon\Carbon;
 use Encore\Admin\Grid;
+use Illuminate\Support\Facades\Storage;
 
 class AdminHelper{
 
@@ -38,7 +39,7 @@ class AdminHelper{
     }
 
     static function displayImage($show, $label = "Image", $fieldName = 'image'){
-        $show->field($fieldName, __($label))->image('storage/');
+        $show->field($fieldName, __($label))->image(url('storage').'/');
     }
 
 }
