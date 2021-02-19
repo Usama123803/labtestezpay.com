@@ -50,9 +50,6 @@ class PatientController extends AdminController
 
         $grid->column('id', __('Id'))->sortable();
 
-        $grid->column('front')->lightbox(['width' => 50, 'height' => 50]);
-        $grid->column('back')->lightbox(['width' => 50, 'height' => 50]);
-
         $grid->column('Name')->display(function () {
             return $this->first_name." ".$this->last_name;
         });
@@ -98,6 +95,9 @@ class PatientController extends AdminController
             }
             return "";
         });
+
+        $grid->column('front')->lightbox(['width' => 50, 'height' => 50]);
+        $grid->column('back')->lightbox(['width' => 50, 'height' => 50]);
 
         $grid->disableCreateButton();
         $grid->actions(function ($actions) {
