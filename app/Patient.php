@@ -71,4 +71,9 @@ class Patient extends Model
         return $this->belongsToMany('App\CovidSymptom','patient_covid_symptoms');
     }
 
+    public function documents()
+    {
+        return $this->hasMany(DocumentPatients::class);
+    }
+
 }

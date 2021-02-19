@@ -55,6 +55,9 @@ class HomeController extends Controller
             $patient = new Patient;
             $patient->first_name        =   $request->first_name;
             $patient->last_name         =   $request->last_name;
+
+            $patient->full_name         =   $request->first_name. ' '. $request->last_name;
+
             $patient->email_address     =   $request->email_address;
             $patient->gender            =   $request->gender;
             $patient->dob               =   $request->dob;

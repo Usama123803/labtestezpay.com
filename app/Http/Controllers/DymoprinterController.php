@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Patient;
 use Illuminate\Http\Request;
 use Spatie\PdfToText\Pdf;
 
@@ -129,15 +130,69 @@ class DymoprinterController extends Controller
 
 //        dd($pdfDoc);
 
-        $text = (new Pdf())
-            ->setPdf($pdfDoc)
-            ->setOptions(['-layout', 'r 96'])
-            ->text();
+//        $text = (new Pdf())
+//            ->setPdf($pdfDoc)
+//            ->setOptions(['-layout', 'r 96'])
+//            ->text();
 
-        if (str_contains($text, 'Name: Syed Rizvi')) {
-            echo 'true';
-            dd($text);
+        $text = $this->getPDFText();
+
+        preg_match_all('/DOB: (?<dob>.*?) /', $text, $m);
+        preg_match_all('/Name: (?<name>.*?) {2} /', $text, $a);
+
+//            echo "<pre>";
+//            print_r(end($m['dob']));
+//            print_r(end($a['name']));
+
+        if (isset($m['dob']) && isset($a['name'])) {
+            $dob = end($m['dob']);
+            $name = end($a['name']);
+            $patient = Patient::where([['full_name' => $name],['dob'=> $dob]])->first();
+
+            
+
         }
+//        continue;
+        echo($text);
+    }
+    private function getPDFText(){
+        return 'Gene Street Laboratories, LLC
+                                               11455 Fallbrook Drive, Suite 102, Houston, TX 77065
+                                               Laboratory Director: Jonathan Stein, PhD.                                RT-PCR COVID-19 Report
+                                               CLIA#: 45D2176552 COLA#: 29895
+                                               support@genestreet.com
+
+
+
+
+              Patient Information                                    Specimen Information                                       Facility Information
+ Name: Syed Rizvi                                         Accession Number: GSCOV37177                             Facility Name: LabTest Diagnostics
+                                                                                                                   Houston
+ DOB: 04/20/1966                                          Date Collected: 12/04/2020
+                                                                                                                   Provider Name: LABTEST LLC
+ Gender: M                                                Date Received: 12/04/2020
+                                                                                                                   Address: 8150 Southwest Freeway, Suite
+ Ethnicity:                                               Report Date: 12/04/2020                                  V1, Houston, Texas, 77074
+ Medical Record Number:                                   Sample Type: Nasopharyngeal Swab
+ Address: 23207 Fall Wind Court, Katy,
+ Texas, 77494
+ Phone number: (314) 737-1914
+ Email:
+ Clinical Notes from Ordering Physician:
+
+
+
+
+                            RT-PCR COVID-19 Test Result Summary
+                       SARS-COV-2 NOT DETECTED - NEGATIVE
+
+SARS-CoV-2/2019-nCoV
+Assay                                                                                                 Results
+
+N Protein                                                                                              Not Detected
+ORF 1ab                                                                                                Not Detected
+S Protein                                                                                              Not Detected
+';
     }
 
 }

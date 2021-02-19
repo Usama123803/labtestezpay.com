@@ -1,5 +1,6 @@
 <?php
 
+use Encore\Admin\Admin;
 use Encore\Admin\Grid\Column;
 //use App\Admin\Actions\Post\CustomActions;
 //use Encore\Admin\Grid\Displayers\Actions;
@@ -24,3 +25,5 @@ use Encore\Admin\Grid\Column;
 
 Encore\Admin\Form::forget(['map', 'editor']);
 //Column::define('__actions__', CustomActions::class);
+Admin::css(asset('assets/css/admin_custom.css'));
+Admin::js(asset('assets/js/admin_custom.js'));

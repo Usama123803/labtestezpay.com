@@ -3,6 +3,8 @@
 namespace App\Admin\Controllers;
 
 
+use App\Admin\Actions\Post\AttachPatientTestReport;
+use App\Admin\Actions\Post\SendPatientEmail;
 use App\Admin\Extensions\CheckRow;
 use App\Country;
 use App\Helper\AdminHelper;
@@ -47,6 +49,9 @@ class PatientController extends AdminController
         }
 
         $grid->column('id', __('Id'))->sortable();
+
+        $grid->column('front')->lightbox(['width' => 50, 'height' => 50]);
+        $grid->column('back')->lightbox(['width' => 50, 'height' => 50]);
 
         $grid->column('Name')->display(function () {
             return $this->first_name." ".$this->last_name;
@@ -97,20 +102,12 @@ class PatientController extends AdminController
         $grid->disableCreateButton();
         $grid->actions(function ($actions) {
             $actions->append(new CheckRow($actions->getKey()));
-//            $actions->disableEdit();
- //           $actions->disableDelete();
-//            $actions->prepend('<a href=""><i class="fa fa-paper-plane"></i></a>');
         });
-
-//        $grid->tools(function ($tools) {
-//            $tools->append("<a href='your-create-URI' class='btn btn-default'>Create</a>");
-//        });
 
         AdminHelper::gridDateFormat($grid, 'created_at', 'Created at');
 
         $grid->column('Print')->display(function () {
             $pdfRoute = route('generate.pdf', $this->id);
-//            $emailRoute = route('patient.email', $this->id);
             $emailRoute = '/admin/patient/send-email/'.$this->id;
             $checkInRoute = '/admin/patient/checkin/'.$this->id;
             $btnTitle = 'CheckIn';
@@ -123,16 +120,9 @@ class PatientController extends AdminController
             ";
         });
 
-//        $grid->column('Sticker')->display(function () {
-//            $pdfRoute = route('generate.pdf', $this->id);
-//            return "<a target='_blank' href='".$pdfRoute."' class='fa fa-sticky-note'></a>
-//            ";
-//        });
-
         $grid->filter(function($filter) use ($authUser){
             $filter->like('first_name', 'First Name');
             $filter->like('last_name', 'Last Name');
-//            $filter->equal('dob')->datetime(['format' => 'MM/DD/YYYY']);
             $filter->where(function ($query) {
                 if($this->input){
                     $dob = Carbon::parse($this->input)->format('Y-m-d');
@@ -158,10 +148,11 @@ class PatientController extends AdminController
             }
 
             $filter->equal('checkin')->select([1 => 'Yes', 0 => 'No']);
-
-
         });
 
+//        $grid->tools(function (Grid\Tools $tools) {
+//            $tools->append(new AttachPatientTestReport());
+//        });
 
 
         return $grid;
@@ -184,8 +175,34 @@ class PatientController extends AdminController
         $show->field('dob', __('Dob'));
         $show->field('cell_phone', __('Cell phone'));
 
-        AdminHelper::displayImage($show, "Front Image", 'front');
-        AdminHelper::displayImage($show, "Back Image",'back');
+        $show->field('front', __('Front Image'))->as(function ($front) {
+            return '<div class="printImageContainer">
+                      <img src="'.url('storage/'.$front).'" alt="Front" class="printImage">
+                      <div class="printImageOverlay">
+                        <a href="javascript:void(0)" data-path="'.url('storage/'.$front).'" class="print-image icon" title="Front Image Print">
+                          <i class="fa fa-print"></i>
+                        </a>
+                      </div>
+                    </div>';
+        })->unescape();
+
+        $show->field('back', __('Back Image'))->as(function ($back) {
+            return '<div class="printImageContainer">
+                      <img src="'.url('storage/'.$back).'" alt="Front" class="printImage">
+                      <div class="printImageOverlay">
+                        <a href="javascript:void(0)" data-path="'.url('storage/'.$back).'" class="print-image icon" title="Front Image Print">
+                          <i class="fa fa-print"></i>
+                        </a>
+                      </div>
+                    </div>';
+        })->unescape();
+
+//        $show->field('back', __('Back Image'))->as(function ($back) {
+//            return "<a href='javascript:void(0)' data-path='".url('storage/'.$back)."' class='print-image'><img src='".url('storage/'.$back)."' style='max-width:200px'></a>";
+//        })->unescape();
+
+        //AdminHelper::displayImage($show, "Front Image", 'front');
+        //AdminHelper::displayImage($show, "Back Image",'back');
 
         $show->field('is_fax', __('Is fax'))->as(function ($is_fax) {
             if($is_fax === 1){
@@ -280,6 +297,9 @@ class PatientController extends AdminController
             );
             $form->textarea('blood_remark', __('Blood Remark'));
             $form->file('additional_doc', __('Additional Document'));
+
+            //$form->multipleFile('documents')->pathColumn('url')->rules('required|mimes:pdf');
+
         });
 
         $form->tools(function (Form\Tools $tools) {

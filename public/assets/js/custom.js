@@ -3,24 +3,24 @@ $(function(){
     //Contact Form Validation
     if($('#patientForm').length){
 
-        // jQuery.validator.addMethod("filesize", function(value, element, param) {
-        //     var isOptional = this.optional(element),
-        //         file;
-        //
-        //     if(isOptional) {
-        //         return isOptional;
-        //     }
-        //
-        //     if ($(element).attr("type") === "file") {
-        //
-        //         if (element.files && element.files.length) {
-        //
-        //             file = element.files[0];
-        //             return ( file.size && file.size <= param );
-        //         }
-        //     }
-        //     return false;
-        // }, "File size must be less than 2MB");
+        jQuery.validator.addMethod("filesize", function(value, element, param) {
+            var isOptional = this.optional(element),
+                file;
+
+            if(isOptional) {
+                return isOptional;
+            }
+
+            if ($(element).attr("type") === "file") {
+
+                if (element.files && element.files.length) {
+
+                    file = element.files[0];
+                    return ( file.size && file.size <= param );
+                }
+            }
+            return false;
+        }, "File size must be less than 2MB");
 
 
 
@@ -74,16 +74,16 @@ $(function(){
                 term: {
                     required: true
                 },
-                // front_picture: {
-                //     required: true,
-                //     extension: "jpg|jpeg|png",
-                //     filesize: 2000000,
-                // },
-                // back_picture: {
-                //     required: true,
-                //     extension: "jpg|jpeg|png",
-                //     filesize: 2000000,
-                // }
+                front_picture: {
+                    required: false,
+                    extension: "jpg|jpeg|png",
+                    filesize: 2000000,
+                },
+                back_picture: {
+                    required: false,
+                    extension: "jpg|jpeg|png",
+                    filesize: 2000000,
+                }
             }
         });
     }
