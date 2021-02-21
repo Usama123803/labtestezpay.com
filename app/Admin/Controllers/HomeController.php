@@ -24,7 +24,7 @@ class HomeController extends Controller
         return $content
             ->title('Dashboard')
             ->description('Description...')
-            ->view('pages.timesheet', compact('timesheet'));
+            ->view('pages.timesheet', compact('timesheet', 'authUser'));
     }
 
     public function patientEmail(Content $content, $id)

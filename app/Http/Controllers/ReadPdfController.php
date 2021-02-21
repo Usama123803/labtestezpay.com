@@ -14,36 +14,40 @@ class ReadPdfController extends Controller
     public function index(Request $request)
     {
 
-        if($request->allFiles()) {
-            foreach ($request->allFiles()['file'] as $file) {
-                $text = (new Pdf())
-                    ->setPdf($file)
-                    ->setOptions(['-layout', 'r 96'])
-                    ->text();
+        try {
+            if($request->allFiles()) {
+                foreach ($request->allFiles()['file'] as $file) {
+                    $text = (new Pdf())
+                        ->setPdf($file)
+                        ->setOptions(['-layout', 'r 96'])
+                        ->text();
 
-                // For Just Testing Purpose in Local
+                    // For Just Testing Purpose in Local
 //                $text = $this->getPDFText();
 
-                preg_match_all('/DOB: (?<dob>.*?) /', $text, $m);
-                preg_match_all('/Name: (?<name>.*?) {2} /', $text, $a);
-                if (isset($m['dob']) && isset($a['name'])) {
-                    $dob = end($m['dob']);
-                    $name = end($a['name']);
-                    $dob = Carbon::parse($dob)->format('Y-m-d');
-                    $patient = Patient::where(['full_name' => $name], ['dob' => $dob])->first();
-                    if ($patient) {
-                        $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                        $filePath = GeneralHelper::uploadAttachment($file, $fileName);
-                        DocumentPatients::create([
-                            'patient_id' => $patient->id,
-                            'url' => $filePath,
-                            'created_at' => date('Y-m-d h:i:s')
-                        ]);
+                    preg_match_all('/DOB: (?<dob>.*?) /', $text, $m);
+                    preg_match_all('/Name: (?<name>.*?) {2} /', $text, $a);
+                    if (isset($m['dob']) && isset($a['name'])) {
+                        $dob = end($m['dob']);
+                        $name = end($a['name']);
+                        $dob = Carbon::parse($dob)->format('Y-m-d');
+                        $patient = Patient::where(['full_name' => $name], ['dob' => $dob])->first();
+                        if ($patient) {
+                            $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                            $filePath = GeneralHelper::uploadAttachment($file, $fileName);
+                            DocumentPatients::create([
+                                'patient_id' => $patient->id,
+                                'url' => $filePath,
+                                'created_at' => date('Y-m-d h:i:s')
+                            ]);
+                        }
                     }
                 }
             }
+            return redirect()->back()->with('status','Patient test report files uploaded successfully');
+        }catch (\Exception $e){
+            return redirect()->back()->with('statusError',$e->getMessage());
         }
-        return redirect()->back()->with('status','Patient test report files uploaded successfully');
     }
 
     private function getPDFText(){

@@ -30,4 +30,21 @@ $(function(){
         $.fancybox.open(url);
     });
 
+    // $("#reportUploadBtn").click(function(){
+    //     var $fileUpload = $("input[type='file']");
+    //     if (parseInt($fileUpload.get(0).files.length) > 1){
+    //         alert("You are only allowed to upload a maximum of 1 files");
+    //         return;
+    //     }
+    // });
+
+    $("#pdfFile").on("change", function() {
+        if ($("#pdfFile")[0].files.length > 20) {
+            $('#reportUploadBtn').attr('disabled',true);
+            alert("You can select only 20 pdf");
+        } else {
+            $('#reportUploadBtn').attr('disabled',false);
+        }
+    });
+
 });

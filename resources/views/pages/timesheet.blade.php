@@ -11,6 +11,8 @@
     </div>
 </div>
 
+@if($authUser->id == 1)
+
 <div class="row patient-test-report">
     <div class="col-sm-6">
 
@@ -19,27 +21,25 @@
                 {{ session('status') }}
             </div>
         @endif
-
-{{--            @if ($message)--}}
-{{--                <div class="alert alert-success mt-2">--}}
-{{--                    {{ $message }}--}}
-{{--                </div>--}}
-{{--            @endif--}}
-{{--        @if (Session::has('error'))--}}
-{{--            <div class="alert alert-danger mt-2">--}}
-{{--                {!! Session::get('error') !!}--}}
-{{--            </div>--}}
-{{--        @endif--}}
+        @if (session('statusError'))
+            <div class="alert alert-danger mt-2">
+                {{ session('statusError') }}
+            </div>
+        @endif
 
         <form method="POST" action="{{ url('admin/test-pdf-report') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <input type="file" required accept="application/pdf" multiple name="file[]" class="form-control" />
+                <input type="file" id="pdfFile" required accept="application/pdf" multiple name="file[]" class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" class="btn-sm btn btn-primary" value="Upload Patient Test Report" />
+                <input type="submit" class="btn-sm btn btn-primary" id="reportUploadBtn" value="Upload Patient Test Report" />
             </div>
         </form>
     </div>
 </div>
+
+@endif
+
+
 
