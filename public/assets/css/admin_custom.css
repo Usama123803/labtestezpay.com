@@ -46,3 +46,9 @@
 .printImageOverlay .fa-print:hover {
     color: #eee;
 }
+.grid-image-thumbnail{
+    width: 20px;
+}
+.patient-test-report{
+    margin-top: 20px;
+}

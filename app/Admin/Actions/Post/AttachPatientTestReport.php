@@ -36,9 +36,10 @@ class AttachPatientTestReport extends Action
 
     public function form()
     {
-      // $this->multipleFile('documents')->pathColumn('url')->rules('required|mimes:pdf');
+//        $this->multipleFile('documents')->pathColumn('url');
 
-       //$this->file('anc', 'Please select file')->rules('required|mimes:pdf');
+//       $this->multipleFile('documents')->pathColumn('url')->rules('required|mimes:pdf');
+        //$this->file('anc', 'Please select file')->rules('required|mimes:pdf');
     }
 
     public function html()

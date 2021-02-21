@@ -96,8 +96,18 @@ class PatientController extends AdminController
             return "";
         });
 
-        $grid->column('front')->lightbox(['width' => 50, 'height' => 50]);
-        $grid->column('back')->lightbox(['width' => 50, 'height' => 50]);
+        $grid->column('front', __('Front'))->display(function ($front) {
+            return '<a href="javascript:void(0)" data-url="'.url('storage/'.$front).'" class="fancybox-manual-a" title="">
+                          <img class="grid-image-thumbnail" src="'.url('storage/'.$front).'" alt="Front Image" />
+                        </a>';
+        });
+
+        $grid->column('back', __('Back'))->display(function ($back) {
+            return '<a href="javascript:void(0)" data-url="'.url('storage/'.$back).'" class="fancybox-manual-a" title="">
+                          <img class="grid-image-thumbnail" src="'.url('storage/'.$back).'" alt="Back Image" />
+                        </a>';
+        });
+
 
         $grid->disableCreateButton();
         $grid->actions(function ($actions) {
@@ -176,6 +186,9 @@ class PatientController extends AdminController
         $show->field('cell_phone', __('Cell phone'));
 
         $show->field('front', __('Front Image'))->as(function ($front) {
+            if(empty($front)){
+                return '';
+            }
             return '<div class="printImageContainer">
                       <img src="'.url('storage/'.$front).'" alt="Front" class="printImage">
                       <div class="printImageOverlay">
@@ -187,19 +200,18 @@ class PatientController extends AdminController
         })->unescape();
 
         $show->field('back', __('Back Image'))->as(function ($back) {
+            if(empty($back)){
+                return '';
+            }
             return '<div class="printImageContainer">
-                      <img src="'.url('storage/'.$back).'" alt="Front" class="printImage">
+                      <img src="'.url('storage/'.$back).'" alt="Back" class="printImage">
                       <div class="printImageOverlay">
-                        <a href="javascript:void(0)" data-path="'.url('storage/'.$back).'" class="print-image icon" title="Front Image Print">
+                        <a href="javascript:void(0)" data-path="'.url('storage/'.$back).'" class="print-image icon" title="Back Image Print">
                           <i class="fa fa-print"></i>
                         </a>
                       </div>
                     </div>';
         })->unescape();
-
-//        $show->field('back', __('Back Image'))->as(function ($back) {
-//            return "<a href='javascript:void(0)' data-path='".url('storage/'.$back)."' class='print-image'><img src='".url('storage/'.$back)."' style='max-width:200px'></a>";
-//        })->unescape();
 
         //AdminHelper::displayImage($show, "Front Image", 'front');
         //AdminHelper::displayImage($show, "Back Image",'back');

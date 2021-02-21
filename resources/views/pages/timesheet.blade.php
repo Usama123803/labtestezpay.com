@@ -11,3 +11,35 @@
     </div>
 </div>
 
+<div class="row patient-test-report">
+    <div class="col-sm-6">
+
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
+{{--            @if ($message)--}}
+{{--                <div class="alert alert-success mt-2">--}}
+{{--                    {{ $message }}--}}
+{{--                </div>--}}
+{{--            @endif--}}
+{{--        @if (Session::has('error'))--}}
+{{--            <div class="alert alert-danger mt-2">--}}
+{{--                {!! Session::get('error') !!}--}}
+{{--            </div>--}}
+{{--        @endif--}}
+
+        <form method="POST" action="{{ url('admin/test-pdf-report') }}" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <input type="file" required accept="application/pdf" multiple name="file[]" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn-sm btn btn-primary" value="Upload Patient Test Report" />
+            </div>
+        </form>
+    </div>
+</div>
+

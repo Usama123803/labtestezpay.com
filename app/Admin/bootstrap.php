@@ -26,4 +26,6 @@ use Encore\Admin\Grid\Column;
 Encore\Admin\Form::forget(['map', 'editor']);
 //Column::define('__actions__', CustomActions::class);
 Admin::css(asset('assets/css/admin_custom.css'));
+Admin::css(asset('assets/css/jquery.fancybox.css'));
+Admin::js(asset('assets/js/jquery.fancybox.js'));
 Admin::js(asset('assets/js/admin_custom.js'));

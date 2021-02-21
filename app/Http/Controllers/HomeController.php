@@ -74,11 +74,11 @@ class HomeController extends Controller
 
             $patient->front = null;
             if($request->file('front_picture')){
-                $patient->front = GeneralHelper::uploadAttachment($request, 'front_picture');
+                $patient->front = GeneralHelper::uploadAttachment($request->file('front_picture'), 'front_picture');
             }
             $patient->back = null;
             if($request->file('back_picture')){
-                $patient->back  = GeneralHelper::uploadAttachment($request, 'back_picture');
+                $patient->back  = GeneralHelper::uploadAttachment($request->file('back_picture'), 'back_picture');
             }
 
             $patient->paid_or_free      =   $request->paid_or_free;

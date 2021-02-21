@@ -21,7 +21,6 @@ class HomeController extends Controller
     {
         $authUser = Auth::guard('admin')->user();
         $timesheet = Timesheet::whereDate('created_at', Carbon::today())->where('user_id',$authUser->id)->first();
-
         return $content
             ->title('Dashboard')
             ->description('Description...')

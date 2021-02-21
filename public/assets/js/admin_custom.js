@@ -23,4 +23,11 @@ $(function(){
         PrintImage(path);
     });
 
+    // $('.fancybox').fancybox();
+
+    $(document).on('click','.fancybox-manual-a',function() {
+        const url = $(this).data('url');
+        $.fancybox.open(url);
+    });
+
 });
