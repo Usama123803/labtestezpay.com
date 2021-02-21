@@ -97,15 +97,21 @@ class PatientController extends AdminController
         });
 
         $grid->column('front', __('Front'))->display(function ($front) {
-            return '<a href="javascript:void(0)" data-url="'.url('storage/'.$front).'" class="fancybox-manual-a" title="">
+            if($front){
+                return '<a href="javascript:void(0)" data-url="'.url('storage/'.$front).'" class="fancybox-manual-a" title="">
                           <img class="grid-image-thumbnail" src="'.url('storage/'.$front).'" alt="Front Image" />
                         </a>';
+            }
+            return '';
         });
 
         $grid->column('back', __('Back'))->display(function ($back) {
-            return '<a href="javascript:void(0)" data-url="'.url('storage/'.$back).'" class="fancybox-manual-a" title="">
+            if($back){
+                return '<a href="javascript:void(0)" data-url="'.url('storage/'.$back).'" class="fancybox-manual-a" title="">
                           <img class="grid-image-thumbnail" src="'.url('storage/'.$back).'" alt="Back Image" />
                         </a>';
+            }
+            return '';
         });
 
 
