@@ -6,7 +6,7 @@ $(function(){
             "setTimeout('step2()', 10);}\n" +
             "function step2(){window.print();window.close()}\n" +
             "</scri" + "pt></head><body onload='step1()'>\n" +
-            "<img src='" + source + "' /></body></html>";
+            "<img src='" + source + "' height='100%' /></body></html>";
     }
 
     function PrintImage(source)
