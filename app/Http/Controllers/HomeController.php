@@ -101,12 +101,12 @@ class HomeController extends Controller
             $patient->created_at        =   date('Y-m-d h:i:s');
             $patient->save();
 
-            $covidSymptomData = [];
-            if(!empty($request->covidSymptoms)){
-                foreach($request->covidSymptoms as $covidSymptom){
-                    $covidSymptomData[] = array('covid_symptom_id' => $covidSymptom,'patient_id' => $patient->id);
-                }
-            }
+            $covidSymptomData = ['covid_symptom_id' => $request->covidSymptoms,'patient_id' => $patient->id];
+//            if(!empty($request->covidSymptoms)){
+//                foreach($request->covidSymptoms as $covidSymptom){
+//                    $covidSymptomData[] = array('covid_symptom_id' => $covidSymptom,'patient_id' => $patient->id);
+//                }
+//            }
             if($covidSymptomData && count($covidSymptomData) > 0){
                 PatientCovidSymptom::insert($covidSymptomData);
             }

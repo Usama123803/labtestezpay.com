@@ -126,9 +126,21 @@
                                 </select>
                             </div>
 
+{{--                            <div class="form-group col-lg-6 col-md-12 col-sm-12" id="covid_symptoms_div">--}}
+{{--                                <select required="required" id="covid_symptoms_id" name="covidSymptoms[]"--}}
+{{--                                        class="selectpicker w-100 multiselect-dropdown" multiple data-live-search="true"--}}
+{{--                                        title="Select Covid Symptoms">--}}
+{{--                                    @if(!empty($covidSymptoms) && count($covidSymptoms) > 0)--}}
+{{--                                        @foreach($covidSymptoms as $covidSymptom)--}}
+{{--                                            <option value="{{ $covidSymptom->id }}">{{ $covidSymptom->name }}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+
                             <div class="form-group col-lg-6 col-md-12 col-sm-12" id="covid_symptoms_div">
-                                <select required="required" id="covid_symptoms_id" name="covidSymptoms[]"
-                                        class="selectpicker w-100 multiselect-dropdown" multiple data-live-search="true"
+                                <select required="required" id="covid_symptoms_id" name="covidSymptoms"
+                                        class="form-control"
                                         title="Select Covid Symptoms">
                                     @if(!empty($covidSymptoms) && count($covidSymptoms) > 0)
                                         @foreach($covidSymptoms as $covidSymptom)
@@ -137,6 +149,9 @@
                                     @endif
                                 </select>
                             </div>
+
+
+
                         </div>
 
                         <div class="form-row">
