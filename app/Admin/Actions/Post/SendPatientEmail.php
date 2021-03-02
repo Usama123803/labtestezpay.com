@@ -20,13 +20,13 @@ class SendPatientEmail extends Action
     {
         if($request->all()){
             $email = $request->get('email');
-            $fileName = $this->uploadImage($request);
+            $fileName = $this->uploadImage($request->file('file'),'patients');
             $subject = 'Patient Report - '. date('Y-m-d');
             $message = 'Please check the below attachment';
             $response = Mail::to($email)->send(new PatientReportMailer($subject,$fileName,$message));
-            if($response){
-                Storage::disk('public')->delete('patients/'.$fileName);
-            }
+            //if ($response) {
+                //Storage::disk('public')->delete('patients/'.$fileName);
+            //}
         }
         return $this->response()->success('Email is sent successfully')->refresh();
     }
@@ -44,11 +44,19 @@ class SendPatientEmail extends Action
 HTML;
     }
 
-    private function uploadImage($request){
+    private function uploadImage($request, $fileName = 'file', $path = 'patients'){
         if($request){
-            $fileName = time().'.'.$request->file->extension();
-            Storage::disk('public')->putFileAs('patients', $request->file('file'), $fileName);
-            return $fileName;
+           // $request->file('front_picture');
+//            $fileName = time().'.'.$request->file->extension();
+//            dd($fileName);
+
+            $random = time().rand(10,100);
+            $newName = $fileName.'_'.$random. '.' . $request->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs($path, $request, $newName);
+            return $newName;
+
+//            Storage::disk('public')->putFileAs('patients', $request->file('file'), $fileName);
+//            return $fileName;
         }
         return null;
     }
