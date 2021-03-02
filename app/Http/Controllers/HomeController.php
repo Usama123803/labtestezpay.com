@@ -57,6 +57,8 @@ class HomeController extends Controller
             $patient->last_name         =   $request->last_name;
 
             $patient->full_name         =   $request->first_name. ' '. $request->last_name;
+           // $patient->parent_name       =   $request->parent_name;
+            //$patient->relation_name     =   $request->relation_name;
 
             $patient->email_address     =   $request->email_address;
             $patient->gender            =   $request->gender;
