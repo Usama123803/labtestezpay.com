@@ -37,7 +37,7 @@ class PatientReportMailer extends Mailable
     {
         return $this->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'))
             ->subject($this->subject)
-            ->text($this->message)
+            ->view('emails.patient-report')
             ->attach(public_path('storage/patients/'.$this->fileName));
     }
 }

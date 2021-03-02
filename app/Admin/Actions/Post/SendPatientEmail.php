@@ -24,9 +24,9 @@ class SendPatientEmail extends Action
             $subject = 'Patient Report - '. date('Y-m-d');
             $message = 'Please check the below attachment';
             $response = Mail::to($email)->send(new PatientReportMailer($subject,$fileName,$message));
-            //if ($response) {
-                //Storage::disk('public')->delete('patients/'.$fileName);
-            //}
+            if ($response) {
+                Storage::disk('public')->delete('patients/'.$fileName);
+            }
         }
         return $this->response()->success('Email is sent successfully')->refresh();
     }
