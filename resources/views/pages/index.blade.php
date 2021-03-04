@@ -213,6 +213,18 @@
                                </div> --}}
                         </div>
 
+                        <div class="form-row child-relation hideMe">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                <input id="parent_name" name="parent_name" placeholder="Parent Name"
+                                       class="form-control" type="text">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                <input id="relation_name" name="relation_name" placeholder="Relationship of parent"
+                                       class="form-control" type="text">
+                            </div>
+
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                 <textarea id="address" name="address" required="required" placeholder="Address"
@@ -433,9 +445,19 @@
                             </div>
                         </div>
 
+                        <div class="form-row child-relation-cb hideMe">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="parent_checkbox" id="parent_checkbox" value="1">
+                                    <label class="form-check-label" for="parent_checkbox">
+                                        <small>As the parent, I authorize the Lab testing facility to collect and test a nasal or blood sample of my child for COVID-19 testing.</small>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group">
-                                {{-- <div class="form-group"> --}}
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="terms" id="terms" value="1"
                                            required>
@@ -444,8 +466,6 @@
                                                 href="{{ url('/terms-and-condition') }}">Terms & Conditions.</a></small>
                                     </label>
                                 </div>
-                                {{--  </div> --}}
-
                             </div>
                         </div>
 
