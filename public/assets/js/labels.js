@@ -83,7 +83,6 @@ function dymoTemplate() {
         url: "shipping-label",
         dataType: "text"
     }).then(function (data, textStatus, jqXHR) {
-        console.log('dymoTemplate',data, textStatus, jqXHR);
         shippingLabelTemplate = data;
         printerViewModel.lebelajaxResponseCode(jqXHR.status);
         printerViewModel.lebelAjaxComplete(true);
@@ -93,7 +92,7 @@ function dymoTemplate() {
 function dymoPrint() {
     printerViewModel.message("Spooling");
     var label = dymo.label.framework.openLabelXml(shippingLabelTemplate);
-    label.setObjectText('TEXT', document.getElementById("address-box").value);
+    label.setObjectText('Text', document.getElementById("address-box").value);
     label.printAsync(printerViewModel.printerName()).then(function (state) {
         if (state) {
             printerViewModel.message("Printing");

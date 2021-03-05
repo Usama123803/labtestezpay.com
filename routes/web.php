@@ -25,7 +25,7 @@ Route::get('/admin/checkout', 'TimesheetController@checkOut');
 Route::get('/admin/breakin', 'TimesheetController@breakIn');
 Route::get('/admin/breakout', 'TimesheetController@breakOut');
 //Route::get('/patient/generate-sticker-pdf/{id}', 'HomeController@printStickerPdf')->name('generate.pdf');
-Route::get('/dymo-printer', 'DymoprinterController@index');
+Route::get('/dymo-printer/{id}', 'DymoprinterController@index');
 Route::get('/shipping-label', 'DymoprinterController@labelXML');
 //Route::get('/read-pdf', 'DymoprinterController@readPdf');
 Route::post('admin/test-pdf-report', 'ReadPdfController@index');

@@ -11,7 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 {{--    <script type="text/javascript" src="http://labelwriter.com/software/dls/sdk/js/dymo.connect.framework.js"></script>--}}
     <script type="text/javascript" src="{{ asset('assets/js/dymo.connect.framework.js') }}"></script>
-{{--    <script type="text/javascript" src="labels.js"></script>--}}
     <script src="{{ asset('assets/js/labels.js') }}"></script>
 </head>
 <body>
@@ -19,7 +18,7 @@
     <h1 class="page-header">Print an Address Label <small>With a Dymo LabelWriter</small></h1>
     <form>
         <div class="form-group">
-            <textarea id="address-box" name="address-box" class="form-control" rows="6" disabled="disabled" data-bind="disable: message() !== 'Ready'"></textarea>
+            <textarea id="address-box" name="address-box" class="form-control" rows="6" disabled="disabled" data-bind="disable: message() !== 'Ready'">{!! nl2br($address) !!} </textarea>
         </div>
         <div class="row">
             <div class="col-md-12">

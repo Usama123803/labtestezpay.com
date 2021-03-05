@@ -77,11 +77,7 @@ class PatientController extends AdminController
             return Carbon::parse($time)->format('h:i a');
         })->sortable();
 
-//        $grid->column('timeslot', __('Appointment Time'))->sortable();
-
-//        $grid->column('city', __('City'));
         $grid->column('state.name', __('State'));
-//        $grid->column('status', __('Status'))->bool();
         $grid->column('paid_or_free', __('Paid/Free'))->display(function ($title) {
             if($title == 0){
                 return "Free";
@@ -130,8 +126,10 @@ class PatientController extends AdminController
             if($this->checkin == 1){
                 $btnTitle = 'CheckOut';
             }
+            $printRoute = '/dymo-printer/'.$this->id;
             return "<a target='_blank' href='".$pdfRoute."' class='fa fa-file-pdf-o'></a>&nbsp;
                     <a href='".$emailRoute."' class='fa fa-envelope'></a>
+                    <a target='_blank' href='".$printRoute."' class='fa fa-print'></a>
                     <a href='".$checkInRoute."' class='btn btn-sm btn-primary'>$btnTitle</a>
             ";
         });
