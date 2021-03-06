@@ -14,7 +14,11 @@ class DymoprinterController extends Controller
             abort(404);
         }
         $patient = Patient::find($id);
-        $address = $patient->full_name.' \n DOB:'.$patient->dob.' \n Collection:'.$patient->appointment;
+        $address = '';
+        if ($patient) {
+            $fullName = $patient->first_name . ' ' . $patient->last_name;
+            $address = empty($patient->full_name) ? $fullName : $patient->full_name . ' \n DOB:' . $patient->dob . ' \n Collection:' . $patient->appointment;
+        }
         return view('pages.dymo-printer',compact('address'));
     }
 
