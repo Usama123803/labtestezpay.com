@@ -71,16 +71,14 @@ function dymoPrinter() {
             printerViewModel.printerChecked(true);
         });
     } catch (err) {
-
-        console.log('asasas');
-
         printerViewModel.message(err.message);
     }
 }
 
 function dymoTemplate() {
     $.ajax({
-        url: "shipping-label",
+        // url: "shipping-label",
+        url: config.routes.shippingLabel,
         dataType: "text"
     }).then(function (data, textStatus, jqXHR) {
         shippingLabelTemplate = data;

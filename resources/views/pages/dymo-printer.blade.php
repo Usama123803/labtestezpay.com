@@ -11,6 +11,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 {{--    <script type="text/javascript" src="http://labelwriter.com/software/dls/sdk/js/dymo.connect.framework.js"></script>--}}
     <script type="text/javascript" src="{{ asset('assets/js/dymo.connect.framework.js') }}"></script>
+    <script>
+        // global app configuration object
+        const config = {
+            routes: {
+                shippingLabel: "{{ URL::to('shipping-label') }}"
+            }
+        };
+    </script>
     <script src="{{ asset('assets/js/labels.js') }}"></script>
 </head>
 <body>
@@ -26,9 +34,9 @@
                     <button class="btn btn-primary" onclick="return dymoPrint()"  disabled="disabled" data-bind="disable: message() !== 'Ready'">
                         Print label
                     </button>
-                    <button type="reset" class="btn btn-default" disabled="disabled" data-bind="disable: message() !== 'Ready'">
-                        Clear
-                    </button>
+{{--                    <button type="reset" class="btn btn-default" disabled="disabled" data-bind="disable: message() !== 'Ready'">--}}
+{{--                        Clear--}}
+{{--                    </button>--}}
                     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#debugModal">
                         <span data-bind="text: message">Loading</span>
                     </button>
