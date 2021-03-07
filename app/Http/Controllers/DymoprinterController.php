@@ -17,7 +17,11 @@ class DymoprinterController extends Controller
         $address = '';
         if ($patient) {
             $fullName = $patient->first_name . ' ' . $patient->last_name;
-            $address = empty($patient->full_name) ? $fullName : $patient->full_name . ' \n DOB:' . $patient->dob . ' \n Collection:' . $patient->appointment;
+            $address = empty($patient->full_name) ? $fullName : $patient->full_name
+            . '<br />DOB:' . $patient->dob
+            . '<br />Collection:' . $patient->appointment;
+            $address = str_replace('<br />', PHP_EOL, $address);
+
         }
         return view('pages.dymo-printer',compact('address'));
     }

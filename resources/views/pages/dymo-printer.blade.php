@@ -26,7 +26,7 @@
     <h1 class="page-header">Print an Address Label <small>With a Dymo LabelWriter</small></h1>
     <form>
         <div class="form-group">
-            <textarea id="address-box" name="address-box" class="form-control" rows="6" disabled="disabled" data-bind="disable: message() !== 'Ready'">{!! nl2br($address) !!} </textarea>
+            <textarea id="address-box" name="address-box" class="form-control" rows="6" disabled="disabled" data-bind="disable: message() !== 'Ready'">{!! $address !!} </textarea>
         </div>
         <div class="row">
             <div class="col-md-12">
