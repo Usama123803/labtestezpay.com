@@ -28,7 +28,7 @@ Route::group([
 
     $router->resource('patients-report', PatientReportController::class);
 
-    //$router->post('admin/test-pdf-report', 'ReadPdfController@index');
+    $router->resource('document-patients', DocumentPatientsController::class);
 
 });
 
