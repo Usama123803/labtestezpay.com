@@ -27,15 +27,18 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ url('admin/test-pdf-report') }}" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-                <input type="file" id="pdfFile" required accept="application/pdf" multiple name="file[]" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn-sm btn btn-primary" id="reportUploadBtn" value="Upload Patient Test Report" />
-            </div>
-        </form>
+
+
+{{--        <form method="POST" action="{{ url('admin/test-pdf-report') }}" enctype="multipart/form-data">--}}
+{{--            @csrf--}}
+{{--            <div class="form-group">--}}
+{{--                <input type="file" id="pdfFile" required accept="application/pdf" multiple name="file[]" class="form-control" />--}}
+{{--            </div>--}}
+{{--            <div class="form-group">--}}
+{{--                <input type="submit" class="btn-sm btn btn-primary" id="reportUploadBtn" value="Upload Patient Test Report" />--}}
+{{--            </div>--}}
+{{--        </form>--}}
+
     </div>
 </div>
 

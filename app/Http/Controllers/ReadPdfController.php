@@ -13,7 +13,6 @@ class ReadPdfController extends Controller
 {
     public function index(Request $request)
     {
-
         try {
             if($request->allFiles()) {
                 foreach ($request->allFiles()['file'] as $file) {
