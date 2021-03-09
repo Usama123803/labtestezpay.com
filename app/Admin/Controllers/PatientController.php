@@ -127,9 +127,11 @@ class PatientController extends AdminController
                 $btnTitle = 'CheckOut';
             }
             $printRoute = '/dymo-printer/'.$this->id;
+            $emailLoginRoute = '/admin/patient/send-credentials/'.$this->id;
             return "<a target='_blank' href='".$pdfRoute."' class='fa fa-file-pdf-o'></a>&nbsp;
                     <a href='".$emailRoute."' class='fa fa-envelope'></a>
                     <a target='_blank' href='".$printRoute."' class='fa fa-print'></a>
+                    <a title='Send Login Email to Patient' href='".$emailLoginRoute."' class='fa fa-envelope-open-o'></a>
                     <a href='".$checkInRoute."' class='btn btn-sm btn-primary'>$btnTitle</a>
             ";
         });

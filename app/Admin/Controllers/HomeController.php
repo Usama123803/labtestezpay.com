@@ -35,6 +35,21 @@ class HomeController extends Controller
         return back();
     }
 
+    public function patientLoginEmail(Content $content, $id)
+    {
+        if ($id) {
+            $patient = Patient::find($id);
+            $subject = 'Login Credentials';
+            Mail::send('emails.patient-login', compact("patient"), function ($m)
+            use ($subject, $patient) {
+                $m->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'));
+                $m->to($patient->email, $patient->full_name)->subject($subject);
+            });
+        }
+        $content->withSuccess('Email send successfully to '.$patient->full_name, 'Email sent');
+        return back();
+    }
+
     public function patientCheckIn(Content $content, $id)
     {
         $patient = Patient::find($id);
