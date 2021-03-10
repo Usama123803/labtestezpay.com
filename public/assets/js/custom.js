@@ -1,7 +1,7 @@
 
 $(function(){
 
-    const ageChecked = 18;
+    const ageChecked = 216;
 
     //Contact Form Validation
     if($('#patientForm').length){
@@ -97,7 +97,7 @@ $(function(){
         showMaskOnHover: false,
         showMaskOnFocus: false,
     }).on('change',function(){
-        const age = calculate_age(new Date($(this).val()));
+        const age = calculate_age($(this).val());
         if (age <= ageChecked) {
             $('.child-relation, .child-relation-cb').removeClass('hideMe');
             $('#parent_name, #relation_name, #parent_checkbox').addClass('required').attr('required', true);
@@ -153,7 +153,17 @@ $(function(){
 });
 
 function calculate_age(dob) {
-    var diff_ms = Date.now() - dob.getTime();
-    var age_dt = new Date(diff_ms);
-    return Math.abs(age_dt.getUTCFullYear() - 1970);
+    // var diff_ms = Date.now() - dob.getTime();
+    // var age_dt = new Date(diff_ms);
+    // return Math.abs(age_dt.getUTCFullYear() - 1970);
+
+
+    const today = new Date();
+    const birthDate = new Date(dob);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    age = age * 12 + m;
+
+    return age;
+
 }
