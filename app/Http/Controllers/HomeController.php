@@ -11,7 +11,7 @@ use App\Mail\PatientMailer;
 use App\Patient;
 use App\PatientCovidSymptom;
 use App\State;
-//use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Crypt;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use DateInterval;
@@ -187,9 +187,14 @@ class HomeController extends Controller
 
     }
 
-    public function termsAndCondition()
+    public function termsAndCondition($encryptLocationId)
     {
-        return view('pages.terms-and-condition');
+        $id = Crypt::decryptString($encryptLocationId);
+        $location = Location::find($id);
+        if(!$location && !$location->terms_and_condition){
+            abort(404);
+        }
+        return view('pages.terms-and-condition',compact('location'));
     }
 
     public function locationById()
@@ -241,7 +246,8 @@ class HomeController extends Controller
             "result"=> $result,
             "disabledDates"=> $disabledDates,
             "timeSlots"=> $timeSlots,
-            "timeSlotsOptions"=> $timeSlotsOptions
+            "timeSlotsOptions"=> $timeSlotsOptions,
+            "encryptedLocationId"=> Crypt::encryptString($result->id),
         ]);
     }
 

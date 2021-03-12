@@ -119,6 +119,8 @@ class LocationController extends AdminController
             $form->table('disabled_appointment_dates', function ($table) {
                 $table->date('appointment_date');
             });
+        })->tab('Terms & Condition', function ($form) {
+            $form->summernote('terms_and_condition', __('Terms and Condition'))->required();
         });
 
         return $form;
