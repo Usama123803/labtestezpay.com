@@ -3,10 +3,14 @@
 @section('title') Terms and Condition - LabWork360 @endsection
 
 @section('content')
+<div class="container">
+<section>
+	
 
     {!! $location->terms_and_condition !!}
 
-
+</section>
+</div>
 {{--  ADD HTML HERE  --}}
 {{--<div class="container">--}}
 {{--<section>--}}
