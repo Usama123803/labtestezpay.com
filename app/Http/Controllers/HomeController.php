@@ -132,6 +132,9 @@ class HomeController extends Controller
             $patient->checkin = 1;
             $patient->save();
         }
+
+//        dd($patient->location->terms_and_condition);
+
         $covidSymptoms = $patient->covidSymptoms->pluck('name')->implode(', ');
         $data = ['title' => 'Patient COVID-19 Report'];
         //date in mm/dd/yyyy format; or it can be in other formats as well
@@ -148,8 +151,7 @@ class HomeController extends Controller
         $data['dob_year'] = $birthDate[2];
         $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
             ->loadView('pdf.patient',compact('data','patient','covidSymptoms'));
-        return $pdf->stream();
-//        return $pdf->download('patient.pdf');
+                return $pdf->stream();
 //        return view('pdf.patient',compact('data','patient'));
     }
 

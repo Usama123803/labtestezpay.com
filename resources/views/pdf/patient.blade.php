@@ -56,6 +56,9 @@
         .width-60{
             width: 60px !important;
         }
+        div.page_break + div.page_break{
+            page-break-before: always;
+        }
     </style>
 </head>
 <body>
@@ -248,5 +251,13 @@
 @if($patient->location)
 <p style="text-align: center">{{ $patient->location->name }} {{ $patient->location->address }} {{ $patient->location->city }} {{ $patient->location->state ? $patient->location->state->name : '' }} {{ $patient->location->zipcode }} {{ $patient->location->phone }}</p>
 @endif
+
+<div class="page_break"></div>
+
+<section>
+    {!! $patient->location->terms_and_condition !!}
+</section>
+
 </body>
 </html>
+
