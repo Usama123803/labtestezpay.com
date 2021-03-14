@@ -56,7 +56,7 @@
         .width-60{
             width: 60px !important;
         }
-        div.page_break + div.page_break{
+        div.page_break{
             page-break-before: always;
         }
     </style>
