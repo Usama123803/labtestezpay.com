@@ -254,7 +254,7 @@
 
 <div class="page_break"></div>
 
-<section>
+<section class="sz">
     {!! $patient->location->terms_and_condition !!}
 </section>
 
