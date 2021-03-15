@@ -11,6 +11,9 @@
         .sz{
             font-size: 15px;
         }
+        .sz-terms *{
+            font-size: 15px;
+        }
         .table-p-bottom{
             margin-bottom: 2px;
         }
@@ -254,7 +257,7 @@
 
 <div class="page_break"></div>
 
-<section class="sz">
+<section class="sz-terms">
     {!! $patient->location->terms_and_condition !!}
 </section>
 
