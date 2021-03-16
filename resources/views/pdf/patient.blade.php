@@ -12,7 +12,7 @@
             font-size: 15px;
         }
         .sz-terms *{
-            font-size: 15px;
+            font-size: 10px;
         }
         .table-p-bottom{
             margin-bottom: 2px;
@@ -155,7 +155,7 @@
                         <p ><span >Driver&rsquo;s License Number/State ID: <span class="sz label-value-200">{{ $patient->drivlic_id }}</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: <span class="sz label-value-80">{{ $patient->issued_state }}</span></span></p>
                         <p><span>By <strong>signing below, I certify</strong> the <strong>information</strong> I provided on and in connection with this form is true and correct to the best of my knowledge. I also understand that any false statements or deliberate omissions on this form may subject me to legal actions for fraudulent misrepresentation.</span></p>
 
-                        <p><span>I consent Labtest Diagnostics to share my  results with Inb Sina Community Clinics.</span></p>
+
                         @if($patient->paid_or_free == 0)
                         <p><span>Covid Symptoms:<span class="sz label-value-250">{{ $covidSymptoms }}</span></span></p>
                         @endif
