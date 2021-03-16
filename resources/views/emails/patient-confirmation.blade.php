@@ -24,24 +24,9 @@
     <tr>
         <td>
         <br>
-            you're agree with following term and conditions.
+            You're agree with following Term and Conditions.
             <br>
-            I authorize this COVID-19 testing unit to conduct collection and testing for COVID-19 through a nasopharyngeal swab or blood draw, as ordered by an authorized medical provider or public health official.
-            <br>
-            I authorize my test results to be disclosed to the county, state, or to any other governmental entity as may be required by law.
-            <br>
-            I acknowledge that a positive test result is an indication that I must self-isolate and/or wear a mask or face covering as directed to avoid infecting others
-            <br>
-            I understand the testing unit is not acting as my medical provider, this testing does not replace treatment by my medical provider, and I assume complete and full responsibility to take appropriate action with regards to my test results.
-            <br>
-            I agree that I will seek medical advice, care, and treatment from my medical provider if I have questions or concerns, or if my condition worsens.
-            <br>
-            I understand that, as with any medical test, there is the potential for a false positive or false negative COVID-19 test result. I have been informed about the test purpose, procedures, possible benefits. I understand that I can get the copy of this informed consent on the request. I have been given the opportunity to ask questions before I agree, and I have been told that I can ask additional questions at any time. I voluntarily agree to this COVID-19 testing.
-            <br>
-            Furthermore, I understand the potential risks of this procedure including but not limited to possible discomfort or other complications that can happen during sample collection, possible false positive, false negative or inconclusive test results.
-            <br>
-            By agreeing to our terms and conditions the guardians of under age children are consenting our staff to collect the specimen (blood or nasal as the case may be) needed for the particular tests
-            <br>
+            {!! $patient->location->terms_and_condition !!}
         </td>
     </tr>
 
