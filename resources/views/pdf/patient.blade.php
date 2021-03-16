@@ -12,7 +12,7 @@
             font-size: 15px;
         }
         .sz-terms *{
-            font-size: 12px;
+            font-size: 10px;
         }
         .table-p-bottom{
             margin-bottom: 2px;
