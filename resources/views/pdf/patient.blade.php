@@ -11,6 +11,9 @@
         .sz{
             font-size: 15px;
         }
+        .sz-terms *{
+            font-size: 10px;
+        }
         .table-p-bottom{
             margin-bottom: 2px;
         }
@@ -56,6 +59,9 @@
         .width-60{
             width: 60px !important;
         }
+        div.page_break{
+            page-break-before: always;
+        }
     </style>
 </head>
 <body>
@@ -64,29 +70,9 @@
     <tr>
         <td>
             <div  style="display: inline-block;text-align: center; width: 100%">
-                                <img src="{{ url('assets/images/labtest-logo.jpg') }}" alt="LabTest-Logo" width="150" />
-{{--                                <img src="http://labwork360.com/assets/images/labtest-logo.PNG" alt="LabTest-Logo" width="150" />--}}
+                <img src="{{ url('assets/images/labtest-logo.jpg') }}" alt="LabTest-Logo" width="150" />
             </div>
-           <!-- <div style="display: inline-block;float: right">
-                <p style="margin: 2px;">
-                    <span>PCR:</span>
-                    <span><input type="checkbox" style="vertical-align: sub" {{ $patient->pcr == 1 ? 'checked' : '' }}>Negative</span>
-                    <span><input type="checkbox" style="vertical-align: sub" {{ $patient->pcr == 2 ? 'checked' : '' }}>Positive</span>
-                    <span style="margin-left: 10px;"><strong>Remarks:</strong></span>
-                    <span >{{ $patient->pcr_remark }}</span>
-                </p>
-                <p style="margin: 2px;">
-                    <span>Blood:</span>
-                    <span><input type="checkbox" style="vertical-align: sub" {{ $patient->blood == 1 ? 'checked' : '' }}>Negative</span>
-                    <span><input type="checkbox" style="vertical-align: sub" {{ $patient->blood == 2 ? 'checked' : '' }}>Positive</span>
-                    <span style="margin-left: 10px;"><strong>Remarks:</strong></span>
-                    <span >{{ $patient->blood_remark }}</span>
-                </p>
-            </div>-->
         </td>
-{{--        <td>--}}
-{{--            --}}
-{{--        </td>--}}
     </tr>
     <tr>
         <td>
@@ -100,25 +86,6 @@
         <td>
             <table style="border-collapse:collapse;border:none;">
                 <tbody>
-{{--                <tr>--}}
-{{--                    <td style="border: 1pt solid windowtext;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">--}}
-{{--                        <p style="margin-top: 5px;margin-bottom: 5px;font-size: 13px;">--}}
-{{--                            <strong>--}}
-{{--                                <span>FACILITY/ EMPLOYER INFORMATION</span>--}}
-{{--                            </strong>--}}
-{{--                        </p>--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
-{{--                <tr>--}}
-{{--                    <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;vertical-align: top;">--}}
-{{--                        <p style="">--}}
-{{--                        <span>Facility: <span class="label-value-200">{{ $patient->location->name }}</span> Phone: <span class="label-value-130">{{ $patient->location->phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-130">{{ $patient->location->fax }}</span></span></p>--}}
-{{--                        <p><span>Address: <span class="label-value-200">{{ $patient->location->address }}</span>&nbsp;&nbsp;City:<span class="label-value-130">{{ $patient->location->city }}</span> State:<span class="label-value-80">{{ $patient->location->state ? $patient->location->state->name : '' }}</span> Zip: <span class="label-value-80">{{ $patient->location->zipcode }}</span> </span></p>--}}
-{{--                        <p>Phone: <span class="label-value-200">{{ $patient->location->alt_phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-200">{{ $patient->location->alt_fax }}</span></p>--}}
-{{--                    </td>--}}
-{{--                </tr> --}}
-
-
                 <tr>
                     <td style="border: 1pt solid windowtext;padding: 0in 5.4pt;height: 18.9pt;vertical-align: top;">
                         <p style="margin-top: 5px;margin-bottom: 5px;font-size: 13px;">
@@ -140,13 +107,6 @@
                 <tr>
                     <td style="border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;vertical-align: top;">
                         <p style="">
-{{--                        <span>--}}
-{{--                            <input type="checkbox" name="male" style="vertical-align: sub;" {{ $patient->gender == 'male' ? 'checked' : '' }}>--}}
-{{--                                <span>Facebook</span>&nbsp;--}}
-{{--                            </span> --}}
-{{--                        <span>Facility: <span class="label-value-200">{{ $patient->location->name }}</span> Phone: <span class="label-value-130">{{ $patient->location->phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-130">{{ $patient->location->fax }}</span></span></p>--}}
-{{--                        <p><span>Address: <span class="label-value-200">{{ $patient->location->address }}</span>&nbsp;&nbsp;City:<span class="label-value-130">{{ $patient->location->city }}</span> State:<span class="label-value-80">{{ $patient->location->state ? $patient->location->state->name : '' }}</span> Zip: <span class="label-value-80">{{ $patient->location->zipcode }}</span> </span></p>--}}
-{{--                        <p>Phone: <span class="label-value-200">{{ $patient->location->alt_phone }}</span>&nbsp;&nbsp;Fax: <span class="label-value-200">{{ $patient->location->alt_fax }}</span></p>--}}
                     </td>
                 </tr>
 
@@ -181,7 +141,6 @@
                         <p style="margin-top:0; margin-bottom: 3px;"><strong><span >I would like to receive my results via:</span></strong></p>
                         <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_fax == 1 ? 'checked' : '' }}></span><span>&nbsp;Fax: <span class="sz label-value-200">{{ $patient->fax }}</span>&nbsp; &nbsp;</span></p>
                         <p class="table-p-bottom table-p-top"><span ><input type="checkbox" name="billTo" style="vertical-align: sub;" {{ $patient->is_email == 1 ? 'checked' : '' }}></span><span >&nbsp;Email with Passcode Patient email address: <span class="sz label-value-400">{{ $patient->email_address }}</span></span></p>
-                        <!--<p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Verify Email address:_____________________________________________________________________________________</span></p> -->
                         <p class="table-p-bottom table-p-top"><span >&nbsp; &nbsp; &nbsp;Passcode: <span class="sz label-value-130">{{ $patient->passcode }}</span></span></p>
                         @if($patient->paid_or_free == 0)
                         <p >
@@ -196,26 +155,11 @@
                         <p ><span >Driver&rsquo;s License Number/State ID: <span class="sz label-value-200">{{ $patient->drivlic_id }}</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Issued State: <span class="sz label-value-80">{{ $patient->issued_state }}</span></span></p>
                         <p><span>By <strong>signing below, I certify</strong> the <strong>information</strong> I provided on and in connection with this form is true and correct to the best of my knowledge. I also understand that any false statements or deliberate omissions on this form may subject me to legal actions for fraudulent misrepresentation.</span></p>
 
-                        <p><span>I consent Labtest Diagnostics to share my  results with Inb Sina Community Clinics.</span></p>
+
                         @if($patient->paid_or_free == 0)
                         <p><span>Covid Symptoms:<span class="sz label-value-250">{{ $covidSymptoms }}</span></span></p>
                         @endif
                         <p><span>Patient Signature:<span class="sz label-value-250">{{ $patient->first_name }} {{ $patient->last_name }}</span> Appointment&rsquo;s Date: <span class="sz label-value-200">{{ $patient->appointment }} </span></span></p>
-                      <!--  <p class="table-p-bottom" style="border-bottom:1px solid black;"><strong>PATIENT DECLARATION</strong></p>
-                        <p class="table-p-margin"><strong><span>The answers below shall be truthful and inclusive for all members of household (including children and live-in adults). Within the past 14 days:</span></strong></p>
-                        <ol class="table-p-top" style="padding:0px;list-style: none;">
-{{--                            <li>--}}
-{{--                                1. Have you travelled outside of <strong>TEXAS OR IN CLOSE CONTACT WHO HAS TRAVELLED OUTSIDE TEXAS</strong>--}}
-{{--                                <span style="margin-left:8px">--}}
-{{--                                    <strong>YES</strong>--}}
-{{--                                </span>--}}
-{{--                                <input type="checkbox" name="billTo" style="vertical-align: sub;">--}}
-{{--                                <strong><span>NO</span></strong>--}}
-{{--                                <input type="checkbox" name="billTo" style="vertical-align: sub;">--}}
-{{--                            </li>--}}
-                            <li>1. Have you had close contact with someone diagnosed with <strong>COVID-19?&nbsp;&nbsp;YES&nbsp;</strong></span><strong><span><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong><strong><span>&nbsp;NO&nbsp;</span></strong><strong><span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span>&nbsp;</strong></li>
-                            <li>2. Have you experienced any cold or flu-like symptoms (such as fever, cough, sore throat, respiratory illness, difficulty breathing, loss of smell, Nausea or vomiting, Congestion or runny nose, diarrhea).&nbsp; &nbsp; &nbsp;<strong>YES <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></span><strong>&nbsp;NO <span ><input type="checkbox" name="billTo" style="vertical-align: sub;"></span></strong></li>
-                        </ol> -->
                         <p style="margin-top: 0px; margin-bottom: 2px;"><strong><span>Phlebotomist Use Only:</span></strong></p>
                         <table border="1" style="border-collapse:collapse;width: 100%">
                             <tbody>
@@ -248,5 +192,17 @@
 @if($patient->location)
 <p style="text-align: center">{{ $patient->location->name }} {{ $patient->location->address }} {{ $patient->location->city }} {{ $patient->location->state ? $patient->location->state->name : '' }} {{ $patient->location->zipcode }} {{ $patient->location->phone }}</p>
 @endif
+
+<div class="page_break"></div>
+
+<section>
+    <u><h3 style="text-align: center;">Terms and Condition</h3></u>
+    <div class="sz-terms">
+        {!! $patient->location->terms_and_condition !!}
+    </div>
+
+</section>
+
 </body>
 </html>
+

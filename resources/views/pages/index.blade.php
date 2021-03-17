@@ -456,14 +456,14 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
+                        <div class="form-row termsAndCondition hideMe">
                             <div class="form-group">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="terms" id="terms" value="1"
                                            required>
                                     <label class="form-check-label" for="terms">
                                         <small>By clicking Submit, you agree to our <a
-                                                href="{{ url('/terms-and-condition') }}">Terms & Conditions.</a></small>
+                                                href="javascript:void(0)">Terms & Conditions.</a></small>
                                     </label>
                                 </div>
                             </div>
@@ -507,8 +507,8 @@
             width: 100%;
         }
     </style>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">
+    <link href="{!! asset('assets/css/bootstrap-select.css') !!}" rel="stylesheet">
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">--}}
 @endpush
 
 
@@ -520,7 +520,6 @@
     <script>
         $(function () {
             $('#flight_datetime').datetimepicker({
-                // format: 'MM/DD/YYYY HH:mm:ss',
                 format: 'MM/DD/YYYY hh:mm A',
             });
 
@@ -556,8 +555,12 @@
                     data: {id: $(this).val()},
                     dataType: "json",
                     success: function (response) {
+                        if (response.encryptedLocationId) {
+                            $('.termsAndCondition').removeClass('hideMe');
+                            $('.termsAndCondition a').attr('href', "{{ url('terms-and-condition') }}"+'/'+response.encryptedLocationId);
+                        }
+
                         $('#resultType').html('');
-                        // console.log(response);
                         setDateTimepickerInit(response.disabledDates);
                         $('#timeSlotSelect').html(response.timeSlotsOptions);
                         let html = '<option value="">Select your price and service time</option>';
@@ -582,47 +585,16 @@
 
             });
 
-
             function setDateTimepickerInit(disableDates) {
                 $('#appointment').datetimepicker({
                     format: 'MM/DD/YYYY', daysOfWeekDisabled: [0],
                     disabledDates: disableDates
                 }).on("dp.change", function (e) {
-                    {{--let formatedValue = e.date.format(e.date._f);--}}
-                    {{--if(formatedValue != ""){--}}
-                    {{--    $.ajax({--}}
-                    {{--        url: "/appointment/date",--}}
-                    {{--        type: "GET",--}}
-                    {{--        data: {date: formatedValue},--}}
-                    {{--        dataType:"json",--}}
-                    {{--        success: function(response) {--}}
-                    {{--            if(response.timeSlots != ""){--}}
-                    {{--                $('.timeSlotSelect').html('');--}}
-                    {{--                let html = '<option value="">Please Select Appointment Time</option>';--}}
-                    {{--                $(response.timeSlots).each(function (i,element) {--}}
-                    {{--                    let disabled = '';--}}
-                    {{--                    $(response.data).each(function(index,ele){--}}
-                    {{--                        if(ele.total >= {{ config('site.block_limit') }} && ele.timeslot == element){--}}
-                    {{--                            disabled = 'disabled';--}}
-                    {{--                        }--}}
-                    {{--                    });--}}
-                    {{--                    html += '<option value="'+element+'" '+disabled+'>'+element+'</option>';--}}
-                    {{--                });--}}
-                    {{--                $('.timeSlotSelect').html(html);--}}
-                    {{--            }--}}
-                    {{--        },--}}
-                    {{--        error:function(){--}}
-
-                    {{--        }--}}
-                    {{--    });--}}
-                    {{--}--}}
                 });
             }
-
-
         });
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script src="{!! asset('assets/js/bootstrap-select.min.js') !!}"></script>
 
 @endpush

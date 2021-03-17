@@ -11,7 +11,7 @@ use App\Mail\PatientMailer;
 use App\Patient;
 use App\PatientCovidSymptom;
 use App\State;
-//use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Crypt;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use DateInterval;
@@ -132,6 +132,9 @@ class HomeController extends Controller
             $patient->checkin = 1;
             $patient->save();
         }
+
+//        dd($patient->location->terms_and_condition);
+
         $covidSymptoms = $patient->covidSymptoms->pluck('name')->implode(', ');
         $data = ['title' => 'Patient COVID-19 Report'];
         //date in mm/dd/yyyy format; or it can be in other formats as well
@@ -148,8 +151,7 @@ class HomeController extends Controller
         $data['dob_year'] = $birthDate[2];
         $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
             ->loadView('pdf.patient',compact('data','patient','covidSymptoms'));
-        return $pdf->stream();
-//        return $pdf->download('patient.pdf');
+                return $pdf->stream();
 //        return view('pdf.patient',compact('data','patient'));
     }
 
@@ -187,9 +189,14 @@ class HomeController extends Controller
 
     }
 
-    public function termsAndCondition()
+    public function termsAndCondition($encryptLocationId)
     {
-        return view('pages.terms-and-condition');
+        $id = Crypt::decryptString($encryptLocationId);
+        $location = Location::find($id);
+        if(!$location && !$location->terms_and_condition){
+            abort(404);
+        }
+        return view('pages.terms-and-condition',compact('location'));
     }
 
     public function locationById()
@@ -241,7 +248,8 @@ class HomeController extends Controller
             "result"=> $result,
             "disabledDates"=> $disabledDates,
             "timeSlots"=> $timeSlots,
-            "timeSlotsOptions"=> $timeSlotsOptions
+            "timeSlotsOptions"=> $timeSlotsOptions,
+            "encryptedLocationId"=> Crypt::encryptString($result->id),
         ]);
     }
 

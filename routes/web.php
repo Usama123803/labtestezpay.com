@@ -19,7 +19,8 @@ Route::post('storePatient','HomeController@storePatient')->name('store.patient')
 Route::get('/patient/print-pdf/{id}', 'HomeController@printPdf')->name('generate.pdf');
 Route::get('/appointment/date', 'HomeController@appointmentDate');
 Route::get('/location', 'HomeController@locationById');
-Route::get('/terms-and-condition', 'HomeController@termsAndCondition');
+//Route::get('/terms-and-condition', 'HomeController@termsAndCondition');
+Route::get('/terms-and-condition/{id}', 'HomeController@termsAndCondition');
 Route::get('/admin/checkin', 'TimesheetController@checkIn');
 Route::get('/admin/checkout', 'TimesheetController@checkOut');
 Route::get('/admin/breakin', 'TimesheetController@breakIn');
