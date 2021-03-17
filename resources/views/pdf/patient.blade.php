@@ -196,7 +196,7 @@
 <div class="page_break"></div>
 
 <section>
-    <u><h3 style="text-align: center;">Terms and Condition</h3></u>
+    <u><h2 style="text-align: center;">Terms and Condition</h2></u>
     <div class="sz-terms">
         {!! $patient->location->terms_and_condition !!}
     </div>
