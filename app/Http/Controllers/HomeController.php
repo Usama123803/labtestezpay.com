@@ -29,21 +29,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $countries = Country::where('status',1)->get();
         $states = State::where('status',1)->get();
         $locations = Location::where('status',1)->get();
         $covidSymptoms = CovidSymptom::where('status',1)->get();
         $disabledDates = $timeSlots = [];
         return view('pages.index', compact('states','countries','locations','timeSlots','disabledDates','covidSymptoms'));
-    }
-    public function patient()
-    {
-        $countries = Country::where('status',1)->get();
-        $states = State::where('status',1)->get();
-        $locations = Location::where('status',1)->get();
-
-        return view('pages.patient', compact('states','countries','locations'));
     }
 
     /**
@@ -132,8 +123,6 @@ class HomeController extends Controller
             $patient->checkin = 1;
             $patient->save();
         }
-
-//        dd($patient->location->terms_and_condition);
 
         $covidSymptoms = $patient->covidSymptoms->pluck('name')->implode(', ');
         $data = ['title' => 'Patient COVID-19 Report'];
