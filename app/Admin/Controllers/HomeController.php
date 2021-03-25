@@ -45,6 +45,9 @@ class HomeController extends Controller
                 $password = Carbon::parse($patient->dob)->format('Ydm');
                 $alreadyExists = User::where('email', $patient->email_address)->first();
                 if(!$alreadyExists){
+
+//                    dd($patient);
+
                     User::create([
                         'name' => $patient->full_name,
                         'patient_id' => $id,
