@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','HomeController@index');
-Route::get('/patient','HomeController@patient');
+//Route::get('/patient','HomeController@patient');
 Route::post('storePatient','HomeController@storePatient')->name('store.patient');
 Route::get('/patient/print-pdf/{id}', 'HomeController@printPdf')->name('generate.pdf');
 Route::get('/appointment/date', 'HomeController@appointmentDate');
@@ -33,3 +33,20 @@ Route::post('admin/test-pdf-report', 'ReadPdfController@index');
 
 
 
+
+Auth::routes();
+
+Route::get('/portal/dashboard', 'PatientPortalController@index');
+
+Route::get('/register', function(){
+    return redirect('/');
+});
+
+Route::get('/home', function(){
+    return redirect('/portal/dashboard');
+//    return redirect('portal.patient');
+});
+
+Route::group(['prefix' => 'portal'], function () {
+    Route::get('/dashboard', 'PatientPortalController@index')->name('portal.patient');
+});
