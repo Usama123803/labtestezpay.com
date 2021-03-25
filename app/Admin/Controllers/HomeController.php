@@ -47,7 +47,7 @@ class HomeController extends Controller
                 if(!$alreadyExists){
                     User::create([
                         'name' => $patient->full_name,
-                        'patient_id' => $patient->id,
+                        'patient_id' => $id,
                         'email' => $patient->email_address,
                         'password' => Hash::make($password),
                         'created_at' => date('Y-m-d h:i:s'),
