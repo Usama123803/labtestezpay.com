@@ -13,13 +13,17 @@
                         <h5 class="title">Covid Reports</h5>
                     </div>
                     <div class="card-body">
-                        @foreach($patients->documents as $document)
-                            <div class="col-sm-2">
-                                <a href="/storage/{{ $document->url }}" target="_blank">
-                                    <i class="fas fa-file-pdf fa-5x"></i>
-                                </a>
-                            </div>
-                        @endforeach
+                        @if($patients->documents)
+                            @foreach($patients->documents as $document)
+                                <div class="col-sm-2">
+                                    <a href="/storage/{{ $document->url }}" target="_blank">
+                                        <i class="fas fa-file-pdf fa-5x"></i>
+                                    </a>
+                                </div>
+                            @endforeach
+                        @else
+                            <h3 class="text-center">NO RECORD FOUND</h3>
+                        @endif
 
 {{--                        <form>--}}
 {{--                            <div class="row">--}}
