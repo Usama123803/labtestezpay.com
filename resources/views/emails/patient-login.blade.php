@@ -14,7 +14,6 @@
         </td>
     </tr>
     <tr>
-{{--        <td><strong>Username:</strong> {{ $patient->first_name }}.{{ $patient->last_name }}</td>--}}
         <td><strong>Email:</strong> {{ $patient->email_address }}</td>
     </tr>
     <tr>
