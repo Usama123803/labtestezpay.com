@@ -43,9 +43,18 @@ class PatientController extends AdminController
         $grid = new Grid(new Patient());
 
         $authUser = Auth::guard('admin')->user();
+
+//        dd($authUser->name);
+
+
+        $gridModel = $grid->model();
+
+        if($authUser->id == 15) { // BIT CARE ID
+            $gridModel->where([['appointment', '>', date('Y-m-d')]]);
+        }
         if($authUser && $authUser->id <> 1){ // ID is for admin
             $locationIds = UsersLocation::where('user_id', $authUser->id)->pluck('location_id');
-            $grid->model()->whereIn('locationId', $locationIds);
+            $gridModel->whereIn('locationId', $locationIds);
         }
 
         $grid->column('id', __('Id'))->sortable();
