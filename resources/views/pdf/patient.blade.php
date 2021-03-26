@@ -199,10 +199,10 @@
     <u><h2 style="text-align: center;">Terms and Condition</h2></u>
     <div class="sz-terms">
         {!! $patient->location->terms_and_condition !!}
+    <p><span>Patient Signature:<span class="sz label-value-250">{{ $patient->first_name }}</span></span></p>
     </div>
 
 </section>
-
 </body>
 </html>
 
