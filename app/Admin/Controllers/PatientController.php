@@ -50,7 +50,7 @@ class PatientController extends AdminController
         $gridModel = $grid->model();
 
         if($authUser->id == 15) { // BIT CARE ID
-            $gridModel->where([['appointment', '>', date('Y-m-d')]]);
+            $gridModel->where([['appointment', '>', date('Y-m-d', strtotime('2021-03-15'))]]);
         }
         if($authUser && $authUser->id <> 1){ // ID is for admin
             $locationIds = UsersLocation::where('user_id', $authUser->id)->pluck('location_id');
