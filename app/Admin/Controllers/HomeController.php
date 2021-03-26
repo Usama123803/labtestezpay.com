@@ -58,12 +58,12 @@ class HomeController extends Controller
                 }
             }
 
-//            $subject = 'Login Credentials';
-//            Mail::send('emails.patient-login', compact("patient"), function ($m)
-//            use ($subject, $patient) {
-//                $m->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'));
-//                $m->to($patient->email_address, $patient->full_name)->subject($subject);
-//            });
+            $subject = 'Login Credentials';
+            Mail::send('emails.patient-login', compact("patient"), function ($m)
+            use ($subject, $patient) {
+                $m->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'));
+                $m->to($patient->email_address, $patient->full_name)->subject($subject);
+            });
             $content->withSuccess('Email send successfully to '.$patient->full_name, 'Email sent');
         }else {
             $content->withError('Something went wrong while sending the email', '!!ERROR!!');
