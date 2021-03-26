@@ -462,8 +462,8 @@
                                     <input class="form-check-input" type="checkbox" name="terms" id="terms" value="1"
                                            required>
                                     <label class="form-check-label" for="terms">
-                                        <small>By clicking Submit, you agree to our <a
-                                                href="javascript:void(0)">Terms & Conditions.</a></small>
+                                        <small>Kindly read carefully as by clicking Submit, you agree to our <a
+                                                href="javascript:void(0)">Terms & Conditions.</a> a copy of terms and condition will also be sent to your email.</small>
                                     </label>
                                 </div>
                             </div>
