@@ -8,9 +8,9 @@
     <tr>
         <td>
             <br>
-            Your Appointment is confirmed please come on
-            <strong>{{ \Carbon\Carbon::parse($patient->appointment)->format('m/d/Y') }}</strong> -
-            <strong>{{ $patient->timeslot }}</strong>
+            Your result is available on your portal, please login to view your results 
+            <br>
+            Your login credentials are 
         </td>
     </tr>
     <tr>
