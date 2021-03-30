@@ -130,6 +130,7 @@ class DocumentPatientsController extends AdminController
                             DocumentPatients::create([
                                 'patient_id' => $patient->id,
                                 'url' => $filePath,
+                                'type' => 'external_attachment',
                                 'created_at' => date('Y-m-d h:i:s')
                             ]);
                         }

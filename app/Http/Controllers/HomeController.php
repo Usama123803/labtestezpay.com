@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Configuration;
 use App\Country;
 use App\CovidSymptom;
+use App\DocumentPatients;
 use App\Helper\GeneralHelper;
 use App\Location;
 use App\Mail\PatientMailer;
 use App\Patient;
 use App\PatientCovidSymptom;
 use App\State;
+use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Crypt;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
@@ -20,6 +22,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -118,12 +121,12 @@ class HomeController extends Controller
     public function printPdf($id)
     {
         $patient = Patient::find($id);
+
 //      Checkin while click on print pdf file
         if($patient->checkin == 0){
             $patient->checkin = 1;
             $patient->save();
         }
-
         $covidSymptoms = $patient->covidSymptoms->pluck('name')->implode(', ');
         $data = ['title' => 'Patient COVID-19 Report'];
         //date in mm/dd/yyyy format; or it can be in other formats as well
@@ -140,7 +143,17 @@ class HomeController extends Controller
         $data['dob_year'] = $birthDate[2];
         $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
             ->loadView('pdf.patient',compact('data','patient','covidSymptoms'));
-                return $pdf->stream();
+
+        $random = time().rand(10,100);
+        $url = 'patients/'.$random . '.pdf';
+        DocumentPatients::create([
+            'url' => $url,
+            'patient_id' => $id,
+            'type' => 'system_attachment',
+        ]);
+        Storage::put('public/'.$url, $pdf->output());
+//        Storage::disk('public')->putFileAs('patients', $pdf->output(), $random . '.pdf');
+        return $pdf->stream();
 //        return view('pdf.patient',compact('data','patient'));
     }
 

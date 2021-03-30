@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DocumentPatients extends Model
 {
-    protected $fillable = ['patient_id', 'url'];
+    protected $fillable = ['patient_id', 'url', 'type'];
 
     public function patients(){
         return $this->belongsTo('App\Patient', 'patient_id');

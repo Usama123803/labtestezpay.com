@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Admin\Extensions\CheckRow;
 use App\Helper\AdminHelper;
 use App\Location;
+use App\LocationLog;
 use App\State;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -122,6 +123,25 @@ class LocationController extends AdminController
         })->tab('Terms & Condition', function ($form) {
             $form->summernote('terms_and_condition', __('Terms and Condition'))->required();
         });
+
+//        $form->saving(function (Form $form) {
+//            $locationLog = LocationLog::where('location_id', $form->model()->id)->orderBy('id', 'desc')->first();
+//            if ($locationLog && $locationLog->terms_and_condition != $form->model()->terms_and_condition) {
+//                LocationLog::create([
+//                    'terms_and_condition' => $form->model()->terms_and_condition,
+//                    'location_id' => $form->model()->id,
+//                    'created_at' => date('Y-m-d h:i:s')
+//                ]);
+//            }else {
+//                if($locationLog == null){
+//                    LocationLog::create([
+//                        'terms_and_condition' => $form->model()->terms_and_condition,
+//                        'location_id' => $form->model()->id,
+//                        'created_at' => date('Y-m-d h:i:s')
+//                    ]);
+//                }
+//            }
+//        });
 
         return $form;
     }

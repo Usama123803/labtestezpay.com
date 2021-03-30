@@ -7,6 +7,7 @@ use App\Admin\Actions\Post\AttachPatientTestReport;
 use App\Admin\Actions\Post\SendPatientEmail;
 use App\Admin\Extensions\CheckRow;
 use App\Country;
+use App\DocumentPatients;
 use App\Helper\AdminHelper;
 use App\Location;
 use App\Mail\PatientMailer;
@@ -128,7 +129,13 @@ class PatientController extends AdminController
         AdminHelper::gridDateFormat($grid, 'created_at', 'Created at');
 
         $grid->column('Print')->display(function () {
-            $pdfRoute = route('generate.pdf', $this->id);
+            $documentPatient = DocumentPatients::where([['patient_id', $this->id], ['type', 'system_attachment']])->first();
+            if($documentPatient){
+                $pdfRoute = url('storage/'.$documentPatient->url);
+            }else {
+                $pdfRoute = route('generate.pdf', $this->id);
+            }
+
             $emailRoute = '/admin/patient/send-email/'.$this->id;
             $checkInRoute = '/admin/patient/checkin/'.$this->id;
             $btnTitle = 'CheckIn';
