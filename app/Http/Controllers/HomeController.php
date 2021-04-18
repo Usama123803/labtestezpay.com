@@ -10,6 +10,7 @@ use App\Helper\GeneralHelper;
 use App\Location;
 use App\Mail\PatientMailer;
 use App\Patient;
+use App\PatientAppointment;
 use App\PatientCovidSymptom;
 use App\State;
 use Dompdf\Dompdf;
@@ -46,60 +47,73 @@ class HomeController extends Controller
     public function storePatient(Request $request)
     {
         try {
-            $patient = new Patient;
-            $patient->first_name        =   $request->first_name;
-            $patient->last_name         =   $request->last_name;
-
-            $patient->full_name         =   $request->first_name. ' '. $request->last_name;
-
-            $patient->parent_name       =   $request->parent_name;
-            $patient->relation_name     =   $request->relation_name;
-            $patient->parent_checkbox   =   $request->parent_checkbox ? 1 : 0;
-
-            $patient->email_address     =   $request->email_address;
-            $patient->gender            =   $request->gender;
-            $patient->dob               =   $request->dob;
-            $patient->cell_phone        =   $request->cell_phone;
-            $patient->timeslot          =   $request->timeslot;
-            $patient->hear_about        =   $request->hear_about;
-            $patient->refer_name        =   $request->refer_name;
-            $patient->result_type       =   $request->result_type;
-            if(!empty($request->flight_datetime)){
-                $patient->flight_datetime   =   Carbon::parse($request->flight_datetime)->format('Y-m-d H:i:s');
-            }else{
-                $patient->flight_datetime   = null;
+            $full_name = $request->first_name. ' '. $request->last_name;
+            $isExists = Patient::where(['full_name' => $full_name], ['dob' => $request->dob],
+                ['email_address' => $request->email_address])->first();
+            if(empty($isExists)) {
+                $patient = new Patient;
+                $patient->first_name        =   $request->first_name;
+                $patient->last_name         =   $request->last_name;
+                $patient->full_name         =   $request->first_name. ' '. $request->last_name;
+                $patient->parent_name       =   $request->parent_name;
+                $patient->relation_name     =   $request->relation_name;
+                $patient->parent_checkbox   =   $request->parent_checkbox ? 1 : 0;
+                $patient->email_address     =   $request->email_address;
+                $patient->gender            =   $request->gender;
+                $patient->dob               =   $request->dob;
+                $patient->cell_phone        =   $request->cell_phone;
+                $patient->created_at        =   date('Y-m-d h:i:s');
+                $patient->save();
+                $patient_id = $patient->id;
+            }
+            else {
+                $patient_id = $isExists->id;
+            }
+            $patientAppointment = new PatientAppointment;
+            $patientAppointment->timeslot = $request->timeslot;
+            $patientAppointment->patient_id = $patient_id;
+            $patientAppointment->hear_about = $request->hear_about;
+            $patientAppointment->refer_name = $request->refer_name;
+            $patientAppointment->result_type = $request->result_type;
+            if (!empty($request->flight_datetime)) {
+                $patientAppointment->flight_datetime = Carbon::parse($request->flight_datetime)->format('Y-m-d H:i:s');
+            } else {
+                $patientAppointment->flight_datetime = null;
             }
 
-            $patient->front = null;
-            if($request->file('front_picture')){
-                $patient->front = GeneralHelper::uploadAttachment($request->file('front_picture'), 'front_picture');
+            $patientAppointment->front = null;
+            if ($request->file('front_picture')) {
+                $patientAppointment->front = GeneralHelper::uploadAttachment($request->file('front_picture'), 'front_picture');
             }
-            $patient->back = null;
-            if($request->file('back_picture')){
-                $patient->back  = GeneralHelper::uploadAttachment($request->file('back_picture'), 'back_picture');
+            $patientAppointment->back = null;
+            if ($request->file('back_picture')) {
+                $patientAppointment->back = GeneralHelper::uploadAttachment($request->file('back_picture'), 'back_picture');
             }
 
-            $patient->paid_or_free      =   $request->paid_or_free;
-            $patient->is_fax            =   $request->is_fax;
-            $patient->fax               =   $request->fax;
-            $patient->is_email          =   $request->is_email;
-            $patient->email_cb          =   $request->email_cb;
-            $patient->passcode          =   $request->passcode;
-            $patient->group_no          =   $request->group_no;
-            $patient->ins_name          =   $request->ins_name;
-            $patient->bill_to           =   $request->bill_to;
-            $patient->landline          =   $request->landline;
-            $patient->zipcode           =   $request->zipcode;
-            $patient->locationId        =   $request->locationId;
-            $patient->appointment       =   $request->appointment;
-            $patient->city              =   $request->city;
-            $patient->address           =   $request->address;
-            $patient->stateId           =   $request->stateId;
-            $patient->terms             =   $request->terms;
-            $patient->created_at        =   date('Y-m-d h:i:s');
-            $patient->save();
-
-            $covidSymptomData = ['covid_symptom_id' => $request->covidSymptoms,'patient_id' => $patient->id];
+            $patientAppointment->paid_or_free      =   $request->paid_or_free;
+            $patientAppointment->is_fax            =   $request->is_fax;
+            $patientAppointment->fax               =   $request->fax;
+            $patientAppointment->is_email          =   $request->is_email;
+            $patientAppointment->email_cb          =   $request->email_cb;
+            $patientAppointment->passcode          =   $request->passcode;
+            $patientAppointment->group_no          =   $request->group_no;
+            $patientAppointment->ins_name          =   $request->ins_name;
+            $patientAppointment->bill_to           =   $request->bill_to;
+            $patientAppointment->landline          =   $request->landline;
+            $patientAppointment->zipcode           =   $request->zipcode;
+            $patientAppointment->locationId        =   $request->locationId;
+            $patientAppointment->appointment       =   $request->appointment;
+            $patientAppointment->city              =   $request->city;
+            $patientAppointment->address           =   $request->address;
+            $patientAppointment->stateId           =   $request->stateId;
+            $patientAppointment->terms             =   $request->terms;
+            $patientAppointment->created_at        =   date('Y-m-d h:i:s');
+            $patientAppointment->save();
+            $covidSymptomData = [
+                'covid_symptom_id' => $request->covidSymptoms,
+                'patient_id' => $patient_id,
+                'appointment_id' => $patientAppointment->id
+            ];
 //            if(!empty($request->covidSymptoms)){
 //                foreach($request->covidSymptoms as $covidSymptom){
 //                    $covidSymptomData[] = array('covid_symptom_id' => $covidSymptom,'patient_id' => $patient->id);
@@ -110,7 +124,8 @@ class HomeController extends Controller
             }
 
             // To Send the email for confirmation appointment
-            $this->patientConfirmationEmail($patient->id);
+
+//            $this->patientConfirmationEmail($patient_id);
 
             return redirect()->back()->with('success','Patient added successfully');
         }catch (\Exception $e){
@@ -120,18 +135,33 @@ class HomeController extends Controller
 
     public function printPdf($id)
     {
-        $patient = Patient::find($id);
+        $random = time().rand(10,100);
+        $url = 'patients/'.$random . '.pdf';
+        $patientAppointment = PatientAppointment::find($id);
+        $patient = $patientAppointment->patient;
+        $documentPatient = DocumentPatients::where([['appointment_id', $id], ['type', 'appointment']])->first();
+        if($documentPatient){
+            return false;
+//            return url('storage/'.$documentPatient->url);
+        }
+
+        $documentPatientArray = [
+            'url' => $url,
+            'patient_id' => $patientAppointment->patient_id,
+            'appointment_id' => $patientAppointment->id,
+            'type' => 'appointment',
+        ];
 
 //      Checkin while click on print pdf file
-        if($patient->checkin == 0){
-            $patient->checkin = 1;
-            $patient->save();
+        if($patientAppointment->checkin == 0){
+            $patientAppointment->checkin = 1;
+            $patientAppointment->save();
         }
         $covidSymptoms = $patient->covidSymptoms->pluck('name')->implode(', ');
         $data = ['title' => 'Patient COVID-19 Report'];
         //date in mm/dd/yyyy format; or it can be in other formats as well
         $birthDate = Carbon::parse($patient->dob)->format('m/d/Y');
-        $patient->flight_datetime = Carbon::parse($patient->flight_datetime)->format('m/d/Y H:i:s');
+        $patientAppointment->flight_datetime = Carbon::parse($patientAppointment->flight_datetime)->format('m/d/Y H:i:s');
         $birthDate = explode("/", $birthDate);
         $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
             ? ((date("Y") - $birthDate[2]) - 1)
@@ -142,54 +172,45 @@ class HomeController extends Controller
         $data['dob_day'] = $birthDate[1];
         $data['dob_year'] = $birthDate[2];
         $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
-            ->loadView('pdf.patient',compact('data','patient','covidSymptoms'));
+            ->loadView('pdf.patient',compact('data','patient','covidSymptoms','patientAppointment'));
 
-        $random = time().rand(10,100);
-        $url = 'patients/'.$random . '.pdf';
-        DocumentPatients::create([
-            'url' => $url,
-            'patient_id' => $id,
-            'type' => 'system_attachment',
-        ]);
+        DocumentPatients::create($documentPatientArray);
         Storage::put('public/'.$url, $pdf->output());
-//        Storage::disk('public')->putFileAs('patients', $pdf->output(), $random . '.pdf');
         return $pdf->stream();
-//        return view('pdf.patient',compact('data','patient'));
     }
 
-    public function appointmentDate()
-    {
-        $date = $_GET['date'];
-        $date = Carbon::parse($date)->format('Y-m-d');
-        $start_time = config('site.start_time');
-        $end_time = config('site.end_time');
-        $time_interval = config('site.time_interval');
-        $block_start_time = new DateTime(config('site.block_start_time'));
-        $block_end_time = new DateTime(config('site.block_end_time'));
-        $begin = new DateTime($start_time);
-        $end   = new DateTime($end_time);
-        $interval = DateInterval::createFromDateString($time_interval.' min');
-        $times    = new DatePeriod($begin, $interval, $end);
-        $timeSlots = [];
-        $format = 'h:i'; // 12 Hours format and for 24 hours format H:i
-        foreach ($times as $time) {
-            if($time->format($format) >= $block_start_time->format($format) && $time->format($format) <= $block_end_time->format($format) ){
-                // you need to do somthing
-            }else{
-                $timeSlots[] = $time->format($format);
-            }
-        }
-        $timeSlots[] = $end->format($format);
-        $patientsTimeSlotCount = DB::table('patients')
-            ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
-            ->whereIn('timeslot',  $timeSlots)
-            ->whereDate('created_at', $date)
-            ->groupBy('timeslot')
-            ->get();
-
-        return \response()->json(['data'=> $patientsTimeSlotCount, 'timeSlots' =>  $timeSlots]);
-
-    }
+//    public function appointmentDate()
+//    {
+//        $date = $_GET['date'];
+//        $date = Carbon::parse($date)->format('Y-m-d');
+//        $start_time = config('site.start_time');
+//        $end_time = config('site.end_time');
+//        $time_interval = config('site.time_interval');
+//        $block_start_time = new DateTime(config('site.block_start_time'));
+//        $block_end_time = new DateTime(config('site.block_end_time'));
+//        $begin = new DateTime($start_time);
+//        $end   = new DateTime($end_time);
+//        $interval = DateInterval::createFromDateString($time_interval.' min');
+//        $times    = new DatePeriod($begin, $interval, $end);
+//        $timeSlots = [];
+//        $format = 'h:i'; // 12 Hours format and for 24 hours format H:i
+//        foreach ($times as $time) {
+//            if($time->format($format) >= $block_start_time->format($format) && $time->format($format) <= $block_end_time->format($format) ){
+//                // you need to do something
+//            }else{
+//                $timeSlots[] = $time->format($format);
+//            }
+//        }
+//        $timeSlots[] = $end->format($format);
+//        $patientsTimeSlotCount = DB::table('patients')
+//            ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
+//            ->whereIn('timeslot',  $timeSlots)
+//            ->whereDate('created_at', $date)
+//            ->groupBy('timeslot')
+//            ->get();
+//
+//        return \response()->json(['data'=> $patientsTimeSlotCount, 'timeSlots' =>  $timeSlots]);
+//    }
 
     public function termsAndCondition($encryptLocationId)
     {
@@ -226,7 +247,8 @@ class HomeController extends Controller
             }
         }
         $timeSlots[] = $end->format($format);
-        $patientsTimeSlotCount = DB::table('patients')
+//        $patientsTimeSlotCount = DB::table('patients')
+        $patientsTimeSlotCount = DB::table('patient_appointments')
             ->select('timeslot', DB::raw('count(timeslot) as total'), DB::raw('DATE(created_at) as date'))
             ->whereIn('timeslot', $timeSlots)
             ->groupBy(['timeslot','date'])
@@ -261,12 +283,14 @@ class HomeController extends Controller
         $emailSubject = "Confirmation Email";
         $name = $patient->first_name.' '.$patient->last_name;
         $clientEmail = $patient->email_address;
-        $patient->timeslot = Carbon::parse($patient->timeslot)->format('h:i a');
-        Mail::send('emails.patient-confirmation', compact("patient"),function ($m)
-        use ($emailSubject, $name, $clientEmail){
-            $m->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'));
-            $m->to($clientEmail, $name)->subject($emailSubject);
-        });
+//        $patient->timeslot = Carbon::parse($patient->timeslot)->format('h:i a');
+        $timeslot = $patient->patientAppointment->timeslot;
+        $timeslot = Carbon::parse($timeslot)->format('h:i a');
+//        Mail::send('emails.patient-confirmation', compact("patient", "timeslot"), function ($m)
+//        use ($emailSubject, $name, $clientEmail) {
+//            $m->from(env('MAIL_FROM_ADDRESS', 'info@labwork360.com'), env('MAIL_FROM_NAME'));
+//            $m->to($clientEmail, $name)->subject($emailSubject);
+//        });
     }
 
 

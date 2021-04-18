@@ -8,7 +8,7 @@
     <tr>
         <td>
         <br>
-            Your Appointment is confirmed please come on <strong>{{ \Carbon\Carbon::parse($patient->appointment)->format('m/d/Y') }}</strong> -  <strong>{{ $patient->timeslot }}</strong>
+            Your Appointment is confirmed please come on <strong>{{ \Carbon\Carbon::parse($patient->patientAppointment->appointment)->format('m/d/Y') }}</strong> -  <strong>{{ $timeslot }}</strong>
         </td>
     </tr>
     <tr>

@@ -45,15 +45,15 @@ class Patient extends Model
         $this->attributes['dob'] = \Carbon\Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
     }
 
-    public function getAppointmentAttribute($value)
-    {
-        return \Carbon\Carbon::parse($value)->format('m/d/Y');
-    }
-
-    public function setAppointmentAttribute($value)
-    {
-        $this->attributes['appointment'] = \Carbon\Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
-    }
+//    public function getAppointmentAttribute($value)
+//    {
+//        return \Carbon\Carbon::parse($value)->format('m/d/Y');
+//    }
+//
+//    public function setAppointmentAttribute($value)
+//    {
+//        $this->attributes['appointment'] = \Carbon\Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+//    }
 
     /**
      * Used to create relation between location and patient
@@ -74,6 +74,11 @@ class Patient extends Model
     public function documents()
     {
         return $this->hasMany(DocumentPatients::class);
+    }
+
+    public function patientAppointment()
+    {
+        return $this->hasMany(PatientAppointment::class);
     }
 
 }

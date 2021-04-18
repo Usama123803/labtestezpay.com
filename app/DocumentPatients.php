@@ -6,15 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class DocumentPatients extends Model
 {
-    protected $fillable = ['patient_id', 'url', 'type'];
+    protected $fillable = ['patient_id', 'url', 'type','appointment_id'];
 
     public function patients(){
         return $this->belongsTo('App\Patient', 'patient_id');
     }
-
-//    public function attachments()
-//    {
-//        return $this->hasMany(Attachment::class);
-//    }
 
 }

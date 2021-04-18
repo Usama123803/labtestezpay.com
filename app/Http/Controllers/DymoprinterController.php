@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
+use App\PatientAppointment;
 use Illuminate\Http\Request;
 use Spatie\PdfToText\Pdf;
 
@@ -13,15 +14,14 @@ class DymoprinterController extends Controller
         if(empty($id)){
             abort(404);
         }
-        $patient = Patient::find($id);
+        $patientAppointment = PatientAppointment::find($id);
         $address = '';
-        if ($patient) {
-            $fullName = $patient->first_name . ' ' . $patient->last_name;
-            $address = empty($patient->full_name) ? $fullName : $patient->full_name
-            . '<br />DOB:' . $patient->dob
-            . '<br />Collection:' . $patient->appointment;
+        if ($patientAppointment) {
+            $fullName = $patientAppointment->patient->first_name . ' ' . $patientAppointment->patient->last_name;
+            $address = empty($patientAppointment->patient->full_name) ? $fullName : $patientAppointment->patient->full_name
+            . '<br />DOB:' . $patientAppointment->patient->dob
+            . '<br />Collection:' . $patientAppointment->appointment;
             $address = str_replace('<br />', PHP_EOL, $address);
-
         }
         return view('pages.dymo-printer',compact('address'));
     }

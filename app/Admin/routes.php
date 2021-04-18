@@ -31,5 +31,7 @@ Route::group([
 
     $router->resource('document-patients', DocumentPatientsController::class);
 
+    $router->resource('patient-appointments', PatientAppointmentController::class);
+
 });
 
