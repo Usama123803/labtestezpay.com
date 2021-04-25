@@ -32,6 +32,7 @@ Route::get('/shipping-label', 'DymoprinterController@labelXML');
 Route::post('admin/test-pdf-report', 'ReadPdfController@index');
 
 
+Route::get('move-patient', 'HomeController@movePatient');
 
 
 Auth::routes();

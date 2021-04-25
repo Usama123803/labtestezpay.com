@@ -10,6 +10,7 @@ class Patient extends Model
     use softDeletes;
 
 //    protected $fillable = ['first_name', 'last_name', 'email', 'phone_number', 'message'];
+    protected $fillable = ['is_move'];
 
     /**
      * Used to create relation between country and patient

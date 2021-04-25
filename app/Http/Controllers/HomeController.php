@@ -293,5 +293,50 @@ class HomeController extends Controller
 //        });
     }
 
+    public function movePatient()
+    {
+        Patient::where('is_move', 0)
+            ->chunkById(200, function ($patients) {
+                foreach($patients as $patient){
+                    $patientAppointment = new PatientAppointment;
+                    $patientAppointment->timeslot = $patient->timeslot;
+                    $patientAppointment->patient_id = $patient->id;
+                    $patientAppointment->hear_about = $patient->hear_about;
+                    $patientAppointment->refer_name = $patient->refer_name;
+                    $patientAppointment->result_type = $patient->result_type;
+                    if (!empty($patient->flight_datetime)) {
+                        $patientAppointment->flight_datetime = $patient->flight_datetime;
+                    } else {
+                        $patientAppointment->flight_datetime = null;
+                    }
+
+                    $patientAppointment->front = $patient->front;
+                    $patientAppointment->back = $patient->back;
+
+                    $patientAppointment->paid_or_free      =   $patient->paid_or_free;
+                    $patientAppointment->is_fax            =   $patient->is_fax;
+                    $patientAppointment->fax               =   $patient->fax;
+                    $patientAppointment->is_email          =   $patient->is_email;
+                    $patientAppointment->email_cb          =   $patient->email_cb;
+                    $patientAppointment->passcode          =   $patient->passcode;
+                    $patientAppointment->group_no          =   $patient->group_no;
+                    $patientAppointment->ins_name          =   $patient->ins_name;
+                    $patientAppointment->bill_to           =   $patient->bill_to;
+                    $patientAppointment->landline          =   $patient->landline;
+                    $patientAppointment->zipcode           =   $patient->zipcode;
+                    $patientAppointment->locationId        =   $patient->locationId;
+                    $patientAppointment->appointment       =   date('m/d/Y',$patient->appointment);
+                    $patientAppointment->city              =   $patient->city;
+                    $patientAppointment->address           =   $patient->address;
+                    $patientAppointment->stateId           =   $patient->stateId;
+                    $patientAppointment->terms             =   $patient->terms;
+                    $patientAppointment->created_at        =   $patient->created_at;
+                    $patientAppointment->updated_at        =   $patient->updated_at;
+                    $patientAppointment->save();
+                }
+                $patients->each->update(['is_move' => 1]);
+            }, $column = 'id');
+    }
+
 
 }
