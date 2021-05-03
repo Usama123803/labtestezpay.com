@@ -26,19 +26,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-
-        $values = Configuration::where('id', 1)->first();
-        config([
-            'site' => [
-                'start_time'       => $values->start_time,
-                'end_time'         => $values->end_time,
-                'time_interval'    => $values->time_interval,
-                'block_limit'      => $values->block_limit,
-                'disabled_appointment_dates'      => $values->disabled_appointment_dates,
-                'block_start_time'      => $values->block_start_time,
-                'block_end_time'      => $values->block_end_time
-            ]
-        ]);
-
     }
 }

@@ -139,7 +139,8 @@ class HomeController extends Controller
         $url = 'patients/'.$random . '.pdf';
         $patientAppointment = PatientAppointment::find($id);
         $patient = $patientAppointment->patient;
-        $documentPatient = DocumentPatients::where([['appointment_id', $id], ['type', 'appointment']])->first();
+        $documentPatient = DocumentPatients::where([['appointment_id', $id], ['patient_id', $patient->id], ['type', 'appointment']])->first();
+        //dd($documentPatient);
         if($documentPatient){
             return false;
 //            return url('storage/'.$documentPatient->url);

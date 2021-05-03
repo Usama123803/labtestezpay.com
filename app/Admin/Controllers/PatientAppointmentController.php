@@ -103,12 +103,14 @@ class PatientAppointmentController extends AdminController
         });
 
         $grid->column('Print')->display(function () {
-            $documentPatient = DocumentPatients::where([['appointment_id', $this->id], ['type', 'appointment']])->first();
+            $documentPatient = DocumentPatients::where([['appointment_id', $this->id], ['type', 'appointment'], ['patient_id', $this->patient_id]])->first();
+            //dd($this->id);
             if($documentPatient){
                 $pdfRoute = url('storage/'.$documentPatient->url);
             }else {
                 $pdfRoute = route('generate.pdf', $this->id);
             }
+           
             $checkInRoute = '/admin/patient/checkin/'.$this->id;
             $btnTitle = 'CheckIn';
             if($this->checkin == 1){

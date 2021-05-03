@@ -70,7 +70,7 @@
     <tr>
         <td>
             <div  style="display: inline-block;text-align: center; width: 100%">
-{{--                <img src="{{ url('assets/images/labtest-logo.jpg') }}" alt="LabTest-Logo" width="150" />--}}
+               {{-- <img src="{{ url('assets/images/labtest-logo.jpg') }}" alt="LabTest-Logo" width="150" /> --}}
             </div>
         </td>
     </tr>
